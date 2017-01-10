@@ -1,0 +1,16 @@
+#Basic information
+
+name: WILMap Theme Drupal
+type: theme
+description: WILMap Theme
+package: Custom
+core: 8.x
+
+libraries:
+  - wilmap/global-css
+  - wilmap/global-js
+
+regions:
+  content: 'Content'
+  header: 'Header'
+  footer: 'Footer'

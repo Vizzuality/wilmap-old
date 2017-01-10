@@ -1,0 +1,28 @@
+{
+  "name": "WILMap",
+  "version": "1.0.0",
+  "description": "WILMap",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker-compose  up --build & gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Vizzuality",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.1.7",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-babel": "^6.1.2",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglifyjs": "^0.6.2",
+    "imagemin-pngquant": "^4.2.0"
+  }
+}

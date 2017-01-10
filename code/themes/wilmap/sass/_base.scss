@@ -1,0 +1,15 @@
+// Base styles
+html,
+body {
+  font-family: $font-primary;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.wrap {
+  width: 100%;
+  max-width: $wrap-width;
+  margin: 0 auto;
+}

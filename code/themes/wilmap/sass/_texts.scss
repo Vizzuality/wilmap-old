@@ -1,0 +1,39 @@
+// Texts styles
+
+.text-main-header {
+  font-size: $font-size-huge;
+  font-weight: $font-weight-light;
+
+  &.-black {
+    color: $black;
+  }
+
+  &.-white {
+    color: $white;
+  }
+}
+
+.text-secondary-header {
+  font-size: $font-size-large;
+  font-weight: $font-weight-light;
+
+  &.-black {
+    color: $black;
+  }
+
+  &.-white {
+    color: $white;
+  }
+}
+
+.text-subtitle {
+  color: $second-color;
+  font-size: $font-size-small;
+  line-height: 1.88;
+
+  &.-big {
+    color: $main-color;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+}

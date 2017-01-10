@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  drupal:
+    image: drupal:8.2.5-apache
+    volumes:
+      - ./code/modules:/var/www/html/modules
+      - ./code/themes:/var/www/html/themes
+      - ./data/files:/var/www/html/sites/default/files
+      - ./data/private:/var/www/private
+    links:
+      - postgres
+    ports:
+      - 8080:80
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_PASSWORD: wilmap_root
+      POSTGRES_USER: wilmap
+      POSTGRES_DB: wilmap_db
+    restart: always
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
