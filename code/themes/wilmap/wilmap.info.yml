@@ -11,6 +11,11 @@ libraries:
   - wilmap/global-js
 
 regions:
-  content: 'Content'
   header: 'Header'
+  content: 'Content'
+  contentMap: 'ContentMap'
+  contentExplore: 'contentExplore'
+  contentTopics: 'contentTopics'
+  contentNews: 'contentNews'
+  contentAbout: 'contentAbout'
   footer: 'Footer'

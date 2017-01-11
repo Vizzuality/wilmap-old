@@ -26,6 +26,15 @@
   }
 }
 
+.paragraph {
+  font-size: $font-size-small;
+  line-height: 1.88;
+
+  &.-black {
+    color: $black;
+  }
+}
+
 .text-subtitle {
   color: $second-color;
   font-size: $font-size-small;
