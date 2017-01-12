@@ -1,0 +1,55 @@
+.b-topics-page {
+  .title-page {
+    position: relative;
+    min-height: 140px;
+    padding-top: 40px;
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: 700px;
+      height: 200px;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+
+  .gallery-topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 55px;
+
+    .info-topics {
+      display: inline-block;
+      flex-basis: calc(50% - 70px);
+      margin-top: 20px;
+      padding: 30px;
+      transition: .2s linear;
+      background-color: rgba($third-color, .3);
+
+      &:hover {
+        background-color: $third-color;
+      }
+
+      div {
+        h3 {
+          color: $black;
+          font-size: $font-size-mediun;
+          font-weight: $font-wight-semi-light;
+          line-height: 1.36;
+        }
+
+        hr {
+          width: 140px;
+          height: 5px;
+          margin: 20px 0;
+          border: 0;
+          background-color: rgba($second-color, .2);
+        }
+      }
+    }
+  }
+}
