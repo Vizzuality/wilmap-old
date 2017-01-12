@@ -1,0 +1,61 @@
+.b-about-page {
+
+  .main-information {
+    position: relative;
+    min-height: 200px;
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: 780px;
+      height: 210px;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .text {
+      padding-top: 75px;
+    }
+
+    .text-paragraph {
+      max-width: 620px;
+      margin: 0 auto;
+      margin-top: 60px;
+
+      p {
+        margin-top: 20px;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    height: 5px;
+    margin-top: 65px;
+    margin-bottom: 35px;
+    border: 0;
+    background-color: rgba($third-color, .3);
+  }
+
+  .team-information {
+    .text-paragraph {
+      max-width: 620px;
+      margin: 0 auto;
+      margin-top: 40px;
+
+      p {
+        margin-top: 20px;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
