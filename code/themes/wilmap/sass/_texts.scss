@@ -37,6 +37,26 @@
   &.-white {
     color: $white;
   }
+
+  strong {
+    font-weight: $font-weight-semi-bold;
+  }
+
+  a {
+    display: inline-block;
+    position: relative;
+    color: $main-color;
+
+    &::after {
+      position: absolute;
+      bottom: 7px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $main-color;
+      content: '';
+    }
+  }
 }
 
 .text-subtitle {
