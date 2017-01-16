@@ -13,6 +13,7 @@ libraries:
 regions:
   header: 'Header'
   content: 'Content'
+  homepage: 'HomePage'
   contentMap: 'ContentMap'
   contentExplore: 'contentExplore'
   contentTopics: 'contentTopics'
