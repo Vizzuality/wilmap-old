@@ -5,6 +5,9 @@ function getAbsolutePath() {
 }
 
 (function ($) {
+  function changeMenuOption(option) {
+    $('.'+option+'-option').addClass('-selected');
+  }
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
       var nodeid = settings.path.currentPath.split("/").pop();
@@ -42,6 +45,13 @@ function getAbsolutePath() {
 
       if ($(context).find('.news-page').length !== 0) {
         var gallerytopics = document.querySelector(".gallery-scroll");
+
+
+        $('.option-category').click(function(){
+          $('.option-category').removeClass('-selected');
+          $(this).addClass('-selected');
+        });
+
         $.ajax({
           url: path+"api/newsJSON",
           method: "GET",
@@ -67,6 +77,7 @@ function getAbsolutePath() {
         //*******************************************************
         if (path.indexOf('/news/') !== -1) {
           $('.node-pages').addClass('news-detail-page');
+          changeMenuOption('news');
           $.ajax({
             url: "/api/newsJSON",
             method: "GET",
@@ -86,6 +97,8 @@ function getAbsolutePath() {
             }
           })
         }
+      } else {
+        changeMenuOption(settings.path.currentPath);
       }
     }
   };
