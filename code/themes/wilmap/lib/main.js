@@ -5,6 +5,9 @@ function getAbsolutePath() {
 }
 
 (function ($) {
+  function changeMenuOption(option) {
+    $('.'+option+'-option').addClass('-selected');
+  }
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
       var nodeid = settings.path.currentPath.split("/").pop();
@@ -67,6 +70,7 @@ function getAbsolutePath() {
         //*******************************************************
         if (path.indexOf('/news/') !== -1) {
           $('.node-pages').addClass('news-detail-page');
+          changeMenuOption('news');
           $.ajax({
             url: "/api/newsJSON",
             method: "GET",
@@ -86,6 +90,8 @@ function getAbsolutePath() {
             }
           })
         }
+      } else {
+        changeMenuOption(settings.path.currentPath);
       }
     }
   };
