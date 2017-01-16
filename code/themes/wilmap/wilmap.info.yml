@@ -20,3 +20,5 @@ regions:
   contentNews: 'contentNews'
   contentAbout: 'contentAbout'
   footer: 'Footer'
+
+features: true

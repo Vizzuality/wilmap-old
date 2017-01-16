@@ -3,3 +3,5 @@
 2. REST UI => https://www.drupal.org/project/restui
 3. HAL (install)
 4. HTTP Basic Authentication (install)
+5. Features & Features UI => https://www.drupal.org/project/features
+6. Config Update => https://www.drupal.org/project/config_update
