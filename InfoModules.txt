@@ -1,1 +1,5 @@
 0. Name Module => https://www.linkModule
+1. RESTful Web Services (install)
+2. REST UI => https://www.drupal.org/project/restui
+3. HAL (install)
+4. HTTP Basic Authentication (install)
