@@ -45,6 +45,13 @@ function getAbsolutePath() {
 
       if ($(context).find('.news-page').length !== 0) {
         var gallerytopics = document.querySelector(".gallery-scroll");
+
+
+        $('.option-category').click(function(){
+          $('.option-category').removeClass('-selected');
+          $(this).addClass('-selected');
+        });
+
         $.ajax({
           url: path+"api/newsJSON",
           method: "GET",
