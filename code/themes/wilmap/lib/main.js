@@ -11,14 +11,29 @@ function getAbsolutePath() {
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
       var nodeid = settings.path.currentPath.split("/").pop();
-      //console.log(nodeid)
+      // console.log(nodeid)
       // console.log(context)
       // console.log(settings.path.currentPath);
       var path = getAbsolutePath();
-      console.log(path)
-      //*******************************************************
-      //FUNCTIONS FOR GALLERY TOPICS PAGE
-      //*******************************************************
+
+      $('.search-box').keypress(function() {
+        var value = $('.search-box').val();
+        $.ajax({
+          url: path + 'api/topicsJSON',
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/hal+json'
+          },
+          success: function(data, status, xhr) {
+            // here the magic
+          }
+        })
+      });
+
+      // *******************************************************
+      // FUNCTIONS FOR GALLERY TOPICS PAGE
+      // *******************************************************
 
       if ($(context).find('.topics-page').length !== 0) {
         var gallerytopics = document.querySelector(".gallery-topics");
@@ -49,6 +64,8 @@ function getAbsolutePath() {
 
         $('.option-category').click(function(){
           $('.option-category').removeClass('-selected');
+          var dataValue = $(this).data('bar');
+          $('.small-bar').css('top', dataValue+'px');
           $(this).addClass('-selected');
         });
 
@@ -61,7 +78,7 @@ function getAbsolutePath() {
           },
           success: function(data, status, xhr) {
             console.log(data);
-            for(var i = 0; i<data.length; i++){
+            for(var i = 0; i<3; i++){
               var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title +
               '</h2><span class="date">' + data[i].field_publication_date +
               '</span><div class="text">'+data[i].body+
