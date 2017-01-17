@@ -1,28 +1,28 @@
 function getAbsolutePath() {
-    var loc = window.location;
-    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
-    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+  const loc = window.location;
+  const pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+  return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
 }
 
 (function ($) {
   function changeMenuOption(option) {
-    $('.'+option+'-option').addClass('-selected');
+    $(`.${option}-option`).addClass('-selected'); // `Hello, ${name}!`;
   }
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
-      var nodeid = settings.path.currentPath.split("/").pop();
+      const nodeid = settings.path.currentPath.split('/').pop();
       // console.log(nodeid)
       // console.log(context)
       // console.log(settings.path.currentPath);
-      var path = getAbsolutePath();
+      const path = getAbsolutePath();
 
       $('.search-box').keypress(function() {
-        var value = $('.search-box').val();
+        const value = $('.search-box').val();
         $.ajax({
-          url: path + 'api/topicsJSON',
+          url: `${path}api/topicsJSON`,
           method: 'GET',
           headers: {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/hal+json'
           },
           success: function(data, status, xhr) {
