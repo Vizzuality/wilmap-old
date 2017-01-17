@@ -30,14 +30,14 @@ npm install
 ### First time you build the image
 You need configure Drupal database completing the following form, with the necessary data.
 
-- Database name: wilmap_db
-- Database username: wilmap
-- Database password: wilmap_root
-- Host: postgres
+- **Database name**: wilmap_db
+- **Database username**: wilmap
+- **Database password**: wilmap_root
+- **Host**: postgres
 
 ![Cover picture](/assets/first_step.png?raw=true "Form")
 
-And then we choose the option "View your existing site".
+And then we choose the option **View your existing site**.
 
 
 #### Enjoy it!
@@ -48,7 +48,7 @@ And then we choose the option "View your existing site".
 
 As Drupal projects realy heavily on the database, you need to make sure to import and export your database at relevant times
 
-This project includes a dump of each table under `backup/backup.sql`.
+This project includes a dump of each table under **`backup/backup.sql`**.
 
 ### Using a local database server
 
