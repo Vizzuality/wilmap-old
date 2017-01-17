@@ -121,10 +121,11 @@
     transition: .2s linear;
     background-color: $white;
     opacity: 0;
-    z-index: 2;
+    z-index: -1;
 
     &.-visible {
       opacity: 1;
+      z-index: 2;
     }
 
     .result-search {
@@ -165,10 +166,11 @@
     transition: .2s linear;
     background-color: rgba($black, .3);
     opacity: 0;
-    z-index: 1;
+    z-index: -1;
 
     &.-visible {
       opacity: 1;
+      z-index: 1;
     }
   }
 }
