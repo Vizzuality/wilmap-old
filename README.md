@@ -17,7 +17,7 @@ To run the project can use [Docker](https://www.docker.com/) or a local database
 npm install
 ```
 
-## How to run the OGP image in Docker
+## How to run the WILMap image in Docker
 #### Populate the database
  * See the instructions bellow on how to import existing data to your database:
 
