@@ -43,11 +43,10 @@ gulp.task('uglify', function () {
 });
 
 gulp.task('watch', function(){
-    livereload.listen();
-
-    gulp.watch('./code/themes/wilmap/sass/**/*.scss', ['sass']);
-    gulp.watch('./code/themes/wilmap/lib/*.js', ['uglify']);
-    gulp.watch(['./code/themes/wilmap/css/style.css', './code/themes/wilmap/**/*.twig', './code/themes/wilmap/js/*.js'], function (files) {
+  livereload.listen();
+  gulp.watch('./code/themes/wilmap/sass/**/*.scss', ['sass']);
+  gulp.watch('./code/themes/wilmap/lib/*.js', ['uglify']);
+  gulp.watch(['./code/themes/wilmap/css/style.css', './code/themes/wilmap/**/*.twig', './code/themes/wilmap/js/*.js'], function (files) {
       livereload.changed(files)
     });
 });

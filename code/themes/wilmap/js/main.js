@@ -38,29 +38,31 @@ function getAbsolutePath() {
       // *******************************************************
 
       if ($(context).find('.topics-page').length !== 0) {
-        var gallerytopics = document.querySelector(".gallery-topics");
-        $.ajax({
-          url: path + "api/topicsJSON",
-          method: "GET",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/hal+json"
-          },
-          success: function success(data, status, xhr) {
-            for (var i = 0; i < data.length; i++) {
-              var contentbox = '<a href="#" class="info-topics"><div><h3>' + data[i].field_name + '</h3>' + '<hr><p class="paragraph">' + data[i].field_d + '</p></div></a>';
-              $(gallerytopics).append(contentbox);
+        (function () {
+          var gallerytopics = document.querySelector('.gallery-topics');
+          $.ajax({
+            url: path + 'api/topicsJSON',
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/hal+json'
+            },
+            success: function success(data, status, xhr) {
+              for (var i = 0; i < data.length; i++) {
+                var contentbox = '<a href="#" class="info-topics"><div><h3>' + data[i].field_name + '</h3>' + '<hr><p class="paragraph">' + data[i].field_d + '</p></div></a>';
+                $(gallerytopics).append(contentbox);
+              }
             }
-          }
-        });
+          });
+        })();
       }
 
-      //*******************************************************
-      //FUNCTIONS FOR GALLERY NEWS PAGE
-      //*******************************************************
+      // *******************************************************
+      // FUNCTIONS FOR GALLERY NEWS PAGE
+      // *******************************************************
 
       if ($(context).find('.news-page').length !== 0) {
-        var gallerytopics = document.querySelector(".gallery-scroll");
+        var gallerynews = document.querySelector(".gallery-scroll");
 
         $('.option-category').click(function () {
           $('.option-category').removeClass('-selected');
@@ -70,37 +72,35 @@ function getAbsolutePath() {
         });
 
         $.ajax({
-          url: path + "api/newsJSON",
-          method: "GET",
+          url: path + 'api/newsJSON',
+          method: 'GET',
           headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/hal+json"
+            Accept: 'application/json',
+            'Content-Type': 'application/hal+json'
           },
           success: function success(data, status, xhr) {
-            console.log(data);
             for (var i = 0; i < 3; i++) {
               var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title + '</h2><span class="date">' + data[i].field_publication_date + '</span><div class="text">' + data[i].body + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
-              $(gallerytopics).append(contentbox);
+              $(gallerynews).append(contentbox);
             }
           }
         });
       }
       if ($(context).find('.node-pages').length !== 0) {
-        //*******************************************************
-        //FUNCTIONS FOR NEWS DETAIL PAGE
-        //*******************************************************
+        // *******************************************************
+        // FUNCTIONS FOR NEWS DETAIL PAGE
+        // *******************************************************
         if (path.indexOf('/news/') !== -1) {
           $('.node-pages').addClass('news-detail-page');
           changeMenuOption('news');
           $.ajax({
-            url: "/api/newsJSON",
-            method: "GET",
+            url: '/api/newsJSON',
+            method: 'GET',
             headers: {
-              "Accept": "application/json",
-              "Content-Type": "application/hal+json"
+              Accept: 'application/json',
+              'Content-Type': 'application/hal+json'
             },
             success: function success(data, status, xhr) {
-              console.log(data);
               for (var i = 0; i < data.length; i++) {
                 if (nodeid === data[i].nid) {
                   $('.title-node').html(data[i].field_title);
