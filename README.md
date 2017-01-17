@@ -1,5 +1,5 @@
 # About the World Intermediary Liabilty Map (WILMap).
-[World Intermediary Liabilty Map](http://www.opengovpartnership.org/) (WILMap) is an online resource informing the public about evolving Internet regulation affecting freedom of expression and user rights worldwide.
+[World Intermediary Liabilty Map](http://cyberlaw.stanford.edu/our-work/projects/world-intermediary-liability-map-wilmap) (WILMap) is an online resource informing the public about evolving Internet regulation affecting freedom of expression and user rights worldwide.
 
 This repository contains the new WILMap web app of 2017.
 
