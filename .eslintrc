@@ -19,6 +19,7 @@
     "no-console": ["error", {
       "allow": ["warn", "error", "info"]
     }],
+     "linebreak-style": [1,"windows"],
     "comma-dangle": ["error", {
       "arrays": "only-multiline",
       "objects": "only-multiline",

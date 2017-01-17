@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var babel = require("gulp-babel");
+var babel = require('gulp-babel');
 var livereload = require('gulp-livereload')
 var uglify = require('gulp-uglifyjs');
 var sass = require('gulp-sass');
@@ -7,8 +7,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
-
-
 
 
 gulp.task('imagemin', function () {
@@ -35,21 +33,20 @@ gulp.task('sass', function () {
 gulp.task('uglify', function() {
   gulp.src('./code/themes/wilmap/lib/*.js')
     .pipe(uglify('main.js'))
-    .pipe(gulp.dest('./code/themes/wilmap/js'))
+    .pipe(gulp.dest('./code/themes/wilmap/js'));
 });
 
-gulp.task("default", function () {
-  return gulp.src('./code/themes/wilmap/lib/*.js')
+gulp.task('uglify', function () {
+  gulp.src('./code/themes/wilmap/lib/*.js')
     .pipe(babel())
-    .pipe(gulp.dest('./code/themes/wilmap/js'))
+    .pipe(gulp.dest('./code/themes/wilmap/js'));
 });
 
 gulp.task('watch', function(){
-    livereload.listen();
-
-    gulp.watch('./code/themes/wilmap/sass/**/*.scss', ['sass']);
-    gulp.watch('./code/themes/wilmap/lib/*.js', ['uglify']);
-    gulp.watch(['./code/themes/wilmap/css/style.css', './code/themes/wilmap/**/*.twig', './code/themes/wilmap/js/*.js'], function (files){
-        livereload.changed(files)
+  livereload.listen();
+  gulp.watch('./code/themes/wilmap/sass/**/*.scss', ['sass']);
+  gulp.watch('./code/themes/wilmap/lib/*.js', ['uglify']);
+  gulp.watch(['./code/themes/wilmap/css/style.css', './code/themes/wilmap/**/*.twig', './code/themes/wilmap/js/*.js'], function (files) {
+      livereload.changed(files)
     });
 });
