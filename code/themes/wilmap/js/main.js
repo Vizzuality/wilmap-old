@@ -18,6 +18,16 @@ function getAbsolutePath() {
       // console.log(settings.path.currentPath);
       var path = getAbsolutePath();
 
+      $('.search-box').click(function () {
+        $('.search-modal').addClass('-visible');
+        $('.search-back').addClass('-visible');
+      });
+
+      $('.search-back').click(function () {
+        $('.search-modal').removeClass('-visible');
+        $('.search-back').removeClass('-visible');
+      });
+
       $('.search-box').keypress(function () {
         var value = $('.search-box').val();
         $.ajax({
