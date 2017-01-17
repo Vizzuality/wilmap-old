@@ -27,7 +27,11 @@ npm install
  ```
  This initializes also [Gulp](http://gulpjs.com/) for compile css and js files.
 
-### First time you build the image
+#### Enjoy it!
+   * Open the browser and access [http://localhost:8080](http://localhost:8080)
+
+
+# First time you build the project
 You need configure Drupal database completing the following form, with the necessary data.
 
 - **Database name**: wilmap_db
@@ -38,10 +42,6 @@ You need configure Drupal database completing the following form, with the neces
 ![Cover picture](/assets/first_step.png?raw=true "Form")
 
 And then we choose the option **View your existing site**.
-
-
-#### Enjoy it!
-  * Open the browser and access [http://localhost:8080](http://localhost:8080)
 
 
 ## Managing your database
