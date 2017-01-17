@@ -1,6 +1,5 @@
 # Mac OS
 .DS_Store
-ngrok
 
 # Text editors
 *.sublime*

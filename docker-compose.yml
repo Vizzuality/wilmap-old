@@ -2,7 +2,8 @@ version: '2'
 
 services:
   drupal:
-    image: drupal:8.2.5-apache
+    build: .
+    container_name: drupal-wilmap
     volumes:
       - ./code/modules:/var/www/html/modules
       - ./code/themes:/var/www/html/themes

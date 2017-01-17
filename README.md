@@ -25,7 +25,20 @@ npm install
  ```
  npm start
  ```
- This initializes [Gulp](http://gulpjs.com/) for compile css and js files.
+ This initializes also [Gulp](http://gulpjs.com/) for compile css and js files.
+
+### First time you build the image
+You need configure Drupal database completing the following form, with the necessary data.
+
+- Database name: wilmap_db
+- Database username: wilmap
+- Database password: wilmap_root
+- Host: postgres
+
+![Cover picture](/assets/first_step.png?raw=true "Form")
+
+And then we choose the option "View your existing site".
+
 
 #### Enjoy it!
   * Open the browser and access [http://localhost:8080](http://localhost:8080)
@@ -60,6 +73,12 @@ docker exec -it postgres-wilmap script /dev/null -c "cat /backup/backup.sql | ps
 ```
 
 #### Exporting from local database server to source
+
+Use the following to clear caches:
+
+```
+docker exec -it drupal_wilmap drush cache-rebuild
+```
 
 Then, use this command to export the database:
 
