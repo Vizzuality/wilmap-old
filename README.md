@@ -25,10 +25,17 @@ npm install
  ```
  npm start
  ```
- This initializes also [Gulp](http://gulpjs.com/) for compile css and js files.
+ This initializes also [Gulp](http://gulpjs.com/) for compile css and js(babel) files.
 
 #### Enjoy it!
    * Open the browser and access [http://localhost:8080](http://localhost:8080)
+
+##### If you run project using local database server
+Just need to run  
+```
+gulp watch
+```
+for compile css and js(babel) files
 
 
 # First time you build the project
