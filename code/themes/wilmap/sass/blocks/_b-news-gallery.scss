@@ -8,8 +8,8 @@
       position: absolute;
       top: -20px;
       right: 0;
-      width: 780px;
-      height: 200px;
+      width: $width-image;
+      height: $height-image;
       background-image: url('../images/home/intro-image.png');
       background-size: cover;
       z-index: -1;
