@@ -90,5 +90,5 @@ docker exec -it drupal_wilmap drush cache-rebuild
 Then, use this command to export the database:
 
 ```
-docker exec -it postgres-wilmap pg_dump -U wilmap wilmap_db  > ./backup/backup.sql
+docker exec -it postgres-wilmap pg_dump -U  wilmap wilmap_db --clean  > ./backup/backup.sql
 ```
