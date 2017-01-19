@@ -90,5 +90,5 @@ docker exec -it drupal_wilmap drush cache-rebuild
 Then, use this command to export the database:
 
 ```
-docker exec -it mysql-wilmap mysqldump -u wilmap -pwilmap_root  wilmap_db > ./backup/w_backup.sql
+docker exec -it mysql-wilmap script /dev/null -c "mysqldump -u wilmap -pwilmap_root --default-character-set=utf8 --result-file=/backup/w_backup.sql  wilmap_db"
 ```
