@@ -11,9 +11,6 @@ function getAbsolutePath() {
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
       const nodeid = settings.path.currentPath.split('/').pop();
-      // console.log(nodeid)
-      // console.log(context)
-      // console.log(settings.path.currentPath);
       const path = getAbsolutePath();
 
       $('.search-box').click(function(){
@@ -96,7 +93,8 @@ function getAbsolutePath() {
           },
           success: function(data, status, xhr) {
             for (let i = 0; i < 3; i++){
-              const contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title +
+              console.log(data[i]);
+              const contentbox = '<div class="info-news"><h2>' + data[i].field_title +
               '</h2><span class="date">' + data[i].field_publication_date +
               '</span><div class="text">' + data[i].body +
               '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';

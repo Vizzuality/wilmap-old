@@ -13,9 +13,6 @@ function getAbsolutePath() {
   Drupal.behaviors.myBehavior = {
     attach: function attach(context, settings) {
       var nodeid = settings.path.currentPath.split('/').pop();
-      // console.log(nodeid)
-      // console.log(context)
-      // console.log(settings.path.currentPath);
       var path = getAbsolutePath();
 
       $('.search-box').click(function () {
@@ -98,7 +95,8 @@ function getAbsolutePath() {
           },
           success: function success(data, status, xhr) {
             for (var i = 0; i < 3; i++) {
-              var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title + '</h2><span class="date">' + data[i].field_publication_date + '</span><div class="text">' + data[i].body + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
+              console.log(data[i]);
+              var contentbox = '<div class="info-news"><h2>' + data[i].field_title + '</h2><span class="date">' + data[i].field_publication_date + '</span><div class="text">' + data[i].body + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
               $(gallerynews).append(contentbox);
             }
           }
