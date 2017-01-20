@@ -32,7 +32,7 @@ gulp.task('sass', function () {
 
 gulp.task('uglify', function() {
   gulp.src('./code/themes/wilmap/lib/*.js')
-    .pipe(uglify('main.js'))
+    .pipe(uglify('main.js', 'select2.full.min.js'))
     .pipe(gulp.dest('./code/themes/wilmap/js'));
 });
 

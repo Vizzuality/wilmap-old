@@ -2,10 +2,12 @@ global-css:
   css:
     theme:
       css/style.css: {}
+      css/select2.css: {}
 
 global-js:
   js:
     js/main.js: {}
+    js/select2.full.min.js: {}
 
   dependencies:
     - core/jquery

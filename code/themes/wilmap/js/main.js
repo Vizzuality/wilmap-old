@@ -13,10 +13,42 @@ function getAbsolutePath() {
   Drupal.behaviors.myBehavior = {
     attach: function attach(context, settings) {
       var nodeid = settings.path.currentPath.split('/').pop();
-      // console.log(nodeid)
-      // console.log(context)
-      // console.log(settings.path.currentPath);
       var path = getAbsolutePath();
+
+      $('.filter-document').select2({
+        placeholder: 'Document Type',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-document'
+      });
+
+      $('.filter-country').select2({
+        placeholder: 'Country',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-country'
+      });
+
+      $('.filter-year').select2({
+        placeholder: 'Year',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
+
+      $('.filter-group').select2({
+        placeholder: 'Nothing',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
+
+      $('.filter-sort').select2({
+        placeholder: 'Newest firts',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
 
       $('.search-box').click(function () {
         $('.search-modal').css('display', 'block');
@@ -97,8 +129,8 @@ function getAbsolutePath() {
             'Content-Type': 'application/hal+json'
           },
           success: function success(data, status, xhr) {
-            for (var i = 0; i < 3; i++) {
-              var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title + '</h2><span class="date">' + data[i].field_publication_date + '</span><div class="text">' + data[i].body + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
+            for (var i = 0; i < data.length; i++) {
+              var contentbox = '<div class="info-news"><h2>' + data[i].field_title + '</h2><span class="date">' + data[i].field_publication_date + '</span><div class="text">' + data[i].body + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
               $(gallerynews).append(contentbox);
             }
           }
