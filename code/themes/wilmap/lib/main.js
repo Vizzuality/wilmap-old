@@ -13,6 +13,41 @@ function getAbsolutePath() {
       const nodeid = settings.path.currentPath.split('/').pop();
       const path = getAbsolutePath();
 
+      $('.filter-document').select2({
+        placeholder: 'Document Type',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-document'
+      });
+
+      $('.filter-country').select2({
+        placeholder: 'Country',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-country'
+      });
+
+      $('.filter-year').select2({
+        placeholder: 'Year',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
+
+      $('.filter-group').select2({
+        placeholder: 'Nothing',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
+
+      $('.filter-sort').select2({
+        placeholder: 'Newest firts',
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+        theme: 'wilmap-select-year'
+      });
+
       $('.search-box').click(function(){
         $('.search-modal').css('display', 'block');
         $('.search-back').css('display', 'block');
@@ -92,8 +127,7 @@ function getAbsolutePath() {
             'Content-Type': 'application/hal+json'
           },
           success: function(data, status, xhr) {
-            for (let i = 0; i < 3; i++){
-              console.log(data[i]);
+            for (let i = 0; i < data.length; i++){
               const contentbox = '<div class="info-news"><h2>' + data[i].field_title +
               '</h2><span class="date">' + data[i].field_publication_date +
               '</span><div class="text">' + data[i].body +
