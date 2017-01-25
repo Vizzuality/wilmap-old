@@ -1,5 +1,4 @@
 {
-  "extends": "./core/.eslintrc",
   "env": {
     "browser": true,
     "node": true,
