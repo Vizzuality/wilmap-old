@@ -62,7 +62,7 @@ This project includes a dump of each table under **`backup/backup.sql`**.
 #### Importing from source to local database server
 
 ```
-script /dev/null -c "cat /backup/backup.sql | psql -U wilmap wilmap_db"
+script /dev/null -c "cat ./backup/backup.sql | psql -U wilmap wilmap_db"
 ```
 
 #### Exporting from local database server to source
