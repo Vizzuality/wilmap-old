@@ -33,13 +33,13 @@ gulp.task('sass', function () {
 gulp.task('uglify', function() {
   gulp.src('./themes/wilmap/lib/*.js')
     .pipe(uglify('main.js', 'select2.full.min.js'))
-    .pipe(gulp.dest('./code/themes/wilmap/js'));
+    .pipe(gulp.dest('./themes/wilmap/js'));
 });
 
 gulp.task('uglify', function () {
   gulp.src('./themes/wilmap/lib/*.js')
     .pipe(babel())
-    .pipe(gulp.dest('./code/themes/wilmap/js'));
+    .pipe(gulp.dest('./themes/wilmap/js'));
 });
 
 gulp.task('watch', function(){
