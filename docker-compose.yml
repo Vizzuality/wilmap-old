@@ -10,17 +10,18 @@ services:
       - ./sites/default/files:/var/www/html/sites/default/files
       - ./data/private:/var/www/private
     links:
-      - postgres
+      - mysql
     ports:
-      - 8080:80
-  postgres:
-    image: postgres:9.6
-    container_name: postgres-wilmap
+      - 8090:80
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-wilmap
     environment:
-      PGPASSWORD: wilmap_root
-      POSTGRES_USER: wilmap
-      POSTGRES_DB: wilmap_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: wilmap
+      MYSQL_DATABASE: wilmap_db
+      MYSQL_PASSWORD: wilmap_root
     restart: always
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/mysql:/var/lib/mysql
       - ./backup:/backup

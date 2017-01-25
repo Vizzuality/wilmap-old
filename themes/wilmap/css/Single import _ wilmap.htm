@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://localhost:8090/admin/config/development/configuration/single/import -->
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class=" no-touchevents details js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="http://localhost:8090/core/misc/favicon.ico" type="image/vnd.microsoft.icon">
+
+    <title>Single import | wilmap</title>
+    <style media="all">
+@import url("/core/assets/vendor/normalize-css/normalize.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/ajax-progress.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/align.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/autocomplete-loading.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/fieldgroup.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/container-inline.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/clearfix.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/details.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/hidden.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/item-list.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/js.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/nowrap.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/position-container.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/progress.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/reset-appearance.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/resize.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/sticky-header.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/tabledrag.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/tablesort.module.css?ok2xcl");
+@import url("/core/themes/stable/css/system/components/tree-child.module.css?ok2xcl");
+@import url("/core/themes/stable/css/contextual/contextual.module.css?ok2xcl");
+@import url("/core/themes/stable/css/toolbar/toolbar.module.css?ok2xcl");
+</style>
+<style media="screen">
+@import url("/core/themes/stable/css/tour/tour.module.css?ok2xcl");
+</style>
+<style media="all">
+@import url("/core/assets/vendor/jquery.ui/themes/base/core.css?ok2xcl");
+@import url("/core/themes/stable/css/contextual/contextual.toolbar.css?ok2xcl");
+@import url("/core/themes/stable/css/toolbar/toolbar.menu.css?ok2xcl");
+@import url("/core/themes/stable/css/system/system.admin.css?ok2xcl");
+@import url("/core/themes/stable/css/contextual/contextual.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/contextual/contextual.icons.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/shortcut/shortcut.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/shortcut/shortcut.icons.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/toolbar/toolbar.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/toolbar/toolbar.icons.theme.css?ok2xcl");
+@import url("/core/themes/stable/css/user/user.icons.admin.css?ok2xcl");
+</style>
+<style media="all">
+@import url("/core/themes/seven/css/base/elements.css?ok2xcl");
+@import url("/core/themes/seven/css/base/typography.css?ok2xcl");
+@import url("/core/themes/seven/css/base/print.css?ok2xcl");
+@import url("/core/themes/seven/css/layout/layout.css?ok2xcl");
+@import url("/core/themes/classy/css/components/action-links.css?ok2xcl");
+@import url("/core/themes/classy/css/components/breadcrumb.css?ok2xcl");
+@import url("/core/themes/classy/css/components/button.css?ok2xcl");
+@import url("/core/themes/classy/css/components/collapse-processed.css?ok2xcl");
+@import url("/core/themes/classy/css/components/container-inline.css?ok2xcl");
+@import url("/core/themes/classy/css/components/details.css?ok2xcl");
+@import url("/core/themes/classy/css/components/exposed-filters.css?ok2xcl");
+@import url("/core/themes/classy/css/components/field.css?ok2xcl");
+@import url("/core/themes/classy/css/components/form.css?ok2xcl");
+@import url("/core/themes/classy/css/components/icons.css?ok2xcl");
+@import url("/core/themes/classy/css/components/inline-form.css?ok2xcl");
+@import url("/core/themes/classy/css/components/item-list.css?ok2xcl");
+@import url("/core/themes/classy/css/components/link.css?ok2xcl");
+@import url("/core/themes/classy/css/components/links.css?ok2xcl");
+@import url("/core/themes/classy/css/components/menu.css?ok2xcl");
+@import url("/core/themes/classy/css/components/more-link.css?ok2xcl");
+@import url("/core/themes/classy/css/components/pager.css?ok2xcl");
+@import url("/core/themes/classy/css/components/tabledrag.css?ok2xcl");
+@import url("/core/themes/classy/css/components/tableselect.css?ok2xcl");
+@import url("/core/themes/classy/css/components/tablesort.css?ok2xcl");
+@import url("/core/themes/classy/css/components/tabs.css?ok2xcl");
+@import url("/core/themes/classy/css/components/textarea.css?ok2xcl");
+@import url("/core/themes/classy/css/components/ui-dialog.css?ok2xcl");
+@import url("/core/themes/classy/css/components/progress.css?ok2xcl");
+@import url("/core/themes/classy/css/components/messages.css?ok2xcl");
+@import url("/core/themes/seven/css/components/jquery.ui/theme.css?ok2xcl");
+@import url("/core/themes/seven/css/components/admin-list.css?ok2xcl");
+</style>
+<style media="all">
+@import url("/core/themes/seven/css/components/content-header.css?ok2xcl");
+@import url("/core/themes/seven/css/components/breadcrumb.css?ok2xcl");
+@import url("/core/themes/seven/css/components/buttons.css?ok2xcl");
+@import url("/core/themes/seven/css/components/colors.css?ok2xcl");
+@import url("/core/themes/seven/css/components/messages.css?ok2xcl");
+@import url("/core/themes/seven/css/components/dropbutton.component.css?ok2xcl");
+@import url("/core/themes/seven/css/components/entity-meta.css?ok2xcl");
+@import url("/core/themes/seven/css/components/field-ui.css?ok2xcl");
+@import url("/core/themes/seven/css/components/form.css?ok2xcl");
+@import url("/core/themes/seven/css/components/help.css?ok2xcl");
+@import url("/core/themes/seven/css/components/menus-and-lists.css?ok2xcl");
+@import url("/core/themes/seven/css/components/modules-page.css?ok2xcl");
+@import url("/core/themes/seven/css/components/node.css?ok2xcl");
+@import url("/core/themes/seven/css/components/page-title.css?ok2xcl");
+@import url("/core/themes/seven/css/components/pager.css?ok2xcl");
+@import url("/core/themes/seven/css/components/panel.css?ok2xcl");
+@import url("/core/themes/seven/css/components/skip-link.css?ok2xcl");
+@import url("/core/themes/seven/css/components/tables.css?ok2xcl");
+@import url("/core/themes/seven/css/components/search-admin-settings.css?ok2xcl");
+@import url("/core/themes/seven/css/components/tablesort-indicator.css?ok2xcl");
+@import url("/core/themes/seven/css/components/system-status-report.css?ok2xcl");
+@import url("/core/themes/seven/css/components/tabs.css?ok2xcl");
+@import url("/core/themes/seven/css/components/views-ui.css?ok2xcl");
+@import url("/core/themes/seven/css/components/tour.theme.css?ok2xcl");
+</style>
+
+    
+<!--[if lte IE 8]>
+<script src="/core/assets/vendor/html5shiv/html5shiv.min.js?v=3.7.3"></script>
+<![endif]-->
+<script src="./Single import _ wilmap_files/modernizr.min.js"></script>
+
+  </head>
+  <body class="user-logged-in path-admin toolbar-vertical toolbar-tray-open toolbar-fixed" style="padding-top: 39px;">
+        <a href="http://localhost:8090/admin/config/development/configuration/single/import#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    <div id="toolbar-administration" role="group" aria-label="Site administration toolbar" class="toolbar toolbar-oriented">
+  <nav id="toolbar-bar" role="navigation" aria-label="Toolbar items" class="toolbar-bar clearfix" data-offset-top="">
+    <h2 class="visually-hidden">Toolbar items</h2>
+                <div class="home-toolbar-tab toolbar-tab">
+        <a href="http://localhost:8090/" title="Return to site content" class="toolbar-icon toolbar-icon-escape-admin toolbar-item" data-toolbar-escape-admin="">Back to site</a>
+        <div><nav class="toolbar-lining clearfix" role="navigation"></nav></div>      </div>
+                <div class="toolbar-tab">
+        <a href="http://localhost:8090/admin" title="Admin menu" class="toolbar-icon toolbar-icon-menu trigger toolbar-item is-active" data-drupal-subtrees="" id="toolbar-item-administration" data-toolbar-tray="toolbar-item-administration-tray" aria-owns="toolbar-item-administration-tray" role="button" aria-pressed="false">Manage</a>
+        <div id="toolbar-item-administration-tray" data-toolbar-tray="toolbar-item-administration-tray" class="toolbar-tray is-active toolbar-tray-vertical" data-offset-left="" style="margin-top: 39px;"><nav class="toolbar-lining clearfix" role="navigation" aria-label="Administration menu"><h3 class="toolbar-tray-name visually-hidden">Administration menu</h3><div class="toolbar-menu-administration"><ul class="toolbar-menu root"><li class="menu-item menu-item--collapsed level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/content" title="Find and manage content." id="toolbar-link-system-admin_content" class="toolbar-icon toolbar-icon-system-admin-content" data-drupal-link-system-path="admin/content">Content</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Content</span></button></div>
+              <ul class="toolbar-menu">
+                    <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/content/comment" title="List and edit site comments and the comment approval queue." id="toolbar-link-comment-admin" class="toolbar-icon toolbar-icon-comment-admin" data-drupal-link-system-path="admin/content/comment">Comments</a></div>
+              </li>
+        </ul>
+  
+
+</li><li class="menu-item menu-item--collapsed level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/structure" title="Administer blocks, content types, menus, etc." id="toolbar-link-system-admin_structure" class="toolbar-icon toolbar-icon-system-admin-structure" data-drupal-link-system-path="admin/structure">Structure</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Structure</span></button></div>
+              <ul class="toolbar-menu">
+                    <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/block" title="Configure what block content appears in your site&#39;s sidebars and other regions." id="toolbar-link-block-admin_display" class="toolbar-icon toolbar-icon-block-admin-display" data-drupal-link-system-path="admin/structure/block">Block layout</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/comment" title="Manage form and displays settings of comments." id="toolbar-link-entity-comment_type-collection" class="toolbar-icon toolbar-icon-entity-comment-type-collection" data-drupal-link-system-path="admin/structure/comment">Comment types</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/contact" title="Create and manage contact forms." id="toolbar-link-entity-contact_form-collection" class="toolbar-icon toolbar-icon-entity-contact-form-collection" data-drupal-link-system-path="admin/structure/contact">Contact forms</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/types" title="Create and manage fields, forms, and display settings for your content." id="toolbar-link-entity-node_type-collection" class="toolbar-icon toolbar-icon-entity-node-type-collection" data-drupal-link-system-path="admin/structure/types">Content types</a></div>
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/display-modes" title="Configure what displays are available for your content and forms." id="toolbar-link-field_ui-display_mode" class="toolbar-icon toolbar-icon-field-ui-display-mode" data-drupal-link-system-path="admin/structure/display-modes">Display modes</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Display modes</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/display-modes/form" title="Manage custom form modes." id="toolbar-link-entity-entity_form_mode-collection" class="toolbar-icon toolbar-icon-entity-entity-form-mode-collection" data-drupal-link-system-path="admin/structure/display-modes/form">Form modes</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/display-modes/view" title="Manage custom view modes." id="toolbar-link-entity-entity_view_mode-collection" class="toolbar-icon toolbar-icon-entity-entity-view-mode-collection" data-drupal-link-system-path="admin/structure/display-modes/view">View modes</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/menu" title="Manage menus and menu links." id="toolbar-link-entity-menu-collection" class="toolbar-icon toolbar-icon-entity-menu-collection" data-drupal-link-system-path="admin/structure/menu">Menus</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/migrate" title="Manage migration processes." id="toolbar-link-entity-migration_group-list" class="toolbar-icon toolbar-icon-migrate-tools-menu" data-drupal-link-system-path="admin/structure/migrate">Migrations</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/taxonomy" title="Manage tagging, categorization, and classification of your content." id="toolbar-link-entity-taxonomy_vocabulary-collection" class="toolbar-icon toolbar-icon-entity-taxonomy-vocabulary-collection" data-drupal-link-system-path="admin/structure/taxonomy">Taxonomy</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/views" title="Manage customized lists of content." id="toolbar-link-entity-view-collection" class="toolbar-icon toolbar-icon-entity-view-collection" data-drupal-link-system-path="admin/structure/views">Views</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/structure/conditional_fields" title="List Conditional fields" id="toolbar-link-conditional_fields" class="toolbar-icon toolbar-icon-config-conditional-field" data-drupal-link-system-path="admin/structure/conditional_fields">Conditional fields</a></div>
+              </li>
+        </ul>
+  
+
+</li><li class="menu-item level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/appearance" title="Select and configure themes." id="toolbar-link-system-themes_page" class="toolbar-icon toolbar-icon-system-themes-page" data-drupal-link-system-path="admin/appearance">Appearance</a></div></li><li class="menu-item level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/modules" title="Add and enable modules to extend site functionality." id="toolbar-link-system-modules_list" class="toolbar-icon toolbar-icon-system-modules-list" data-drupal-link-system-path="admin/modules">Extend</a></div></li><li class="menu-item menu-item--collapsed level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/config" title="Administer settings." id="toolbar-link-system-admin_config" class="toolbar-icon toolbar-icon-system-admin-config" data-drupal-link-system-path="admin/config">Configuration</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Configuration</span></button></div>
+              <ul class="toolbar-menu">
+                    <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/people" title="Configure user accounts." id="toolbar-link-user-admin_index" class="toolbar-icon toolbar-icon-user-admin-index" data-drupal-link-system-path="admin/config/people">People</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">People</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/people/accounts" title="Configure default user account settings, including fields, registration requirements, and email messages." id="toolbar-link-entity-user-admin_form" class="toolbar-icon toolbar-icon-entity-user-admin-form" data-drupal-link-system-path="admin/config/people/accounts">Account settings</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/system" title="Configure basic site settings, actions, and cron." id="toolbar-link-system-admin_config_system" class="toolbar-icon toolbar-icon-system-admin-config-system" data-drupal-link-system-path="admin/config/system">System</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">System</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/system/site-information" title="Change site name, email address, slogan, default front page, and error pages." id="toolbar-link-system-site_information_settings" class="toolbar-icon toolbar-icon-system-site-information-settings" data-drupal-link-system-path="admin/config/system/site-information">Basic site settings</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/system/cron" title="Manage automatic site maintenance tasks." id="toolbar-link-system-cron_settings" class="toolbar-icon toolbar-icon-system-cron-settings" data-drupal-link-system-path="admin/config/system/cron">Cron</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/content" title="Configure content formatting and authoring." id="toolbar-link-system-admin_config_content" class="toolbar-icon toolbar-icon-system-admin-config-content" data-drupal-link-system-path="admin/config/content">Content authoring</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Content authoring</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/content/formats" title="Select and configure text editors, and how content is filtered when displayed." id="toolbar-link-filter-admin_overview" class="toolbar-icon toolbar-icon-filter-admin-overview" data-drupal-link-system-path="admin/config/content/formats">Text formats and editors</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/user-interface" title="Configure the administrative user interface." id="toolbar-link-system-admin_config_ui" class="toolbar-icon toolbar-icon-system-admin-config-ui" data-drupal-link-system-path="admin/config/user-interface">User interface</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">User interface</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/user-interface/shortcut" title="Add and modify shortcut sets." id="toolbar-link-entity-shortcut_set-collection" class="toolbar-icon toolbar-icon-entity-shortcut-set-collection" data-drupal-link-system-path="admin/config/user-interface/shortcut">Shortcuts</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/development" title="Configure and use development tools." id="toolbar-link-system-admin_config_development" class="toolbar-icon toolbar-icon-system-admin-config-development" data-drupal-link-system-path="admin/config/development">Development</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Development</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/development/performance" title="Configure caching and bandwidth optimization." id="toolbar-link-system-performance_settings" class="toolbar-icon toolbar-icon-system-performance-settings" data-drupal-link-system-path="admin/config/development/performance">Performance</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/development/logging" title="Configure the display of error messages and database logging." id="toolbar-link-system-logging_settings" class="toolbar-icon toolbar-icon-system-logging-settings" data-drupal-link-system-path="admin/config/development/logging">Logging and errors</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/development/maintenance" title="Take the site offline for updates and other maintenance tasks." id="toolbar-link-system-site_maintenance_mode" class="toolbar-icon toolbar-icon-system-site-maintenance-mode" data-drupal-link-system-path="admin/config/development/maintenance">Maintenance mode</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/development/configuration" title="Import and export your configuration." id="toolbar-link-config-sync" class="toolbar-icon toolbar-icon-config-sync" data-drupal-link-system-path="admin/config/development/configuration">Configuration synchronization</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/media" id="toolbar-link-system-admin_config_media" class="toolbar-icon toolbar-icon-system-admin-config-media" title="" data-drupal-link-system-path="admin/config/media">Media</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Media</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/media/file-system" title="Configure the location of uploaded files and how they are accessed." id="toolbar-link-system-file_system_settings" class="toolbar-icon toolbar-icon-system-file-system-settings" data-drupal-link-system-path="admin/config/media/file-system">File system</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/media/image-styles" title="Configure styles that can be used for resizing or adjusting images on display." id="toolbar-link-entity-image_style-collection" class="toolbar-icon toolbar-icon-entity-image-style-collection" data-drupal-link-system-path="admin/config/media/image-styles">Image styles</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/media/image-toolkit" title="Choose which image toolkit to use if you have installed optional toolkits." id="toolbar-link-system-image_toolkit_settings" class="toolbar-icon toolbar-icon-system-image-toolkit-settings" data-drupal-link-system-path="admin/config/media/image-toolkit">Image toolkit</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/search" title="Configure site search, metadata, and search engine optimization." id="toolbar-link-system-admin_config_search" class="toolbar-icon toolbar-icon-system-admin-config-search" data-drupal-link-system-path="admin/config/search">Search and metadata</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Search and metadata</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/search/pages" title="Configure search pages and search indexing options." id="toolbar-link-entity-search_page-collection" class="toolbar-icon toolbar-icon-entity-search-page-collection" data-drupal-link-system-path="admin/config/search/pages">Search pages</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/search/path" title="Add custom URLs to existing paths." id="toolbar-link-path-admin_overview" class="toolbar-icon toolbar-icon-path-admin-overview" data-drupal-link-system-path="admin/config/search/path">URL aliases</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/regional" title="Configure regional settings, localization, and translation." id="toolbar-link-system-admin_config_regional" class="toolbar-icon toolbar-icon-system-admin-config-regional" data-drupal-link-system-path="admin/config/regional">Regional and language</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Regional and language</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/regional/settings" title="Configure the locale and timezone settings." id="toolbar-link-system-regional_settings" class="toolbar-icon toolbar-icon-system-regional-settings" data-drupal-link-system-path="admin/config/regional/settings">Regional settings</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/regional/date-time" title="Configure how dates and times are displayed." id="toolbar-link-entity-date_format-collection" class="toolbar-icon toolbar-icon-entity-date-format-collection" data-drupal-link-system-path="admin/config/regional/date-time">Date and time formats</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/services" id="toolbar-link-system-admin_config_services" class="toolbar-icon toolbar-icon-system-admin-config-services" title="" data-drupal-link-system-path="admin/config/services">Web services</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Web services</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/services/rest" title="Configure REST server settings." id="toolbar-link-restui-list" class="toolbar-icon toolbar-icon-restui-list" data-drupal-link-system-path="admin/config/services/rest">REST</a></div>
+              </li>
+                <li class="menu-item level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/services/rss-publishing" title="Configure the site description, the number of items per feed, and whether feeds should be titles/teasers/full-text." id="toolbar-link-system-rss_feeds_settings" class="toolbar-icon toolbar-icon-system-rss-feeds-settings" data-drupal-link-system-path="admin/config/services/rss-publishing">RSS publishing</a></div>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item menu-item--expanded level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/workflow" title="Manage the content workflow." id="toolbar-link-system-admin_config_workflow" class="toolbar-icon toolbar-icon-system-admin-config-workflow" data-drupal-link-system-path="admin/config/workflow">Workflow</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Workflow</span></button></div>
+                                <ul class="toolbar-menu">
+                    <li class="menu-item menu-item--collapsed level-3">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/config/workflow/moderation" title="Configure states and transitions for entities." id="toolbar-link-content_moderation-overview" class="toolbar-icon toolbar-icon-content-moderation-overview" data-drupal-link-system-path="admin/config/workflow/moderation">Content moderation</a></div>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+</li><li class="menu-item level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/people" title="Manage user accounts, roles, and permissions." id="toolbar-link-entity-user-collection" class="toolbar-icon toolbar-icon-entity-user-collection" data-drupal-link-system-path="admin/people">People</a></div></li><li class="menu-item menu-item--collapsed level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/reports" title="View reports, updates, and errors." id="toolbar-link-system-admin_reports" class="toolbar-icon toolbar-icon-system-admin-reports" data-drupal-link-system-path="admin/reports">Reports</a><button class="toolbar-icon toolbar-handle"><span class="action">Extend</span><span class="label">Reports</span></button></div>
+              <ul class="toolbar-menu">
+                    <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/updates" title="Get a status report about available updates for your installed modules and themes." id="toolbar-link-update-status" class="toolbar-icon toolbar-icon-update-status" data-drupal-link-system-path="admin/reports/updates">Available updates</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/dblog" title="View events that have recently been logged." id="toolbar-link-dblog-overview" class="toolbar-icon toolbar-icon-dblog-overview" data-drupal-link-system-path="admin/reports/dblog">Recent log messages</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/fields" title="Overview of fields on all entity types." id="toolbar-link-entity-field_storage_config-collection" class="toolbar-icon toolbar-icon-entity-field-storage-config-collection" data-drupal-link-system-path="admin/reports/fields">Field list</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/status" title="Get a status report about your site&#39;s operation." id="toolbar-link-system-status" class="toolbar-icon toolbar-icon-system-status" data-drupal-link-system-path="admin/reports/status">Status report</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/access-denied" title="View &#39;access denied&#39; errors (403s)." id="toolbar-link-dblog-access_denied" class="toolbar-icon toolbar-icon-dblog-access-denied" data-drupal-link-system-path="admin/reports/access-denied">Top 'access denied' errors</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/page-not-found" title="View &#39;page not found&#39; errors (404s)." id="toolbar-link-dblog-page_not_found" class="toolbar-icon toolbar-icon-dblog-page-not-found" data-drupal-link-system-path="admin/reports/page-not-found">Top 'page not found' errors</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/search" title="View most popular search phrases." id="toolbar-link-dblog-search" class="toolbar-icon toolbar-icon-dblog-search" data-drupal-link-system-path="admin/reports/search">Top search phrases</a></div>
+              </li>
+                <li class="menu-item level-2">
+        <div class="toolbar-box"><a href="http://localhost:8090/admin/reports/views-plugins" title="Overview of plugins used in all views." id="toolbar-link-views_ui-reports_plugins" class="toolbar-icon toolbar-icon-views-ui-reports-plugins" data-drupal-link-system-path="admin/reports/views-plugins">Views plugins</a></div>
+              </li>
+        </ul>
+  
+
+</li><li class="menu-item level-1"><div class="toolbar-box"><a href="http://localhost:8090/admin/help" title="Reference for usage, configuration, and modules." id="toolbar-link-help-main" class="toolbar-icon toolbar-icon-help-main" data-drupal-link-system-path="admin/help">Help</a></div></li></ul></div><div class="toolbar-toggle-orientation" style=""><div class="toolbar-lining"><button class="toolbar-icon toolbar-icon-toggle-horizontal" type="button" value="horizontal" title="Horizontal orientation">Horizontal orientation</button></div></div></nav></div>      </div>
+                <div class="toolbar-tab">
+        <a href="http://localhost:8090/admin/config/user-interface/shortcut" title="Shortcuts" class="toolbar-icon toolbar-icon-shortcut trigger toolbar-item" id="toolbar-item-shortcuts" data-toolbar-tray="toolbar-item-shortcuts-tray" aria-owns="toolbar-item-shortcuts-tray" role="button" aria-pressed="false">Shortcuts</a>
+        <div id="toolbar-item-shortcuts-tray" data-toolbar-tray="toolbar-item-shortcuts-tray" class="toolbar-tray toolbar-tray-vertical" style="margin-top: 39px;"><nav class="toolbar-lining clearfix" role="navigation" aria-label="User-defined shortcuts"><h3 class="toolbar-tray-name visually-hidden">User-defined shortcuts</h3><ul class="toolbar-menu"><li><a href="http://localhost:8090/node/add">Add content</a></li><li><a href="http://localhost:8090/admin/content">All content</a></li></ul><a href="http://localhost:8090/admin/config/user-interface/shortcut/manage/default/customize" class="edit-shortcuts">Edit shortcuts</a><div class="toolbar-toggle-orientation" style=""><div class="toolbar-lining"><button class="toolbar-icon toolbar-icon-toggle-horizontal" type="button" value="horizontal" title="Horizontal orientation">Horizontal orientation</button></div></div></nav></div>      </div>
+                <div class="hidden contextual-toolbar-tab toolbar-tab">
+        <button class="toolbar-icon toolbar-icon-edit toolbar-item" aria-pressed="false">Edit</button>
+
+        <div><nav class="toolbar-lining clearfix" role="navigation"></nav></div>      </div>
+                <div class="tour-toolbar-tab hidden toolbar-tab" id="toolbar-tab-tour">
+        <button class="toolbar-icon toolbar-icon-help toolbar-item" aria-pressed="false">Tour</button>
+
+        <div><nav class="toolbar-lining clearfix" role="navigation"></nav></div>      </div>
+                <div class="toolbar-tab">
+        <a href="http://localhost:8090/user" title="My account" class="toolbar-icon toolbar-icon-user trigger toolbar-item" id="toolbar-item-user" data-toolbar-tray="toolbar-item-user-tray" aria-owns="toolbar-item-user-tray" role="button" aria-pressed="false">admin</a>
+        <div id="toolbar-item-user-tray" data-toolbar-tray="toolbar-item-user-tray" class="toolbar-tray toolbar-tray-vertical" style="margin-top: 39px;"><nav class="toolbar-lining clearfix" role="navigation" aria-label="User account actions"><h3 class="toolbar-tray-name visually-hidden">User account actions</h3><ul class="toolbar-menu"><li class="account"><a href="http://localhost:8090/user" title="User account">View profile</a></li><li class="account-edit"><a href="http://localhost:8090/user/1/edit" title="Edit user account">Edit profile</a></li><li class="logout"><a href="http://localhost:8090/user/logout">Log out</a></li></ul><div class="toolbar-toggle-orientation" style=""><div class="toolbar-lining"><button class="toolbar-icon toolbar-icon-toggle-horizontal" type="button" value="horizontal" title="Horizontal orientation">Horizontal orientation</button></div></div></nav></div>      </div>
+      </nav>
+  
+</div>
+
+      <header class="content-header clearfix">
+    <div class="layout-container">
+        <div class="region region-header">
+    <div id="block-seven-page-title" class="block block-core block-page-title-block">
+  
+    
+      
+  <h1 class="js-quickedit-page-title page-title">Single import</h1>
+<a href="http://localhost:8090/admin/config/user-interface/shortcut/manage/default/add-link-inline?link=admin/config/development/configuration/single/import&amp;name=Single%20import&amp;destination=/admin/config/development/configuration/single/import&amp;token=YeqbCLj09E3O70RpN0pYPb3DvqAw4-OlcOoOeKoJoCo" class="shortcut-action shortcut-action--add"><span class="shortcut-action__icon"></span><span class="shortcut-action__message">Add to <em class="placeholder">Default</em> shortcuts</span></a>
+
+  </div>
+<div id="block-seven-primary-local-tasks" class="block block-core block-local-tasks-block">
+  
+    
+        <nav class="tabs" role="navigation" aria-label="Tabs">
+        <h2 id="primary-tabs-title" class="visually-hidden">Primary tabs</h2>
+  <nav role="navigation" class="is-horizontal is-collapsible position-container is-horizontal-enabled" aria-labelledby="primary-tabs-title" data-drupal-nav-tabs="">
+    <button class="reset-appearance tabs__tab tabs__trigger" aria-label="Primary tabs display toggle" data-drupal-nav-tabs-trigger="">•••</button>
+    <ul class="tabs primary clearfix" data-drupal-nav-tabs-target=""><li class="tabs__tab"><a href="http://localhost:8090/admin/config/development/configuration" data-drupal-link-system-path="admin/config/development/configuration">Synchronize</a></li>
+<li class="tabs__tab is-active"><a href="http://localhost:8090/admin/config/development/configuration/full/import" class="is-active" data-drupal-link-system-path="admin/config/development/configuration/full/import">Import<span class="visually-hidden">(active tab)</span></a></li>
+<li class="tabs__tab"><a href="http://localhost:8090/admin/config/development/configuration/full/export" data-drupal-link-system-path="admin/config/development/configuration/full/export">Export</a></li>
+</ul>
+  </nav>
+
+    </nav>
+  </div>
+
+  </div>
+
+    </div>
+  </header>
+
+  <div class="layout-container">
+      <div class="region region-pre-content">
+    <div id="block-seven-secondary-local-tasks" class="block block-core block-local-tasks-block">
+  
+    
+        <nav class="tabs" role="navigation" aria-label="Tabs">
+        <h2 id="secondary-tabs-title" class="visually-hidden">Secondary tabs</h2>
+  <nav role="navigation" class="is-horizontal position-container is-horizontal-enabled" aria-labelledby="secondary-tabs-title" data-drupal-nav-tabs="">
+    <ul class="tabs secondary clearfix"><li class="tabs__tab"><a href="http://localhost:8090/admin/config/development/configuration/full/import" data-drupal-link-system-path="admin/config/development/configuration/full/import">Full archive</a></li>
+<li class="tabs__tab is-active"><a href="http://localhost:8090/admin/config/development/configuration/single/import" data-drupal-link-system-path="admin/config/development/configuration/single/import" class="is-active">Single item<span class="visually-hidden">(active tab)</span></a></li>
+</ul>
+  </nav>
+
+    </nav>
+  </div>
+
+  </div>
+
+      <div class="region region-breadcrumb">
+    <div id="block-seven-breadcrumbs" class="block block-system block-system-breadcrumb-block">
+  
+    
+        <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ol>
+          <li>
+                  <a href="http://localhost:8090/">Home</a>
+              </li>
+          <li>
+                  <a href="http://localhost:8090/admin">Administration</a>
+              </li>
+          <li>
+                  <a href="http://localhost:8090/admin/config">Configuration</a>
+              </li>
+          <li>
+                  <a href="http://localhost:8090/admin/config/development">Development</a>
+              </li>
+          <li>
+                  <a href="http://localhost:8090/admin/config/development/configuration">Synchronize</a>
+              </li>
+        </ol>
+  </nav>
+
+  </div>
+
+  </div>
+
+    <main class="page-content clearfix" role="main">
+      <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
+        <div class="region region-highlighted">
+    
+
+
+  </div>
+
+              <div class="help">
+            <div class="region region-help">
+    <div id="block-seven-help" role="complementary" class="block block-help block-help-block">
+  
+    
+      <p>Import a single configuration item by pasting its YAML structure into the text field.</p>
+  </div>
+
+  </div>
+
+        </div>
+              <div class="region region-content">
+    <div id="block-seven-content" class="block block-system block-system-main-block">
+  
+    
+      <form class="config-single-import-form" data-drupal-selector="config-single-import-form" action="http://localhost:8090/admin/config/development/configuration/single/import" method="post" id="config-single-import-form" accept-charset="UTF-8" data-drupal-form-fields="edit-config-type,edit-config-name,edit-import,edit-custom-entity-id,edit-submit">
+  <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-config-type form-item-config-type">
+      <label for="edit-config-type" class="js-form-required form-required">Configuration type</label>
+        <select data-drupal-selector="edit-config-type" id="edit-config-type" name="config_type" class="form-select required" required="required" aria-required="true"><option value="" selected="selected">- Select -</option><option value="system.simple">Simple configuration</option><option value="action">Action</option><option value="base_field_override">Base field override</option><option value="block">Block</option><option value="comment_type">Comment type</option><option value="contact_form">Contact form</option><option value="node_type">Content type</option><option value="block_content_type">Custom block type</option><option value="date_format">Date format</option><option value="entity_form_display">Entity form display</option><option value="entity_view_display">Entity view display</option><option value="field_config">Field</option><option value="field_storage_config">Field storage</option><option value="entity_form_mode">Form mode</option><option value="image_style">Image style</option><option value="menu">Menu</option><option value="migration">Migration</option><option value="migration_group">Migration Group</option><option value="moderation_state">Moderation state</option><option value="moderation_state_transition">Moderation state transition</option><option value="rdf_mapping">RDF mapping</option><option value="rest_resource_config">REST resource configuration</option><option value="user_role">Role</option><option value="search_page">Search page</option><option value="shortcut_set">Shortcut set</option><option value="taxonomy_vocabulary">Taxonomy vocabulary</option><option value="editor">Text Editor</option><option value="filter_format">Text format</option><option value="tour">Tour</option><option value="view">View</option><option value="entity_view_mode">View mode</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-config-name form-item-config-name" style="display: none;">
+      <label for="edit-config-name">Configuration name</label>
+        <input data-drupal-selector="edit-config-name" aria-describedby="edit-config-name--description" type="text" id="edit-config-name" name="config_name" value="" size="60" maxlength="128" class="form-text" data-drupal-states="{&quot;required&quot;:{&quot;:input[name=\u0022config_type\u0022]&quot;:{&quot;value&quot;:&quot;system.simple&quot;}},&quot;visible&quot;:{&quot;:input[name=\u0022config_type\u0022]&quot;:{&quot;value&quot;:&quot;system.simple&quot;}}}">
+
+            <div id="edit-config-name--description" class="description">
+      Enter the name of the configuration file without the <em>.yml</em> extension. (e.g. <em>system.site</em>)
+    </div>
+  </div>
+<div class="js-form-item form-item js-form-type-textarea form-type-textarea js-form-item-import form-item-import">
+      <label for="edit-import" class="js-form-required form-required">Paste your configuration here</label>
+        <div class="form-textarea-wrapper">
+  <textarea data-drupal-selector="edit-import" id="edit-import" name="import" rows="24" cols="60" class="form-textarea required resize-vertical" required="required" aria-required="true"></textarea>
+</div>
+
+        </div>
+<details data-drupal-selector="edit-advanced" id="edit-advanced" class="js-form-wrapper form-wrapper" open="">    <summary role="button" aria-controls="edit-advanced" aria-expanded="true" aria-pressed="true">Advanced</summary><div class="details-wrapper">
+    <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-custom-entity-id form-item-custom-entity-id">
+      <label for="edit-custom-entity-id">Custom Entity ID</label>
+        <input data-drupal-selector="edit-custom-entity-id" aria-describedby="edit-custom-entity-id--description" type="text" id="edit-custom-entity-id" name="custom_entity_id" value="" size="60" maxlength="128" class="form-text">
+
+            <div id="edit-custom-entity-id--description" class="description">
+      Specify a custom entity ID. This will override the entity ID in the configuration above.
+    </div>
+  </div>
+</div>
+</details>
+<input data-drupal-selector="form-crqa4jp2fuagjmd-ykyvv0q7myrjl2l5w2gdyxlsrrg" type="hidden" name="form_build_id" value="form-crqA4JP2FuagjMD-ykYvv0q7MyrjL2l5w2GDYxLSrRg">
+<input data-drupal-selector="edit-config-single-import-form-form-token" type="hidden" name="form_token" value="sVjvnhn5cIH58YsMxyiMX3ucWIax_Qx5R-U2Ss9Klyc">
+<input data-drupal-selector="edit-config-single-import-form" type="hidden" name="form_id" value="config_single_import_form">
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Import" class="button button--primary js-form-submit form-submit">
+</div>
+
+</form>
+
+  </div>
+
+  </div>
+
+    </main>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"admin\/config\/development\/configuration\/single\/import","currentPathIsAdmin":true,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"classy\/base,classy\/messages,contextual\/drupal.contextual-links,contextual\/drupal.contextual-toolbar,core\/drupal.active-link,core\/drupal.collapse,core\/drupal.states,core\/html5shiv,core\/normalize,seven\/drupal.nav-tabs,seven\/global-styling,shortcut\/drupal.shortcut,toolbar\/toolbar,toolbar\/toolbar.escapeAdmin,tour\/tour,user\/drupal.user.icons","theme":"seven","theme_token":"g_Fc9hkgOPvtthKRsUI_XgFcSh1pBo1uASTAcs4OAJw"},"ajaxTrustedUrl":{"form_action_cc611e1d":true},"toolbar":{"breakpoints":{"toolbar.narrow":"only screen and (min-width: 16.5em)","toolbar.standard":"only screen and (min-width: 38.125em)","toolbar.wide":"only screen and (min-width: 61em)"},"subtreesHash":"Kie_QcFcY-cofenxJFdocP-OBIj59WoR879X9HP4z7M"},"user":{"uid":"1","permissionsHash":"3e5f4ffd511611f2c9750b3be90e11bcb45d48acc241fceeb7841ad2b18da686"}}</script>
+<script src="./Single import _ wilmap_files/ready.min.js"></script>
+
+<!--[if lte IE 9]>
+<script src="/core/assets/vendor/classList/classList.min.js?v=2014-12-13"></script>
+<![endif]-->
+<script src="./Single import _ wilmap_files/jquery.min.js"></script>
+<script src="./Single import _ wilmap_files/underscore-min.js"></script>
+<script src="./Single import _ wilmap_files/backbone-min.js"></script>
+<script src="./Single import _ wilmap_files/jquery.once.min.js"></script>
+<script src="./Single import _ wilmap_files/drupalSettingsLoader.js"></script>
+<script src="./Single import _ wilmap_files/drupal.js"></script>
+<script src="./Single import _ wilmap_files/core-min.js"></script>
+<script src="./Single import _ wilmap_files/contextual.js"></script>
+<script src="./Single import _ wilmap_files/StateModel.js"></script>
+<script src="./Single import _ wilmap_files/AuralView.js"></script>
+<script src="./Single import _ wilmap_files/KeyboardView.js"></script>
+<script src="./Single import _ wilmap_files/RegionView.js"></script>
+<script src="./Single import _ wilmap_files/VisualView.js"></script>
+<script src="./Single import _ wilmap_files/active-link.js"></script>
+<script src="./Single import _ wilmap_files/debounce.js"></script>
+<script src="./Single import _ wilmap_files/jquery.cookie.min.js"></script>
+<script src="./Single import _ wilmap_files/form.js"></script>
+<script src="./Single import _ wilmap_files/details-aria.js"></script>
+<script src="./Single import _ wilmap_files/collapse.js"></script>
+<script src="./Single import _ wilmap_files/states.js"></script>
+<script src="./Single import _ wilmap_files/matchMedia.min.js"></script>
+<script src="./Single import _ wilmap_files/nav-tabs.js"></script>
+<script src="./Single import _ wilmap_files/progress.js"></script>
+<script src="./Single import _ wilmap_files/ajax.js"></script>
+<script src="./Single import _ wilmap_files/announce.js"></script>
+<script src="./Single import _ wilmap_files/matchMedia.addListener.min.js"></script>
+<script src="./Single import _ wilmap_files/displace.js"></script>
+<script src="./Single import _ wilmap_files/toolbar.menu.js"></script>
+<script src="./Single import _ wilmap_files/toolbar.js"></script>
+<script src="./Single import _ wilmap_files/MenuModel.js"></script>
+<script src="./Single import _ wilmap_files/ToolbarModel.js"></script>
+<script src="./Single import _ wilmap_files/BodyVisualView.js"></script>
+<script src="./Single import _ wilmap_files/MenuVisualView.js"></script>
+<script src="./Single import _ wilmap_files/ToolbarAuralView.js"></script>
+<script src="./Single import _ wilmap_files/ToolbarVisualView.js"></script>
+<script src="./Single import _ wilmap_files/jquery.joyride-2.1.min.js"></script>
+<script src="./Single import _ wilmap_files/tour.js"></script>
+<script src="./Single import _ wilmap_files/tabbingmanager.js"></script>
+<script src="./Single import _ wilmap_files/contextual.toolbar.js"></script>
+<script src="./Single import _ wilmap_files/StateModel(1).js"></script>
+<script src="./Single import _ wilmap_files/AuralView(1).js"></script>
+<script src="./Single import _ wilmap_files/VisualView(1).js"></script>
+<script src="./Single import _ wilmap_files/escapeAdmin.js"></script>
+
+  
+
+<div id="drupal-live-announce" class="visually-hidden" aria-live="polite" aria-busy="false"></div></body></html>
