@@ -5,9 +5,9 @@ services:
     build: .
     container_name: drupal_wilmap
     volumes:
-      - ./code/modules:/var/www/html/modules
-      - ./code/themes:/var/www/html/themes
-      - ./data/files:/var/www/html/sites/default/files
+      - ./modules:/var/www/html/modules
+      - ./themes:/var/www/html/themes
+      - ./sites/default/files:/var/www/html/sites/default/files
       - ./data/private:/var/www/private
     links:
       - postgres
