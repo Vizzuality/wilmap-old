@@ -9,6 +9,10 @@ services:
       - ./themes:/var/www/html/themes
       - ./sites/default/files:/var/www/html/sites/default/files
       - ./data/private:/var/www/private
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
     links:
       - mysql
     ports:
