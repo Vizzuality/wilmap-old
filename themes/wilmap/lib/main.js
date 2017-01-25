@@ -100,7 +100,7 @@ function getAbsolutePath() {
           success: function(data, status, xhr) {
             for (let i = 0; i < data.length; i++) {
               const contentbox = '<a href="#" class="info-topics"><div><h3>' + data[i].field_name_topic + '</h3>' +
-              '<hr><p class="paragraph">' + data[i].field_definition_topic+ '</p></div></a>';
+              '<hr><div class="paragraph">' + data[i].field_definition_topic + '</div></div></a>';
               $(gallerytopics).append(contentbox);
             }
           }
@@ -134,7 +134,7 @@ function getAbsolutePath() {
               const contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title +
               '</h2><span class="date">' + data[i].field_date_published +
               '</span><div class="text">' + data[i].field_summary +
-              '</div><a class="butn -primary" href="news/' + data[i].nid + '">read more</a></div>';
+              '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
               $(gallerynews).append(contentbox);
             }
           }
@@ -158,8 +158,8 @@ function getAbsolutePath() {
               for (let i = 0; i < data.length; i++){
                 if (nodeid === data[i].nid) {
                   $('.title-node').html(data[i].field_title);
-                  $('.date-node').html(data[i].field_publication_date);
-                  $('.content-node').append(data[i].body);
+                  $('.date-node').html(data[i].field_date_published);
+                  $('.content-node').append(data[i].field_summary);
                 }
               }
             }
