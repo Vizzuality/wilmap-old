@@ -6,52 +6,18 @@ function getAbsolutePath() {
   return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
 }
 
+function changeMenuOption(option) {
+  document.querySelector('.' + option + '-option').classList.add('-selected');
+}
+
 (function ($) {
-  function changeMenuOption(option) {
-    $('.' + option + '-option').addClass('-selected'); // `Hello, ${name}!`;
-  }
   Drupal.behaviors.myBehavior = {
-    attach: function attach(context, settings) {
-      var nodeid = settings.path.currentPath.split('/').pop();
-      // console.log(nodeid)
-      // console.log(context)
-      // console.log(settings.path.currentPath);
+    attach: function drupal(context, settings) {
       var path = getAbsolutePath();
-
-      $('.filter-document').select2({
-        placeholder: 'Document Type',
-        allowClear: true,
-        minimumResultsForSearch: Infinity,
-        theme: 'wilmap-select-document'
-      });
-
-      $('.filter-country').select2({
-        placeholder: 'Country',
-        allowClear: true,
-        minimumResultsForSearch: Infinity,
-        theme: 'wilmap-select-country'
-      });
-
-      $('.filter-year').select2({
-        placeholder: 'Year',
-        allowClear: true,
-        minimumResultsForSearch: Infinity,
-        theme: 'wilmap-select-year'
-      });
-
-      $('.filter-group').select2({
-        placeholder: 'Nothing',
-        allowClear: true,
-        minimumResultsForSearch: Infinity,
-        theme: 'wilmap-select-year'
-      });
-
-      $('.filter-sort').select2({
-        placeholder: 'Newest firts',
-        allowClear: true,
-        minimumResultsForSearch: Infinity,
-        theme: 'wilmap-select-year'
-      });
+      var nodeid = settings.path.currentPath.split('/').pop();
+      // *******************************************************
+      // FUNCTIONS FOR GALLERY ALL PAGES
+      // *******************************************************
 
       $('.search-box').click(function () {
         $('.search-modal').css('display', 'block');
@@ -72,7 +38,7 @@ function getAbsolutePath() {
       });
 
       $('.search-box').keypress(function () {
-        var value = $('.search-box').val();
+        // const value = $('.search-box').val();
         $.ajax({
           url: path + 'api/topicsJSON',
           method: 'GET',
@@ -80,17 +46,55 @@ function getAbsolutePath() {
             Accept: 'application/json',
             'Content-Type': 'application/hal+json'
           },
-          success: function success(data, status, xhr) {
+          success: function searchTerm(data, status, xhr) {
             // here the magic
           }
         });
       });
 
       // *******************************************************
+      // FUNCTIONS FOR GALLERY EXPLORE PAGE
+      // *******************************************************
+      if (settings.path.currentPath === 'explore') {
+        $('.filter-document').select2({
+          placeholder: 'Document Type',
+          allowClear: true,
+          minimumResultsForSearch: Infinity,
+          theme: 'wilmap-select-document'
+        });
+        $('.filter-country').select2({
+          placeholder: 'Country',
+          allowClear: true,
+          minimumResultsForSearch: Infinity,
+          theme: 'wilmap-select-country'
+        });
+
+        $('.filter-year').select2({
+          placeholder: 'Year',
+          allowClear: true,
+          minimumResultsForSearch: Infinity,
+          theme: 'wilmap-select-year'
+        });
+
+        $('.filter-group').select2({
+          placeholder: 'Nothing',
+          allowClear: true,
+          minimumResultsForSearch: Infinity,
+          theme: 'wilmap-select-year'
+        });
+
+        $('.filter-sort').select2({
+          placeholder: 'Newest firts',
+          allowClear: true,
+          minimumResultsForSearch: Infinity,
+          theme: 'wilmap-select-year'
+        });
+      }
+
+      // *******************************************************
       // FUNCTIONS FOR GALLERY TOPICS PAGE
       // *******************************************************
-
-      if ($(context).find('.topics-page').length !== 0) {
+      if (settings.path.currentPath === 'topics') {
         (function () {
           var gallerytopics = document.querySelector('.gallery-topics');
           $.ajax({
@@ -100,9 +104,9 @@ function getAbsolutePath() {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
-            success: function success(data, status, xhr) {
-              for (var i = 0; i < data.length; i++) {
-                var contentbox = '<a href="#" class="info-topics"><div><h3>' + data[i].field_name_topic + '</h3>' + '<hr><div class="paragraph">' + data[i].field_definition_topic + '</div></div></a>';
+            success: function showTopics(data, status, xhr) {
+              for (var i = 0; i < data.length; i += 1) {
+                var contentbox = '<a href="#" class="info-topics"><div><h3>' + data[i].field_name_topic + '</h3>\n              <hr><div class="paragraph">' + data[i].field_definition_topic + '</div></div></a>';
                 $(gallerytopics).append(contentbox);
               }
             }
@@ -113,36 +117,37 @@ function getAbsolutePath() {
       // *******************************************************
       // FUNCTIONS FOR GALLERY NEWS PAGE
       // *******************************************************
+      if (settings.path.currentPath === 'news') {
+        (function () {
+          var gallerynews = document.querySelector('.gallery-scroll');
+          $('.option-category').click(function clickCategory() {
+            $('.option-category').removeClass('-selected');
+            var dataValue = $(this).data('bar');
+            $('.small-bar').css('top', dataValue + 'px');
+            $(this).addClass('-selected');
+          });
 
-      if ($(context).find('.news-page').length !== 0) {
-        var gallerynews = document.querySelector(".gallery-scroll");
-
-        $('.option-category').click(function () {
-          $('.option-category').removeClass('-selected');
-          var dataValue = $(this).data('bar');
-          $('.small-bar').css('top', dataValue + 'px');
-          $(this).addClass('-selected');
-        });
-
-        $.ajax({
-          url: path + 'api/newsJSON',
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/hal+json'
-          },
-          success: function success(data, status, xhr) {
-            for (var i = 0; i < 3; i++) {
-              var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].title + '</h2><span class="date">' + data[i].field_date_published + '</span><div class="text">' + data[i].field_summary + '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
-              $(gallerynews).append(contentbox);
+          $.ajax({
+            url: path + 'api/newsJSON',
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/hal+json'
+            },
+            success: function showNews(data, status, xhr) {
+              for (var i = 0; i < 3; i += 1) {
+                var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n              <h2>' + data[i].title + '</h2>\n              <span class="date">' + data[i].field_date_published + '</span>\n              <div class="text">' + data[i].field_summary + '</div>\n              <a class="butn -primary" href="' + data[i].path + '">read more</a>\n              </div>';
+                $(gallerynews).append(contentbox);
+              }
             }
-          }
-        });
+          });
+        })();
       }
+
+      // *******************************************************
+      // FUNCTIONS FOR NEWS DETAIL PAGE
+      // *******************************************************
       if ($(context).find('.node-pages').length !== 0) {
-        // *******************************************************
-        // FUNCTIONS FOR NEWS DETAIL PAGE
-        // *******************************************************
         if (path.indexOf('/news/') !== -1) {
           $('.node-pages').addClass('news-detail-page');
           changeMenuOption('news');
@@ -153,8 +158,8 @@ function getAbsolutePath() {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
-            success: function success(data, status, xhr) {
-              for (var i = 0; i < data.length; i++) {
+            success: function showDetail(data, status, xhr) {
+              for (var i = 0; i < data.length; i += 1) {
                 if (nodeid === data[i].nid) {
                   $('.title-node').html(data[i].field_title);
                   $('.date-node').html(data[i].field_date_published);
