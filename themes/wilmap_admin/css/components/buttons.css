@@ -65,12 +65,8 @@
 }
 
 .button--primary {
-  border-color: #1e5c90;
-  background-color: #0071b8;
-  background-image: -webkit-linear-gradient(top, #007bc6, #0071b8);
-  background-image:   linear-gradient(to bottom, #007bc6, #0071b8);
+  background-color: #b3001e !important;
   color: #fff;
-  text-shadow: 0 1px hsla(0, 0%, 0%, 0.5);
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
 }
@@ -79,7 +75,6 @@
 
 }
 .button--primary:focus {
-  border: 1px solid #1280DF;
 }
 .button--primary:hover {
   box-shadow: 0 1px 2px hsla(203, 10%, 10%, 0.25);
