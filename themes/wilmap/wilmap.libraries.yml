@@ -6,8 +6,8 @@ global-css:
 
 global-js:
   js:
-    js/main.js: {}
     js/select2.full.min.js: {}
+    js/main.js: {}
 
   dependencies:
     - core/jquery
