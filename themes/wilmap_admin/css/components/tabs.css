@@ -74,12 +74,25 @@ li.tabs__tab a {
   text-decoration: none;
 }
 
+.is-collapse-enabled .tabs:before, .is-horizontal .tabs:before {
+  display: none;
+}
+
+.is-horizontal .tabs.secondary .tabs__tab.is-active {
+  border-bottom-color: transparent !important;
+}
+
 /* Primary tabs */
 .tabs.primary {
   clear: both;
   margin: 16px 0 0;
   margin: 1rem 0 0;
 }
+
+.tabs.secondary {
+  background-color: #e3ded3 !important;
+}
+
 .tabs.primary .tabs__tab.is-active {
   z-index: 15;
   border-radius: 4px 0 0 0; /* LTR */
@@ -97,7 +110,7 @@ li.tabs__tab a {
   position: absolute;
   height: 2px;
   background-color: #b3001e;
-  width: 30px;
+  width: calc(100% - 50px);
   bottom: 5px;
   left: 50%;
   transform: translate(-50%, 0);
