@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,400i,500,600,700,900');
 /**
  * Tabs.
  */
@@ -40,9 +41,7 @@
   margin: -1px 0 0;
   padding: 9px 2em 7px 1em; /* LTR */
   width: 100%;  /* 1 */
-  border: 1px solid #bfbfbf;
-  background-color: rgba(242, 242, 240, 0.7);
-  color: red;
+  color: #968f7e;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -52,8 +51,7 @@
 }
 .tabs__tab:hover,
 .tabs__tab:focus {
-  color: #008ee6;
-  background-color: #fafaf7;
+  cursor: pointer;
 }
 li.tabs__tab {
   display: block;
@@ -84,11 +82,27 @@ li.tabs__tab a {
 }
 .tabs.primary .tabs__tab.is-active {
   z-index: 15;
-  border-color: #a6a6a6;
   border-radius: 4px 0 0 0; /* LTR */
   background-color: #ffffff;
-  color: #004f80;
+  color: #968f7e;
 }
+
+.tabs__tab.is-active > a {
+  position: relative;
+}
+
+.tabs__tab.is-active > a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 2px;
+  background-color: #b3001e;
+  width: 30px;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 [dir="rtl"] .tabs.primary .tabs__tab.is-active {
   border-top-left-radius: 0;
   border-top-right-radius: 4px;
@@ -97,8 +111,7 @@ li.tabs__tab a {
   background: none;
 }
 .tabs.primary a:focus {
-  color: #008ee6;
-  background-color: #fafaf7;
+  color: #968f7e;
   text-decoration: underline;
 }
 .tabs.primary .is-active a:focus {
