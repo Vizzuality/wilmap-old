@@ -131,7 +131,7 @@ function getAbsolutePath() {
           },
           success: function(data, status, xhr) {
             for (let i = 0; i < 3; i++){
-              const contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].field_title +
+              const contentbox = '<div data-category="' + data[i].field_category + '" class="info-news"><h2>' + data[i].title +
               '</h2><span class="date">' + data[i].field_date_published +
               '</span><div class="text">' + data[i].field_summary +
               '</div><a class="butn -primary" href="' + data[i].path + '">read more</a></div>';
