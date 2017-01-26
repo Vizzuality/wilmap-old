@@ -592,6 +592,12 @@ toolbar-icon:first-of-type {
   background-color: #fff !important;
 }
 
+.toolbar .toolbar-tray-vertical {
+  background-color: #fff;
+  box-shadow: none !important;
+  border-right: 5px #e3ded3 solid !important;
+}
+
 .menu-item {
   border-top: 0px !important;
   border-bottom: 0px !important;
