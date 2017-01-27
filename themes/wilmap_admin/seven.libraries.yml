@@ -30,6 +30,7 @@ global-styling:
       css/components/system-status-report.css: {}
       css/components/tabs.css: {}
       css/components/views-ui.css: {}
+      css/components/custom.css: {}
     layout:
       css/layout/layout.css: {}
   dependencies:

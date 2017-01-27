@@ -273,7 +273,7 @@ li.tabs__tab a {
   display: block;
   padding: 5px 15px 5px 16px; /* LTR */
   margin-left: -1px; /* LTR */
-  color: #0074bd;
+  color: #222;
   -webkit-transition: border-color 0.2s, background-color 0.2s;
   transition: border-color 0.2s, background-color 0.2s;
 }
@@ -293,13 +293,11 @@ li.tabs__tab a {
   border-top: 1px solid #d9d8d4;
 }
 .tabs.secondary .tabs__tab.is-active {
-  color: #004f80;
-  border-left: 2px solid #004f80; /* LTR */
+  color: #222;
   padding-left: 15px; /* LTR */
 }
 [dir="rtl"] .tabs.secondary .tabs__tab.is-active {
   border-left: 1px solid #bfbfbf;
-  border-right: 2px solid #004f80;
   padding-right: 15px;
 }
 /* This is required to win over specificity of [dir="rtl"] .tabs.secondary .tabs__tab.is-active */
@@ -309,8 +307,8 @@ li.tabs__tab a {
 }
 .tabs.secondary .tabs__tab:hover,
 .tabs.secondary .tabs__tab:focus {
-  color: #008ee6;
-  border-left: 2px solid #008ee6; /* LTR */
+  color: #222;
+  border-left: 2px solid #222; /* LTR */
   padding-left: 15px; /* LTR */
 }
 [dir="rtl"] .tabs.secondary .tabs__tab:hover,
@@ -340,7 +338,7 @@ li.tabs__tab a {
   padding-right: 7px;
 }
 .tabs.secondary .is-active a {
-  color: #004f80;
+  color: #222;
 }
 .tabs.secondary a:focus {
   text-decoration: underline;
@@ -373,9 +371,9 @@ li.tabs__tab a {
   padding-right: 0; /* 1 */
 }
 .is-horizontal .tabs.secondary .tabs__tab.is-active {
-  border-bottom-color: #004f80;
+  border-bottom-color: #222;
 }
 .is-horizontal .tabs.secondary .tabs__tab:hover,
 .is-horizontal .tabs.secondary .tabs__tab:focus {
-  border-bottom-color: #008ee6;
+  border-bottom-color: #222;
 }

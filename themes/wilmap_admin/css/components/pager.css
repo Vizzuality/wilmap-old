@@ -11,7 +11,7 @@
 }
 .pager__item {
   display: inline-block;
-  color: #8c8c8c;
+  color: #968f7e;
   font-size: 1.08em;
   margin: 0;
   padding: 0 0.4em;
@@ -27,19 +27,25 @@
 }
 .pager__item.is-active a {
   border-bottom-width: 3px;
-  border-bottom-color: #2a678c;
-  color: #2a678c;
+  border-bottom-color: #b3001e;
+  color: #b3001e;
   font-weight: 700;
 }
 .pager__item a:hover,
 .pager__item a:focus {
-  border-bottom-color: #3395d2;
-  color: #3395d2;
+  border-bottom-color: #b3001e;
+  color: #b3001e;
 }
 .pager__item--next a,
 .pager__item--last a,
 .pager__item--first a,
 .pager__item--previous a {
   border-bottom-width: 0;
-  color: #2a678c;
+  color: #fff;
+  background-color: #b3001e;
+  padding-top: 12px 10px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 10px 20px !important;
 }

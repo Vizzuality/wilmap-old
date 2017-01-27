@@ -34,6 +34,11 @@
 /**
  * Overwrite Sevens button styling.
  */
+
+.js .dropbutton-widget {
+  border: 0px !important;
+}
+
 .js .dropbutton-widget .button {
   background: transparent;
   border: 0;
@@ -143,6 +148,11 @@
 }
 .dropbutton .secondary-action {
   border-top: 1px solid #bfbfba;
+  padding: 5px 0px;
+}
+
+.dropbutton .secondary-action:hover {
+  background-color: #efece0 !important;
 }
 
 /**

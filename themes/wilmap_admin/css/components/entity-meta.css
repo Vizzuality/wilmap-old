@@ -63,7 +63,7 @@
 }
 .entity-meta details > summary {
   padding: 0.85em 1.25em;
-  text-shadow: 0 1px 0 white;
+  font-size: 15px;
 }
 .entity-meta details .summary {
  display: none; /* Hide JS summaries. @todo Rethink summaries. */

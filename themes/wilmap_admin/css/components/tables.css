@@ -76,7 +76,6 @@ th > a:after {
   transition: all 0.1s;
 }
 th.is-active > a {
-  color: #004875;
 }
 th.is-active img {
   position: absolute;
@@ -88,20 +87,18 @@ th.is-active img {
   left: 0;
 }
 th.is-active > a:after {
-  border-bottom-color: #004875;
 }
 th > a:hover,
 th > a:focus,
 th.is-active > a:hover,
 th.is-active > a:focus {
-  color: #008ee6;
-  text-decoration: none;
+  color: #b3001e !important;
+  text-decoration: none !important;
 }
 th > a:hover:after,
 th > a:focus:after,
 th.is-active > a:hover:after,
 th.is-active > a:focus:after {
-  border-bottom-color: #008ee6;
 }
 td .item-list ul {
   margin: 0;
