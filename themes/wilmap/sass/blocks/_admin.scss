@@ -1,0 +1,46 @@
+.user-login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  min-height: calc(100vh - 430px);
+  margin: 0 auto;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 15px;
+      color: $main-color;
+      font-size: $font-size-small;
+      font-weight: $font-weight-semi-bold;
+      text-transform: uppercase;
+    }
+
+    .form-text  {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border: 1px solid $third-color;
+      outline: 0;
+      color: $black;
+      font-size: $font-size-small;
+
+    }
+
+    .form-submit {
+      width: 120px;
+      padding: 10px 20px;
+      border: 0;
+      background-color: $main-color;
+      color: $white;
+      font-size: $font-size-small;
+      font-weight: $font-weight-light;
+      text-transform: uppercase;
+    }
+
+    .description {
+      display: none;
+    }
+  }
+}
