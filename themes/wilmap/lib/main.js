@@ -116,6 +116,7 @@ function changeMenuOption(option) {
       // FUNCTIONS FOR GALLERY NEWS PAGE
       // *******************************************************
       if (settings.path.currentPath === 'news') {
+        // showNewsGalleryPage(path);
         const gallerynews = document.querySelector('.gallery-scroll');
         $('.option-category').click(function clickCategory() {
           $('.option-category').removeClass('-selected');
@@ -132,6 +133,7 @@ function changeMenuOption(option) {
             'Content-Type': 'application/hal+json'
           },
           success: function showNews(data, status, xhr) {
+            console.log(data);
             for (let i = 0; i < 3; i += 1) {
               const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
               <h2>${data[i].title}</h2>

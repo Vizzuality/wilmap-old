@@ -35,7 +35,7 @@ gulp.task('sass', function () {
 gulp.task('compress', () =>
     gulp.src(
       [
-        './themes/wilmap/lib/main.js',
+        './themes/wilmap/lib/main.js'
       ]
     )
         .pipe(sourcemaps.init())
