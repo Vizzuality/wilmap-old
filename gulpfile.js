@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+const concat = require('gulp-concat');
+const minify = require('gulp-minify');
 var babel = require('gulp-babel');
 var livereload = require('gulp-livereload')
 var uglify = require('gulp-uglifyjs');
@@ -12,9 +14,9 @@ var pngquant = require('imagemin-pngquant');
 gulp.task('imagemin', function () {
     return gulp.src('./themes/wilmap/images/*')
         .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          use: [pngquant()]
         }))
         .pipe(gulp.dest('./themes/wilmap/images'));
 });
@@ -30,22 +32,24 @@ gulp.task('sass', function () {
 });
 
 
-gulp.task('uglify', function() {
-  gulp.src('./themes/wilmap/lib/*.js')
-    .pipe(uglify('main.js', 'select2.full.min.js'))
-    .pipe(gulp.dest('./themes/wilmap/js'));
-});
-
-gulp.task('uglify', function () {
-  gulp.src('./themes/wilmap/lib/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('./themes/wilmap/js'));
-});
+gulp.task('compress', () =>
+    gulp.src(
+      [
+        './themes/wilmap/lib/main.js',
+      ]
+    )
+        .pipe(sourcemaps.init())
+        .pipe(babel())
+        .pipe(concat('main.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(minify())
+        .pipe(gulp.dest('./themes/wilmap/js'))
+);
 
 gulp.task('watch', function(){
   livereload.listen();
   gulp.watch('./themes/wilmap/sass/**/*.scss', ['sass']);
-  gulp.watch('./themes/wilmap/lib/*.js', ['uglify']);
+  gulp.watch('./themes/wilmap/lib/*.js', ['compress']);
   gulp.watch(['./themes/wilmap/css/style.css', './themes/wilmap/**/*.twig', './themes/wilmap/js/*.js'], function (files) {
       livereload.changed(files)
     });
