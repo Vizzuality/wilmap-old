@@ -130,14 +130,14 @@ function changeMenuOption(option) {
           });
 
           $.ajax({
-            url: path + 'api/newsJSON',
+            url: path + 'api/newsJSON?items_per_page=3&page=1',
             method: 'GET',
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
             success: function showNews(data, status, xhr) {
-              for (var i = 0; i < 3; i += 1) {
+              for (var i = 0; i < data.length; i += 1) {
                 var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n              <h2>' + data[i].title + '</h2>\n              <span class="date">' + data[i].field_date_published + '</span>\n              <div class="text">' + data[i].field_summary + '</div>\n              <a class="butn -primary" href="' + data[i].path + '">read more</a>\n              </div>';
                 $(gallerynews).append(contentbox);
               }
