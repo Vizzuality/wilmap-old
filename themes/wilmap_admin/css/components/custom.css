@@ -310,6 +310,7 @@ toolbar-icon:first-of-type {
 
 .menu-item--collapsed > .toolbar-menu a{
   font-size: 12px !important;
+  font-weight: 400 !important;
 }
 
 .menu-item--collapsed > .toolbar-menu{

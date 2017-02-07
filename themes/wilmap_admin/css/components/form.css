@@ -273,9 +273,34 @@ select {
     border-top: 6px solid #e3ded3;
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: calc(50% + 10px);
+    transform: translateY(-50%);
     transition: all 0.3s linear;
   }
+
+  .form-item-field-summary-0-format::after {
+    content: " ";
+    display: block;
+    height: 0;
+    width: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #e3ded3;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s linear;
+  }
+
+  .form-item-table-add-new-dependency-dependee::after {
+    display: none !important;
+  }
+
+  table .js-form-type-select::after {
+    display: none !important;
+  }
+
   [dir="rtl"] select {
     padding: 1px 0.714em 1px 1.571em;
     background-position: 1% 63%, 0 0;

@@ -108,10 +108,10 @@ li.tabs__tab a {
   content: '';
   display: block;
   position: absolute;
-  height: 2px;
+  height: 4px;
   background-color: #b3001e;
   width: calc(100% - 50px);
-  bottom: 5px;
+  bottom: 2px;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -338,10 +338,14 @@ li.tabs__tab a {
   padding-right: 7px;
 }
 .tabs.secondary .is-active a {
-  color: #222;
+  color: #b3001e !important;
+}
+
+.tabs.secondary .is-active a::after {
+  display: none;
 }
 .tabs.secondary a:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Styles for the horizontal state */
@@ -376,4 +380,18 @@ li.tabs__tab a {
 .is-horizontal .tabs.secondary .tabs__tab:hover,
 .is-horizontal .tabs.secondary .tabs__tab:focus {
   border-bottom-color: #222;
+}
+
+.is-collapsible .tabs.primary .tabs__tab:first-of-type a {
+  padding-left: 0 !important;
+}
+
+.is-collapsible .tabs.primary .tabs__tab.is-active a {
+  color: #b3001e !important;
+  font-weight: 600 !important;
+  text-decoration: underline;
+}
+
+.is-collapsible .tabs.primary .tabs__tab.is-active a::after {
+  display: none !important;
 }
