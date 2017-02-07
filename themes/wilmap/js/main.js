@@ -15,6 +15,7 @@ function changeMenuOption(option) {
     attach: function drupal(context, settings) {
       var path = getAbsolutePath();
       var nodeid = settings.path.currentPath.split('/').pop();
+      console.log(settings);
       // *******************************************************
       // FUNCTIONS FOR GALLERY ALL PAGES
       // *******************************************************
@@ -136,7 +137,6 @@ function changeMenuOption(option) {
               'Content-Type': 'application/hal+json'
             },
             success: function showNews(data, status, xhr) {
-              console.log(data);
               for (var i = 0; i < 3; i += 1) {
                 var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n              <h2>' + data[i].title + '</h2>\n              <span class="date">' + data[i].field_date_published + '</span>\n              <div class="text">' + data[i].field_summary + '</div>\n              <a class="butn -primary" href="' + data[i].path + '">read more</a>\n              </div>';
                 $(gallerynews).append(contentbox);

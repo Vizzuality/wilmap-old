@@ -14,6 +14,7 @@ function changeMenuOption(option) {
     attach: function drupal(context, settings) {
       const path = getAbsolutePath();
       const nodeid = settings.path.currentPath.split('/').pop();
+      console.log(settings);
       // *******************************************************
       // FUNCTIONS FOR GALLERY ALL PAGES
       // *******************************************************
@@ -133,7 +134,6 @@ function changeMenuOption(option) {
             'Content-Type': 'application/hal+json'
           },
           success: function showNews(data, status, xhr) {
-            console.log(data);
             for (let i = 0; i < 3; i += 1) {
               const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
               <h2>${data[i].title}</h2>
