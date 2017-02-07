@@ -170,3 +170,4 @@ function getAbsolutePath() {
     }
   };
 })(jQuery);
+//# sourceMappingURL=main.js.map
