@@ -120,8 +120,49 @@ function changeMenuOption(option) {
       // *******************************************************
       if (settings.path.currentPath === 'news') {
         (function () {
+          var showNewsGallery = function showNewsGallery(page) {
+            var numbersPager = '';
+            $.ajax({
+              url: path + 'api/newsJSON?items_per_page=3&page=' + page,
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/hal+json'
+              },
+              success: function showNews(data, status, xhr) {
+                $(gallerynews).html('');
+                for (var i = 0; i < data.length; i += 1) {
+                  var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n                <h2>' + data[i].title + '</h2>\n                <span class="date">' + data[i].field_date_published + '</span>\n                <div class="text">' + data[i].field_summary + '</div>\n                <a class="butn -primary" href="' + data[i].path + '">read more</a>\n                </div>';
+                  $(gallerynews).append(contentbox);
+                }
+                for (var j = page; j < page + 8; j++) {
+                  if (j === page) {
+                    numbersPager += '<li class="-selected numberPagerClick" data-value="' + j + '">' + j + '</li>';
+                  }
+
+                  if (j === page + 6) {
+                    numbersPager += '<li class="numberPagerClick" data-value="' + j + '">...</li>';
+                  }
+
+                  if (j === page + 7) {
+                    numbersPager += '<li class="numberPagerClick" data-value="' + totalPages + '">' + totalPages + '</li>';
+                  }
+
+                  if (j !== page && j !== page + 6 && j !== page + 7) {
+                    numbersPager += '<li class="numberPagerClick" data-value="' + j + '">' + j + '</li>';
+                  }
+                }
+                $('.pager-numbers').html(numbersPager);
+                $('.numberPagerClick').click(function () {
+                  showNewsGallery($(this).data('value'));
+                });
+              }
+            });
+          };
+
           // showNewsGalleryPage(path);
           var gallerynews = document.querySelector('.gallery-scroll');
+          var totalPages = 0;
           $('.option-category').click(function clickCategory() {
             $('.option-category').removeClass('-selected');
             var dataValue = $(this).data('bar');
@@ -130,19 +171,18 @@ function changeMenuOption(option) {
           });
 
           $.ajax({
-            url: path + 'api/newsJSON?items_per_page=3&page=1',
+            url: path + '/count/news',
             method: 'GET',
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
-            success: function showNews(data, status, xhr) {
-              for (var i = 0; i < data.length; i += 1) {
-                var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n              <h2>' + data[i].title + '</h2>\n              <span class="date">' + data[i].field_date_published + '</span>\n              <div class="text">' + data[i].field_summary + '</div>\n              <a class="butn -primary" href="' + data[i].path + '">read more</a>\n              </div>';
-                $(gallerynews).append(contentbox);
-              }
+            success: function showNews(dataNewsCount, status, xhr) {
+              totalPages = parseInt(dataNewsCount.length / 3);
             }
           });
+
+          showNewsGallery(1);
         })();
       }
 
@@ -176,7 +216,6 @@ function changeMenuOption(option) {
                   'Content-Type': 'application/hal+json'
                 },
                 success: function showDetail(dataRelated, status, xhr) {
-                  console.log(xhr);
                   for (var i = 0; i < 2; i++) {
                     var randomValue = Math.floor(Math.random() * dataRelated.length + 1);
                     var boxRelated = '<div class="news-info">\n                    <strong class="related-title">' + dataRelated[randomValue].title + '</strong>\n                    <span class="related-date">' + dataRelated[randomValue].field_date_published + '</span>\n                    <div class="text paragraph">\n                        ' + dataRelated[randomValue].field_summary + '\n                    </div>\n                    <div class="shadow"></div>\n                  </div>';

@@ -119,6 +119,7 @@ function changeMenuOption(option) {
       if (settings.path.currentPath === 'news') {
         // showNewsGalleryPage(path);
         const gallerynews = document.querySelector('.gallery-scroll');
+        let totalPages = 0;
         $('.option-category').click(function clickCategory() {
           $('.option-category').removeClass('-selected');
           const dataValue = $(this).data('bar');
@@ -127,24 +128,62 @@ function changeMenuOption(option) {
         });
 
         $.ajax({
-          url: `${path}api/newsJSON?items_per_page=3&page=1`,
+          url: `${path}/count/news`,
           method: 'GET',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/hal+json'
           },
-          success: function showNews(data, status, xhr) {
-            for (let i = 0; i < data.length; i += 1) {
-              const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
-              <h2>${data[i].title}</h2>
-              <span class="date">${data[i].field_date_published}</span>
-              <div class="text">${data[i].field_summary}</div>
-              <a class="butn -primary" href="${data[i].path}">read more</a>
-              </div>`;
-              $(gallerynews).append(contentbox);
-            }
+          success: function showNews(dataNewsCount, status, xhr) {
+            totalPages = parseInt(dataNewsCount.length / 3);
           }
         });
+
+        function showNewsGallery(page) {
+          let numbersPager = '';
+          $.ajax({
+            url: `${path}api/newsJSON?items_per_page=3&page=${page}`,
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/hal+json'
+            },
+            success: function showNews(data, status, xhr) {
+              $(gallerynews).html('');
+              for (let i = 0; i < data.length; i += 1) {
+                const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
+                <h2>${data[i].title}</h2>
+                <span class="date">${data[i].field_date_published}</span>
+                <div class="text">${data[i].field_summary}</div>
+                <a class="butn -primary" href="${data[i].path}">read more</a>
+                </div>`;
+                $(gallerynews).append(contentbox);
+              }
+              for (let j = page; j < (page + 8); j++) {
+                if (j === page) {
+                  numbersPager += `<li class="-selected numberPagerClick" data-value="${j}">${j}</li>`;
+                }
+
+                if (j === (page + 6)) {
+                  numbersPager += `<li class="numberPagerClick" data-value="${j}">...</li>`;
+                }
+
+                if (j === (page + 7)) {
+                  numbersPager += `<li class="numberPagerClick" data-value="${totalPages}">${totalPages}</li>`;
+                }
+
+                if (j !== page && j !== (page + 6) && j !== (page + 7)) {
+                  numbersPager += `<li class="numberPagerClick" data-value="${j}">${j}</li>`;
+                }
+              }
+              $('.pager-numbers').html(numbersPager);
+              $('.numberPagerClick').click(function(){
+                showNewsGallery($(this).data('value'));
+              });
+            }
+          });
+        }
+        showNewsGallery(1);
       }
 
       // *******************************************************
@@ -176,7 +215,6 @@ function changeMenuOption(option) {
                 'Content-Type': 'application/hal+json'
               },
               success: function showDetail(dataRelated, status, xhr) {
-                console.log(xhr);
                 for (let i = 0; i < 2; i++) {
                   const randomValue = Math.floor((Math.random() * dataRelated.length) + 1);
                   const boxRelated =
