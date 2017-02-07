@@ -11,4 +11,5 @@ In order to be able to create content, you need the HAL module to be
 installed too.
 
 Once the module has been installed, navigate to admin/config/services/rest
-(Configuration > Web Services > REST through the administration panel) and configure the available resources.
+(Configuration > Web Services > REST through the administration panel) and
+configure the available resources.
