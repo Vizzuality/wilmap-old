@@ -15,6 +15,7 @@ function changeMenuOption(option) {
     attach: function drupal(context, settings) {
       var path = getAbsolutePath();
       var nodeid = settings.path.currentPath.split('/').pop();
+      console.log(settings);
       // *******************************************************
       // FUNCTIONS FOR GALLERY ALL PAGES
       // *******************************************************
@@ -119,6 +120,7 @@ function changeMenuOption(option) {
       // *******************************************************
       if (settings.path.currentPath === 'news') {
         (function () {
+          // showNewsGalleryPage(path);
           var gallerynews = document.querySelector('.gallery-scroll');
           $('.option-category').click(function clickCategory() {
             $('.option-category').removeClass('-selected');

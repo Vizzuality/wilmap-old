@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Hook implementations for REST UI module.
@@ -21,7 +22,7 @@ function restui_help($route_name, RouteMatchInterface $route_match) {
  */
 function restui_theme() {
   return array(
-    // list resources.
+    // List resources.
     'restui_resource_info' => array(
       'variables' => array('resource' => array()),
       'template' => 'restui-resource-info',

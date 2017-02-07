@@ -76,7 +76,7 @@ class RestUIForm extends ConfigFormBase {
    *   The REST plugin manager.
    * @param \Drupal\Core\Routing\RouteBuilderInterface $routeBuilder
    *   The route builder.
-   * @param \Drupal\Core\Entity\EntityStorageInterface
+   * @param \Drupal\Core\Entity\EntityStorageInterface $resource_config_storage
    *   The REST resource config storage.
    */
   public function __construct(ConfigFactoryInterface $config_factory, ModuleHandler $module_handler, AuthenticationCollectorInterface $authentication_collector, array $formats, ResourcePluginManager $resourcePluginManager, RouteBuilderInterface $routeBuilder, EntityStorageInterface $resource_config_storage) {
@@ -85,7 +85,7 @@ class RestUIForm extends ConfigFormBase {
     $this->authenticationCollector = $authentication_collector;
     $this->formats = $formats;
     $this->resourcePluginManager = $resourcePluginManager;
-    $this->routeBuilder= $routeBuilder;
+    $this->routeBuilder = $routeBuilder;
     $this->resourceConfigStorage = $resource_config_storage;
   }
 
@@ -107,7 +107,7 @@ class RestUIForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormID() {
+  public function getFormId() {
     return 'restui';
   }
 
@@ -123,11 +123,11 @@ class RestUIForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    *
-   * @var array $form
+   * @param array $form
    *   The form array.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state.
-   * @var string $resource_id
+   * @param string $resource_id
    *   A string that identifies the REST resource.
    *
    * @return array
@@ -213,7 +213,7 @@ class RestUIForm extends ConfigFormBase {
         }
         $auth = array_filter($values['settings']['auth']);
         if (empty($auth)) {
-          $form_state->setErrorByName('methods][' . $method . '][settings][auth' , $this->t('At least one authentication provider must be selected for method @method.', array('@method' => $method)));
+          $form_state->setErrorByName('methods][' . $method . '][settings][auth', $this->t('At least one authentication provider must be selected for method @method.', array('@method' => $method)));
         }
       }
     }
@@ -227,14 +227,14 @@ class RestUIForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $methods = $form_state->getValue('methods');
-    $resource_id = $id = str_replace(':', '.', $form_state->getValue('resource_id'));
+    $resource_id = str_replace(':', '.', $form_state->getValue('resource_id'));
     $config = $this->resourceConfigStorage->load($resource_id);
 
     if (!$config) {
       $config = $this->resourceConfigStorage->create([
         'id' => $resource_id,
         'granularity' => RestResourceConfigInterface::METHOD_GRANULARITY,
-        'configuration' => []
+        'configuration' => [],
       ]);
     }
 
