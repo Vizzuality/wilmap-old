@@ -127,18 +127,6 @@ function changeMenuOption(option) {
           $(this).addClass('-selected');
         });
 
-        $.ajax({
-          url: `${path}/count/news`,
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/hal+json'
-          },
-          success: function showNews(dataNewsCount, status, xhr) {
-            totalPages = parseInt(dataNewsCount.length / 3);
-          }
-        });
-
         function showNewsGallery(page) {
           let numbersPager = '';
           $.ajax({
@@ -159,22 +147,30 @@ function changeMenuOption(option) {
                 </div>`;
                 $(gallerynews).append(contentbox);
               }
-              for (let j = page; j < (page + 8); j++) {
-                if (j === page) {
-                  numbersPager += `<li class="-selected numberPagerClick" data-value="${j}">${j}</li>`;
-                }
+              if (page > 1) {
+                numbersPager += `<li class="butn -primary numberPagerClick" data-value="${page - 1}">back</li>`;
+              }
+              for (let j = page; j < (page + 8); j += 1) {
+                if (j <= totalPages) {
+                  if (j === page) {
+                    numbersPager += `<li class="-selected numberPagerClick" data-value="${j}">${j}</li>`;
+                  }
 
-                if (j === (page + 6)) {
-                  numbersPager += `<li class="numberPagerClick" data-value="${j}">...</li>`;
-                }
+                  if (j === (page + 6)) {
+                    numbersPager += `<li class="numberPagerClick" data-value="${j}">...</li>`;
+                  }
 
-                if (j === (page + 7)) {
-                  numbersPager += `<li class="numberPagerClick" data-value="${totalPages}">${totalPages}</li>`;
-                }
+                  if (j === (page + 7)) {
+                    numbersPager += `<li class="numberPagerClick" data-value="${totalPages}">${totalPages}</li>`;
+                  }
 
-                if (j !== page && j !== (page + 6) && j !== (page + 7)) {
-                  numbersPager += `<li class="numberPagerClick" data-value="${j}">${j}</li>`;
+                  if (j !== page && j !== (page + 6) && j !== (page + 7)) {
+                    numbersPager += `<li class="numberPagerClick" data-value="${j}">${j}</li>`;
+                  }
                 }
+              }
+              if (page < totalPages) {
+                numbersPager += `<li class="butn -primary numberPagerClick" data-value="${page + 1}">next</li>`;
               }
               $('.pager-numbers').html(numbersPager);
               $('.numberPagerClick').click(function(){
@@ -183,7 +179,19 @@ function changeMenuOption(option) {
             }
           });
         }
-        showNewsGallery(1);
+
+        $.ajax({
+          url: `${path}/count/news`,
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/hal+json'
+          },
+          success: function (dataNewsCount, status, xhr) {
+            totalPages = parseInt(dataNewsCount.length / 3);
+            showNewsGallery(1);
+          }
+        });
       }
 
       // *******************************************************
@@ -201,7 +209,6 @@ function changeMenuOption(option) {
             'Content-Type': 'application/hal+json'
           },
           success: function showDetail(data, status, xhr) {
-            console.log(data);
             categoryId = data[0].field_category;
             $('.title-news-detail').html(data[0].title);
             $('.date-news-detail').html(data[0].field_date_published);
@@ -215,7 +222,7 @@ function changeMenuOption(option) {
                 'Content-Type': 'application/hal+json'
               },
               success: function showDetail(dataRelated, status, xhr) {
-                for (let i = 0; i < 2; i++) {
+                for (let i = 0; i < 2; i += 1) {
                   const randomValue = Math.floor((Math.random() * dataRelated.length) + 1);
                   const boxRelated =
                   `<div class="news-info">

@@ -135,22 +135,30 @@ function changeMenuOption(option) {
                   var contentbox = '<div data-category="' + data[i].field_category + '" class="info-news">\n                <h2>' + data[i].title + '</h2>\n                <span class="date">' + data[i].field_date_published + '</span>\n                <div class="text">' + data[i].field_summary + '</div>\n                <a class="butn -primary" href="' + data[i].path + '">read more</a>\n                </div>';
                   $(gallerynews).append(contentbox);
                 }
-                for (var j = page; j < page + 8; j++) {
-                  if (j === page) {
-                    numbersPager += '<li class="-selected numberPagerClick" data-value="' + j + '">' + j + '</li>';
-                  }
+                if (page > 1) {
+                  numbersPager += '<li class="butn -primary numberPagerClick" data-value="' + (page - 1) + '">back</li>';
+                }
+                for (var j = page; j < page + 8; j += 1) {
+                  if (j <= totalPages) {
+                    if (j === page) {
+                      numbersPager += '<li class="-selected numberPagerClick" data-value="' + j + '">' + j + '</li>';
+                    }
 
-                  if (j === page + 6) {
-                    numbersPager += '<li class="numberPagerClick" data-value="' + j + '">...</li>';
-                  }
+                    if (j === page + 6) {
+                      numbersPager += '<li class="numberPagerClick" data-value="' + j + '">...</li>';
+                    }
 
-                  if (j === page + 7) {
-                    numbersPager += '<li class="numberPagerClick" data-value="' + totalPages + '">' + totalPages + '</li>';
-                  }
+                    if (j === page + 7) {
+                      numbersPager += '<li class="numberPagerClick" data-value="' + totalPages + '">' + totalPages + '</li>';
+                    }
 
-                  if (j !== page && j !== page + 6 && j !== page + 7) {
-                    numbersPager += '<li class="numberPagerClick" data-value="' + j + '">' + j + '</li>';
+                    if (j !== page && j !== page + 6 && j !== page + 7) {
+                      numbersPager += '<li class="numberPagerClick" data-value="' + j + '">' + j + '</li>';
+                    }
                   }
+                }
+                if (page < totalPages) {
+                  numbersPager += '<li class="butn -primary numberPagerClick" data-value="' + (page + 1) + '">next</li>';
                 }
                 $('.pager-numbers').html(numbersPager);
                 $('.numberPagerClick').click(function () {
@@ -177,12 +185,11 @@ function changeMenuOption(option) {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
-            success: function showNews(dataNewsCount, status, xhr) {
+            success: function success(dataNewsCount, status, xhr) {
               totalPages = parseInt(dataNewsCount.length / 3);
+              showNewsGallery(1);
             }
           });
-
-          showNewsGallery(1);
         })();
       }
 
@@ -202,7 +209,6 @@ function changeMenuOption(option) {
               'Content-Type': 'application/hal+json'
             },
             success: function showDetail(data, status, xhr) {
-              console.log(data);
               categoryId = data[0].field_category;
               $('.title-news-detail').html(data[0].title);
               $('.date-news-detail').html(data[0].field_date_published);
@@ -216,7 +222,7 @@ function changeMenuOption(option) {
                   'Content-Type': 'application/hal+json'
                 },
                 success: function showDetail(dataRelated, status, xhr) {
-                  for (var i = 0; i < 2; i++) {
+                  for (var i = 0; i < 2; i += 1) {
                     var randomValue = Math.floor(Math.random() * dataRelated.length + 1);
                     var boxRelated = '<div class="news-info">\n                    <strong class="related-title">' + dataRelated[randomValue].title + '</strong>\n                    <span class="related-date">' + dataRelated[randomValue].field_date_published + '</span>\n                    <div class="text paragraph">\n                        ' + dataRelated[randomValue].field_summary + '\n                    </div>\n                    <div class="shadow"></div>\n                  </div>';
                     $('.gallery-news-related').append(boxRelated);
