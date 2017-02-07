@@ -297,7 +297,11 @@ select {
     display: none !important;
   }
 
-  table .js-form-type-select::after {
+  .form-item-add-language::after {
+    display: none !important;
+  }
+
+  table .form-item-add-language::after {
     display: none !important;
   }
 
