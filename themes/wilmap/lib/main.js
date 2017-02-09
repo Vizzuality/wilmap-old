@@ -121,23 +121,24 @@ function changeMenuOption(option) {
         // showNewsGalleryPage(path);
         const gallerynews = document.querySelector('.gallery-scroll');
         let totalPages = 0;
-        $('.option-category').click(function clickCategory() {
-          $('.option-category').removeClass('-selected');
-          const dataValue = $(this).data('bar');
-          $('.small-bar').css('top', `${dataValue}px`);
-          $(this).addClass('-selected');
-        });
+        const category = 'all';
 
-        function showNewsGallery(page) {
+        function showNewsGallery(page, categoryFilter) {
           let numbersPager = '';
+          let urlJSON = '';
+          if (categoryFilter !== 'all') {
+            urlJSON = `${path}api/newsJSON?field_category_target_id=${categoryFilter}&items_per_page=3&page=${page}`;
+          } else {
+            urlJSON = `${path}api/newsJSON?items_per_page=3&page=${page}`;
+          }
           $.ajax({
-            url: `${path}api/newsJSON?items_per_page=3&page=${page}`,
+            url: `${urlJSON}`,
             method: 'GET',
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/hal+json'
             },
-            success: function showNews(data, status, xhr) {
+            success: function showNews(data) {
               $(gallerynews).html('');
               for (let i = 0; i < data.length; i += 1) {
                 const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
@@ -175,24 +176,58 @@ function changeMenuOption(option) {
               }
               $('.pager-numbers').html(numbersPager);
               $('.numberPagerClick').click(function(){
-                showNewsGallery($(this).data('value'));
+                showNewsGallery($(this).data('value'), category);
               });
             }
           });
         }
 
+        function getPager(categoryPager) {
+          let urlJSON = '';
+          if (categoryPager !== 'all') {
+            urlJSON = `${path}api/newsJSON?field_category_target_id=${categoryPager}`;
+          } else {
+            urlJSON = `${path}api/newsJSON`;
+          }
+          $.ajax({
+            url: `${urlJSON}`,
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/hal+json'
+            },
+            success: function (dataNewsCount) {
+              totalPages = parseInt(dataNewsCount.length / 3);
+              showNewsGallery(1, categoryPager);
+            }
+          });
+        }
+
         $.ajax({
-          url: `${path}/count/news`,
+          url: `${path}api/categoriesJSON`,
           method: 'GET',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/hal+json'
           },
-          success: function (dataNewsCount, status, xhr) {
-            totalPages = parseInt(dataNewsCount.length / 3);
-            showNewsGallery(1);
+          success: function showTopics(data) {
+            for (let i = 0; i < data.length; i += 1) {
+              const contentFilter = `<li data-value="${data[i].nid}" class="option-category">${data[i].title}</li>`;
+              $('.list-categories').append(contentFilter);
+            }
+            $('.option-category').click(function clickCategory() {
+              $('.option-category').removeClass('-selected');
+              const dataValue = $(this).data('value');
+              const offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+              $('.small-bar').css('top', `${offset - 10}px`);
+              $('.small-bar').css('height', `${($(this).height() + 20)}px`);
+              $(this).addClass('-selected');
+              getPager(dataValue);
+            });
           }
         });
+        // Call pager function then call show data function
+        getPager(category);
       }
 
       // *******************************************************
