@@ -14,6 +14,7 @@ function changeMenuOption(option) {
     attach: function drupal(context, settings) {
       const path = getAbsolutePath();
       const nodeid = settings.path.currentPath.split('/').pop();
+      const host = window.location.host;
 
       // *******************************************************
       // FUNCTIONS FOR GALLERY ALL PAGES
@@ -208,7 +209,7 @@ function changeMenuOption(option) {
             Accept: 'application/json',
             'Content-Type': 'application/hal+json'
           },
-          success: function showDetail(data, status, xhr) {
+          success: function showDetail(data) {
             categoryId = data[0].field_category;
             $('.title-news-detail').html(data[0].title);
             $('.date-news-detail').html(data[0].field_date_published);
@@ -221,18 +222,18 @@ function changeMenuOption(option) {
                 Accept: 'application/json',
                 'Content-Type': 'application/hal+json'
               },
-              success: function showDetail(dataRelated, status, xhr) {
+              success: function (dataRelated) {
                 for (let i = 0; i < 2; i += 1) {
                   const randomValue = Math.floor((Math.random() * dataRelated.length) + 1);
                   const boxRelated =
-                  `<div class="news-info">
+                  `<a href="${dataRelated[randomValue].path}" class="news-info">
                     <strong class="related-title">${dataRelated[randomValue].title}</strong>
                     <span class="related-date">${dataRelated[randomValue].field_date_published}</span>
                     <div class="text paragraph">
                         ${dataRelated[randomValue].field_summary}
                     </div>
                     <div class="shadow"></div>
-                  </div>`;
+                  </a>`;
                   $('.gallery-news-related').append(boxRelated);
                 }
               }
