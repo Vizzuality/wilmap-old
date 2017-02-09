@@ -139,7 +139,11 @@ function changeMenuOption(option) {
               'Content-Type': 'application/hal+json'
             },
             success: function showNews(data) {
-              $(gallerynews).html('');
+              if (data.length === 0) {
+                $(gallerynews).html('<h2 class="text-main-header">No news.</h2>');
+              } else {
+                $(gallerynews).html('');
+              }
               for (let i = 0; i < data.length; i += 1) {
                 const contentbox = `<div data-category="${data[i].field_category}" class="info-news">
                 <h2>${data[i].title}</h2>
