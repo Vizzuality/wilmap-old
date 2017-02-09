@@ -18,6 +18,7 @@ regions:
   contentExplore: 'contentExplore'
   contentTopics: 'contentTopics'
   contentNews: 'contentNews'
+  contentMap: 'contentMap'
   contentAbout: 'contentAbout'
   footer: 'Footer'
 

@@ -1,0 +1,46 @@
+.b-map-page {
+  .map,
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: calc(100vh);
+  }
+  .search-map {
+    position: absolute;
+    right: 0;
+    width: 360px;
+    height: 100%;
+    background-color: $main-color;
+    z-index: 4;
+
+    .list-country-search-map {
+      margin-top: 125px;
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        margin-top: 5px;
+        padding-left: 40px;
+        transition: .1s linear;
+        color: $white;
+        font-family: $font-primary;
+        font-size: $font-size-mediun;
+        font-weight: $font-weight-bold;
+        line-height: 1.44;
+        cursor: pointer;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+
+        &:hover {
+          background-color: rgba($white, .2);
+        }
+      }
+    }
+  }
+}
