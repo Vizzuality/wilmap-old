@@ -223,28 +223,20 @@ function changeMenuOption(option) {
           });
         }
 
-        $.ajax({
-          url: `${path}api/categoriesJSON`,
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/hal+json'
-          },
-          success: function showTopics(data) {
-            for (let i = 0; i < data.length; i += 1) {
-              const contentFilter = `<li data-value="${data[i].nid}" class="option-category">${data[i].title}</li>`;
-              $('.list-categories').append(contentFilter);
-            }
-            $('.option-category').click(function clickCategory() {
-              $('.option-category').removeClass('-selected');
-              const dataValue = $(this).data('value');
-              const offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-              $('.small-bar').css('top', `${offset - 10}px`);
-              $('.small-bar').css('height', `${($(this).height() + 20)}px`);
-              $(this).addClass('-selected');
-              getPager(dataValue);
-            });
+        $.getJSON(`${path}api/categoriesJSON`, function (data) {
+          for (let i = 0; i < data.length; i += 1) {
+            const contentFilter = `<li data-value="${data[i].nid}" class="option-category">${data[i].title}</li>`;
+            $('.list-categories').append(contentFilter);
           }
+          $('.option-category').click(function clickCategory() {
+            $('.option-category').removeClass('-selected');
+            const dataValue = $(this).data('value');
+            const offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+            $('.small-bar').css('top', `${offset - 10}px`);
+            $('.small-bar').css('height', `${($(this).height() + 20)}px`);
+            $(this).addClass('-selected');
+            getPager(dataValue);
+          });
         });
         // Call pager function then call show data function
         getPager(category);
