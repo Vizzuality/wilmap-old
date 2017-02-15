@@ -18,7 +18,7 @@ function changeMenuOption(option) {
       var host = window.location.host;
 
       // *******************************************************
-      // FUNCTIONS FOR GALLERY ALL PAGES
+      // FUNCTIONS FOR ALL PAGES
       // *******************************************************
 
       $('.search-box').click(function () {
@@ -53,6 +53,22 @@ function changeMenuOption(option) {
           }
         });
       });
+
+      // *******************************************************
+      // FUNCTIONS FOR MAP PAGE
+      // *******************************************************
+      if (settings.path.currentPath === 'map') {
+        $.getJSON(path + 'api/continentsJSON', function (data) {
+          for (var i = 0; i < data.length; i += 1) {
+            $('.list-country-search-map').append('<li>' + data[i].title + '</li>');
+          }
+        });
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGVjdG9ydWNoIiwiYSI6ImNpeXk3NzgzMjAwMDYzM3BuNXdiN3NiMDAifQ.v801v1GQOc5LhKNe5cAplQ';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/hectoruch/ciyy8zgf900242sln9d7630km'
+        });
+      }
 
       // *******************************************************
       // FUNCTIONS FOR GALLERY EXPLORE PAGE
@@ -205,28 +221,20 @@ function changeMenuOption(option) {
           var totalPages = 0;
           var category = 'all';
 
-          $.ajax({
-            url: path + 'api/categoriesJSON',
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/hal+json'
-            },
-            success: function showTopics(data) {
-              for (var i = 0; i < data.length; i += 1) {
-                var contentFilter = '<li data-value="' + data[i].nid + '" class="option-category">' + data[i].title + '</li>';
-                $('.list-categories').append(contentFilter);
-              }
-              $('.option-category').click(function clickCategory() {
-                $('.option-category').removeClass('-selected');
-                var dataValue = $(this).data('value');
-                var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-                $('.small-bar').css('top', offset - 10 + 'px');
-                $('.small-bar').css('height', $(this).height() + 20 + 'px');
-                $(this).addClass('-selected');
-                getPager(dataValue);
-              });
+          $.getJSON(path + 'api/categoriesJSON', function (data) {
+            for (var i = 0; i < data.length; i += 1) {
+              var contentFilter = '<li data-value="' + data[i].nid + '" class="option-category">' + data[i].title + '</li>';
+              $('.list-categories').append(contentFilter);
             }
+            $('.option-category').click(function clickCategory() {
+              $('.option-category').removeClass('-selected');
+              var dataValue = $(this).data('value');
+              var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+              $('.small-bar').css('top', offset - 10 + 'px');
+              $('.small-bar').css('height', $(this).height() + 20 + 'px');
+              $(this).addClass('-selected');
+              getPager(dataValue);
+            });
           });
           // Call pager function then call show data function
           getPager(category);
