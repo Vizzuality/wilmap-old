@@ -3,6 +3,25 @@
   let totalPages = 0;
   const category = 'all';
 
+  function showLoader() {
+    $(gallerynews).html(`
+      <div class="box-loader -hidden">
+        <ul>
+          <li class="title-loader"></li>
+          <li class="title-loader"></li>
+          <li class="date-loader"></li>
+          <li class="text-loader"></li>
+          <li class="text-loader"></li>
+          <li class="text-loader"></li>
+          <li class="text-loader"></li>
+          <li class="text-loader"></li>
+        </ul></div>`);
+
+    setTimeout(function () {
+      $('.box-loader').removeClass('-hidden');
+    }, 500);
+  }
+
   function showNewsGallery(page, categoryFilter) {
     let numbersPager = '';
     let urlJSON = '';
@@ -18,9 +37,10 @@
         Accept: 'application/json',
         'Content-Type': 'application/hal+json'
       },
+
       success: function showNews(data) {
         if (data.length === 0) {
-          $(gallerynews).html('<h2 class="text-main-header">No news.</h2>');
+          showLoader();
         } else {
           $(gallerynews).html('');
         }
@@ -109,6 +129,7 @@
       $('.list-categories').append(contentFilter);
     }
     $('.option-category').click(function clickCategory() {
+      showLoader();
       $('.option-category').removeClass('-selected');
       const dataValue = $(this).data('value');
       const offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
@@ -120,4 +141,5 @@
   });
   // Call pager function then call show data function
   getPager(category);
+  showLoader();
 })(jQuery);

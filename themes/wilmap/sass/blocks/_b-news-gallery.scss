@@ -16,6 +16,11 @@
     }
   }
 
+  .gallery {
+    width: 100%;
+    max-width: 700px;
+  }
+
   .gallery-news {
     display: flex;
     margin-top: 75px;
@@ -159,4 +164,62 @@
       color: $white;
     }
   }
+
+  .box-loader {
+    max-width: 700px;
+    padding: 40px 50px;
+    transition: opacity .2s linear;
+    background-color: rgba($third-color, .3);
+    opacity: 1;
+
+    &.-hidden {
+      opacity: 0;
+    }
+
+    ul {
+      .title-loader {
+        display: block;
+        height: 35px;
+        margin-bottom: 10px;
+        background: linear-gradient(270deg, rgba($black, .5), rgba($black, .8));
+        background-size: 400% 400%;
+        animation: loaderAnimation 3s ease infinite;
+
+        &:first-of-type {
+          max-width: 400px;
+        }
+      }
+
+      .date-loader {
+        max-width: 100px;
+        height: 16px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background: linear-gradient(270deg, rgba($second-color, .5), rgba($second-color, .8));
+        background-size: 400% 400%;
+        animation: loaderAnimation 4s ease infinite;
+      }
+
+      .text-loader {
+        height: 14px;
+        margin-bottom: 12px;
+        background: linear-gradient(270deg, rgba($black, .5), rgba($black, .2));
+        background-size: 400% 400%;
+        animation: loaderAnimation 5s ease infinite;
+
+        &.-short {
+          max-width: 350px;
+        }
+
+        &.-medium {
+          max-width: 500px;
+        }
+      }
+    }
+  }
+}
+@keyframes loaderAnimation {
+  0% {background-position: 0% 51%}
+  50% {background-position: 100% 50%}
+  100% {background-position: 0% 51%}
 }
