@@ -3,7 +3,30 @@
   let totalPages = 0;
   const category = 'all';
 
+  function showLoader() {
+    let boxes = '';
+    for (let i = 0; i < 3; i += 1) {
+      boxes += `
+        <div class="box-loader -hidden">
+          <ul>
+            <li class="title-loader -short"></li>
+            <li class="title-loader"></li>
+            <li class="date-loader -medium"></li>
+            <li class="text-loader -short"></li>
+            <li class="text-loader"></li>
+            <li class="text-loader -medium"></li>
+            <li class="text-loader -medium"></li>
+            <li class="text-loader"></li>
+          </ul></div>`
+    }
+    $(gallerynews).html(boxes);
+    setTimeout(function () {
+      $('.box-loader').removeClass('-hidden');
+    }, 500);
+  }
+
   function showNewsGallery(page, categoryFilter) {
+    showLoader();
     let numbersPager = '';
     let urlJSON = '';
     if (categoryFilter !== 'all') {
@@ -18,9 +41,10 @@
         Accept: 'application/json',
         'Content-Type': 'application/hal+json'
       },
+
       success: function showNews(data) {
         if (data.length === 0) {
-          $(gallerynews).html('<h2 class="text-main-header">No news.</h2>');
+          showLoader();
         } else {
           $(gallerynews).html('');
         }
