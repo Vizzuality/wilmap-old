@@ -15,3 +15,39 @@ global-js:
     - core/jquery
     - core/drupal
     - core/drupalSettings
+
+map-js:
+  js:
+    js/map.js: {}
+
+  dependencies:
+    - core/jquery
+
+explore-js:
+  js:
+    js/explore.js: {}
+
+  dependencies:
+    - core/jquery
+
+topics-js:
+  js:
+    js/topics.js: {}
+
+  dependencies:
+    - core/jquery
+
+news-js:
+  js:
+    js/news.js: {}
+
+  dependencies:
+    - core/jquery
+
+news-detail-js:
+  js:
+    js/news-detail.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/drupalsettings
