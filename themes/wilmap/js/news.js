@@ -6,8 +6,11 @@
   var category = 'all';
 
   function showLoader() {
-    $(gallerynews).html('\n      <div class="box-loader -hidden">\n        <ul>\n          <li class="title-loader -short"></li>\n          <li class="title-loader"></li>\n          <li class="date-loader -medium"></li>\n          <li class="text-loader -short"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader -medium"></li>\n          <li class="text-loader -medium"></li>\n          <li class="text-loader"></li>\n        </ul></div>');
-
+    var boxes = '';
+    for (var i = 0; i < 3; i += 1) {
+      boxes += '\n        <div class="box-loader -hidden">\n          <ul>\n            <li class="title-loader -short"></li>\n            <li class="title-loader"></li>\n            <li class="date-loader -medium"></li>\n            <li class="text-loader -short"></li>\n            <li class="text-loader"></li>\n            <li class="text-loader -medium"></li>\n            <li class="text-loader -medium"></li>\n            <li class="text-loader"></li>\n          </ul></div>';
+    }
+    $(gallerynews).html(boxes);
     setTimeout(function () {
       $('.box-loader').removeClass('-hidden');
     }, 500);
@@ -127,5 +130,4 @@
   });
   // Call pager function then call show data function
   getPager(category);
-  showLoader();
 })(jQuery);
