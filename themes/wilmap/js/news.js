@@ -6,7 +6,7 @@
   var category = 'all';
 
   function showLoader() {
-    $(gallerynews).html('\n      <div class="box-loader -hidden">\n        <ul>\n          <li class="title-loader"></li>\n          <li class="title-loader"></li>\n          <li class="date-loader"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader"></li>\n        </ul></div>');
+    $(gallerynews).html('\n      <div class="box-loader -hidden">\n        <ul>\n          <li class="title-loader -short"></li>\n          <li class="title-loader"></li>\n          <li class="date-loader -medium"></li>\n          <li class="text-loader -short"></li>\n          <li class="text-loader"></li>\n          <li class="text-loader -medium"></li>\n          <li class="text-loader -medium"></li>\n          <li class="text-loader"></li>\n        </ul></div>');
 
     setTimeout(function () {
       $('.box-loader').removeClass('-hidden');
@@ -14,6 +14,7 @@
   }
 
   function showNewsGallery(page, categoryFilter) {
+    showLoader();
     var numbersPager = '';
     var urlJSON = '';
     if (categoryFilter !== 'all') {
@@ -115,7 +116,6 @@
       $('.list-categories').append(contentFilter);
     }
     $('.option-category').click(function clickCategory() {
-      showLoader();
       $('.option-category').removeClass('-selected');
       var dataValue = $(this).data('value');
       var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;

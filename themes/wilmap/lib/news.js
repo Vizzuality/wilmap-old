@@ -7,13 +7,13 @@
     $(gallerynews).html(`
       <div class="box-loader -hidden">
         <ul>
+          <li class="title-loader -short"></li>
           <li class="title-loader"></li>
-          <li class="title-loader"></li>
-          <li class="date-loader"></li>
+          <li class="date-loader -medium"></li>
+          <li class="text-loader -short"></li>
           <li class="text-loader"></li>
-          <li class="text-loader"></li>
-          <li class="text-loader"></li>
-          <li class="text-loader"></li>
+          <li class="text-loader -medium"></li>
+          <li class="text-loader -medium"></li>
           <li class="text-loader"></li>
         </ul></div>`);
 
@@ -23,6 +23,7 @@
   }
 
   function showNewsGallery(page, categoryFilter) {
+    showLoader();
     let numbersPager = '';
     let urlJSON = '';
     if (categoryFilter !== 'all') {
@@ -129,7 +130,6 @@
       $('.list-categories').append(contentFilter);
     }
     $('.option-category').click(function clickCategory() {
-      showLoader();
       $('.option-category').removeClass('-selected');
       const dataValue = $(this).data('value');
       const offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
