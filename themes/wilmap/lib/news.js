@@ -4,19 +4,22 @@
   const category = 'all';
 
   function showLoader() {
-    $(gallerynews).html(`
-      <div class="box-loader -hidden">
-        <ul>
-          <li class="title-loader -short"></li>
-          <li class="title-loader"></li>
-          <li class="date-loader -medium"></li>
-          <li class="text-loader -short"></li>
-          <li class="text-loader"></li>
-          <li class="text-loader -medium"></li>
-          <li class="text-loader -medium"></li>
-          <li class="text-loader"></li>
-        </ul></div>`);
-
+    let boxes = '';
+    for (let i = 0; i < 3; i += 1) {
+      boxes += `
+        <div class="box-loader -hidden">
+          <ul>
+            <li class="title-loader -short"></li>
+            <li class="title-loader"></li>
+            <li class="date-loader -medium"></li>
+            <li class="text-loader -short"></li>
+            <li class="text-loader"></li>
+            <li class="text-loader -medium"></li>
+            <li class="text-loader -medium"></li>
+            <li class="text-loader"></li>
+          </ul></div>`
+    }
+    $(gallerynews).html(boxes);
     setTimeout(function () {
       $('.box-loader').removeClass('-hidden');
     }, 500);
@@ -141,5 +144,4 @@
   });
   // Call pager function then call show data function
   getPager(category);
-  showLoader();
 })(jQuery);
