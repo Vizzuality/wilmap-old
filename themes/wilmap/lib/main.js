@@ -172,28 +172,44 @@ function changeMenuOption(option) {
               if (page > 1) {
                 numbersPager += `<li class="butn -primary numberPagerClick" data-value="${page - 1}">back</li>`;
               }
-              for (let j = page; j < (page + 8); j += 1) {
+              // previous pages
+              for (let j = page - 4; j < page; j += 1) {
+                if (j < 1) continue;
+
+                if (j === (page - 4) && j >= 2) {
+                    numbersPager += `<li class="numberPagerClick" data-value="1">1</li>`;
+                    numbersPager += `<li class="numberPagerClick" data-value="${j}">…</li>`;
+                    continue;
+                }
+
+                if (j <= totalPages) {
+                  if (j < page) {
+                    numbersPager += `<li class="numberPagerClick" data-value="${j}">${j}</li>`;
+                  }
+                }
+              }
+              // next pages
+              for (let j = page; j < (page + 5); j += 1) {
                 if (j <= totalPages) {
                   if (j === page) {
                     numbersPager += `<li class="-selected numberPagerClick" data-value="${j}">${j}</li>`;
+                    continue;
                   }
 
-                  if (j === (page + 6)) {
-                    numbersPager += `<li class="numberPagerClick" data-value="${j}">...</li>`;
-                  }
-
-                  if (j === (page + 7)) {
-                    numbersPager += `<li class="numberPagerClick" data-value="${totalPages}">${totalPages}</li>`;
-                  }
-
-                  if (j !== page && j !== (page + 6) && j !== (page + 7)) {
+                  if (j < (page + 4)) {
                     numbersPager += `<li class="numberPagerClick" data-value="${j}">${j}</li>`;
+                  }
+
+                  if (j === (page + 4)) {
+                    numbersPager += `<li class="numberPagerClick" data-value="${j}">…</li>`;
+                    numbersPager += `<li class="numberPagerClick" data-value="${totalPages}">${totalPages}</li>`;
                   }
                 }
               }
               if (page < totalPages) {
                 numbersPager += `<li class="butn -primary numberPagerClick" data-value="${page + 1}">next</li>`;
               }
+
               $('.pager-numbers').html(numbersPager);
               $('.numberPagerClick').click(function(){
                 showNewsGallery($(this).data('value'), category);
