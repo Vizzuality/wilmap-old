@@ -28,7 +28,7 @@ npm install
  This initializes also [Gulp](http://gulpjs.com/) for compile css and js(babel) files.
 
 #### Enjoy it!
-   * Open the browser and access [http://localhost:8080](http://localhost:8090)
+   * Open the browser and access [http://localhost:8090](http://localhost:8090)
 
 ##### If you run project using local database server
 Just need to run  
