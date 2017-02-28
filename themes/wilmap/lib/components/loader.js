@@ -2,7 +2,7 @@
 
 App.Loader = class Loader {
 
-  constructor (el, settings) {
+  constructor (settings) {
     this.options = Object.assign({}, settings);
     this.el = $('<div></div>');
     this.el.addClass('box-loader');
