@@ -1,23 +1,20 @@
 'use strict';
 
-(function ($) {
-  var gallerynews = document.querySelector('.gallery-scroll');
-  var totalPages = 0;
-  var category = 'all';
+(function () {
+  const gallerynews = document.querySelector('.gallery-scroll');
+  let totalPages = 0;
+  const category = 'all';
+  const loaders = [];
 
-  function showLoader() {
-    var boxes = '';
-    for (var i = 0; i < 3; i += 1) {
-      boxes += '\n        <div class="box-loader -hidden">\n          <ul>\n            <li class="title-loader -short"></li>\n            <li class="title-loader"></li>\n            <li class="date-loader -medium"></li>\n            <li class="text-loader -short"></li>\n            <li class="text-loader"></li>\n            <li class="text-loader -medium"></li>\n            <li class="text-loader -medium"></li>\n            <li class="text-loader"></li>\n          </ul></div>';
+  function initLoaders() {
+    for (let i = 0; i < 3; i += 1) {
+      loaders[i] = new App.Loader();
+      $(gallerynews).append(loaders[i].el);
     }
-    $(gallerynews).html(boxes);
-    setTimeout(function () {
-      $('.box-loader').removeClass('-hidden');
-    }, 500);
+
   }
 
   function showNewsGallery(page, categoryFilter) {
-    showLoader();
     var numbersPager = '';
     var urlJSON = '';
     if (categoryFilter !== 'all') {
@@ -35,7 +32,6 @@
 
       success: function showNews(data) {
         if (data.length === 0) {
-          showLoader();
         } else {
           $(gallerynews).html('');
         }
@@ -113,21 +109,31 @@
     });
   }
 
-  $.getJSON('api/categoriesJSON', function (data) {
-    for (var i = 0; i < data.length; i += 1) {
-      var contentFilter = '<li data-value="' + data[i].nid + '" class="option-category">' + data[i].title + '</li>';
-      $('.list-categories').append(contentFilter);
-    }
-    $('.option-category').click(function clickCategory() {
-      $('.option-category').removeClass('-selected');
-      var dataValue = $(this).data('value');
-      var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-      $('.small-bar').css('top', offset - 10 + 'px');
-      $('.small-bar').css('height', $(this).height() + 20 + 'px');
-      $(this).addClass('-selected');
-      getPager(dataValue);
+  function getCategories () {
+    $.getJSON('api/categoriesJSON', function (data) {
+      for (var i = 0; i < data.length; i += 1) {
+        var contentFilter = '<li data-value="' + data[i].nid + '" class="option-category">' + data[i].title + '</li>';
+        $('.list-categories').append(contentFilter);
+      }
+      $('.option-category').click(function clickCategory () {
+        $('.option-category').removeClass('-selected');
+        var dataValue = $(this).data('value');
+        var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+        $('.small-bar').css('top', offset - 10 + 'px');
+        $('.small-bar').css('height', $(this).height() + 20 + 'px');
+        $(this).addClass('-selected');
+        getPager(dataValue);
+      });
     });
-  });
-  // Call pager function then call show data function
-  getPager(category);
-})(jQuery);
+  }
+
+  function init () {
+    initLoaders();
+    getCategories();
+    // Call pager function then call show data function
+    getPager(category);
+  }
+
+  init();
+
+})();

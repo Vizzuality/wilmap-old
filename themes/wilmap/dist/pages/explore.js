@@ -1,4 +1,6 @@
-(($) => {
+'use strict';
+
+(function () {
   $('.filter-document').select2({
     placeholder: 'Document Type',
     allowClear: true,
@@ -32,4 +34,4 @@
     minimumResultsForSearch: Infinity,
     theme: 'wilmap-select-year'
   });
-})(jQuery);
+})(App);
