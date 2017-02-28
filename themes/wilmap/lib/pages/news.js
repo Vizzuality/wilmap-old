@@ -11,10 +11,11 @@
       loaders[i] = new App.Loader();
       $(gallerynews).append(loaders[i].el);
     }
-
   }
 
   function showNewsGallery(page, categoryFilter) {
+    $(gallerynews).html('');
+    initLoaders();
     var numbersPager = '';
     var urlJSON = '';
     if (categoryFilter !== 'all') {
@@ -91,7 +92,7 @@
   function getPager(categoryPager) {
     var urlJSON = '';
     if (categoryPager !== 'all') {
-      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryPager;
+      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryPager +'&items_per_page=3';
     } else {
       urlJSON = 'api/newsJSON';
     }
