@@ -1,0 +1,19 @@
+// Override styles
+.mapboxgl-popup {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, .15) !important;
+  left: 160px !important;
+
+  .mapboxgl-popup-content {
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .mapboxgl-popup-tip {
+    display: none !important;
+    padding: 0 !important;
+  }
+
+  .mapboxgl-popup-close-button {
+    display: none !important;
+  }
+}
