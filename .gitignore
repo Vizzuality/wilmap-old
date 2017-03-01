@@ -41,3 +41,4 @@ core/phpcs.xml
 core/phpunit.xml
 
 .DS_Store
+themes/*/dist
