@@ -104,7 +104,7 @@
       },
       success: function success(dataNewsCount) {
         totalPages = parseInt(dataNewsCount.length / 3);
-        showNewsGallery(1, categoryPager);
+        showNewsGallery(0, categoryPager);
       }
     });
   }
