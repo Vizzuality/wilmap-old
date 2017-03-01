@@ -12,7 +12,7 @@
         }, 10);
       });
 
-      $('.search-back').click(function(){
+      $('.search-back').click(function(){ 
         $('.search-modal').removeClass('-visible');
         $('.search-back').removeClass('-visible');
         setTimeout(function(){
