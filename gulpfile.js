@@ -43,23 +43,30 @@ gulp.task('clean', () => {
   del.sync(CONFIG.dist);
 });
 
-gulp.task('babel', ['clean', 'group'], () => {
-  gulp.src(['./themes/wilmap/lib/**/*.js', '!./themes/wilmap/lib/components/*.js'])
+gulp.task('pages', ['clean', 'components', 'helpers'], () => {
+  gulp.src(['./themes/wilmap/lib/**/*.js', '!./themes/wilmap/lib/components/*.js', '!./themes/wilmap/lib/helpers/*.js'])
     .pipe(babel({ presets: ['latest', 'stage-3'] }))
     .pipe(gulp.dest(CONFIG.dist));
 });
 
-gulp.task('group', () => {
+gulp.task('components', () => {
   gulp.src('./themes/wilmap/lib/components/*.js')
-    .pipe(babel())
+    .pipe(babel({ presets: ['latest', 'stage-3'] }))
     .pipe(concat('components.js'))
     .pipe(gulp.dest(CONFIG.dist));
 });
 
-gulp.task('watch', () => {
+gulp.task('helpers', () => {
+  gulp.src('./themes/wilmap/lib/helpers/*.js')
+    .pipe(babel({ presets: ['latest', 'stage-3'] }))
+    .pipe(concat('helpers.js'))
+    .pipe(gulp.dest(CONFIG.dist));
+});
+
+gulp.task('watch', ['clean', 'components', 'helpers', 'pages'], () => {
   livereload.listen();
   gulp.watch('./themes/wilmap/sass/**/*.scss', ['sass']);
-  gulp.watch('./themes/wilmap/lib/**/*.js', ['babel']);
+  gulp.watch('./themes/wilmap/lib/**/*.js', ['pages']);
   gulp.watch(
     [
       './themes/wilmap/css/style.css',

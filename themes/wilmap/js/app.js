@@ -2,5 +2,8 @@
 
 (function () {
   this.$ = jQuery;
-  this.App = {};
+  this.App = {
+    Component: {},
+    Helper: {}
+  };
 }).call(this);

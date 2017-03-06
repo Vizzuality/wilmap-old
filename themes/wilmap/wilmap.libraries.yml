@@ -9,6 +9,7 @@ global-js:
   js:
     js/app.js: {}
     dist/components.js: {}
+    dist/helpers.js: {}
     dist/main.js: {}
     js/select2.full.min.js: {}
     js/mapbox-gl.js: {}

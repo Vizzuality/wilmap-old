@@ -8,7 +8,7 @@
 
   function initLoaders() {
     for (let i = 0; i < 3; i += 1) {
-      loaders[i] = new App.Loader();
+      loaders[i] = new App.Component.Loader();
       $(gallerynews).append(loaders[i].el);
     }
   }

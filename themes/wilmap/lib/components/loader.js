@@ -1,6 +1,6 @@
 'use strict';
 
-App.Loader = class Loader {
+App.Component.Loader = class Loader {
 
   constructor (settings) {
     this.options = Object.assign({}, settings);
