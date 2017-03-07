@@ -7,5 +7,5 @@
     zoom: 2
 });
 
-  const mapSidebar = new App.Component.MapSidebar('.list-country-search-map');
+  const sidebar = new App.Component.MapAccordion('.list-country-search-map');
 })();

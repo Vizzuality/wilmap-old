@@ -2,11 +2,12 @@
 
 //  $('.list-country-search-map').append('<li>' + data[i].title + '</li>');
 
-App.Component.MapSidebar = class MapSidebar {
+App.Component.MapAccordion = class MapSidebar {
 
   constructor (el, settings) {
     this.options = Object.assign({}, settings);
     this.el = $(el);
+    this.current = {};
     this.fetch()
       .then(this.init.bind(this));
   }
@@ -50,6 +51,7 @@ App.Component.MapSidebar = class MapSidebar {
    * Sets the first level of the accordion elements
    */
   init() {
+    // Create fragment where we'll render the sections
     this.accordion = $(document.createDocumentFragment());
     Object.keys(this.data).forEach((key) => {
       const continent = this.data[key];
@@ -59,7 +61,9 @@ App.Component.MapSidebar = class MapSidebar {
         title: continent.title,
         nid: continent.nid
       };
-      const continentSection = MapSidebar.createSection(continentConfig, MapSidebar.toggleSection);
+      // create a continent lvl section
+      const continentSection = MapSidebar.createSection(continentConfig, this.toggleSection.bind(this));
+
       Object.keys(continent.regions).forEach((key) => {
         const region = continent.regions[key];
         const regionConfig = {
@@ -68,8 +72,9 @@ App.Component.MapSidebar = class MapSidebar {
           title: region.field_title,
           nid: region.nid
         };
+        // create a region lvl section and append it to the continent section previously created
         const regionSection = continentSection.find('.js-regions');
-        regionSection.append(MapSidebar.createSection(regionConfig, MapSidebar.toggleSection));
+        regionSection.append(MapSidebar.createSection(regionConfig, this.toggleSection.bind(this)));
 
         Object.keys(region.countries).forEach((key) => {
           const country = region.countries[key];
@@ -78,10 +83,13 @@ App.Component.MapSidebar = class MapSidebar {
             title: country.title,
             nid: country.nid
           };
+          // create a country section and append it to the region section previously created
+          // which has been previusly appended to its continent
           const countriesSection = regionSection.find('.js-countries');
-          countriesSection.append(MapSidebar.createSection(countryConfig, MapSidebar.toggleSection))
+          countriesSection.append(MapSidebar.createSection(countryConfig, this.onSelectLeaf.bind(this)))
         });
       });
+      // append the continent section already containing regions and countries to the accordion
       this.accordion.append(continentSection);
     });
     this.render();
@@ -91,8 +99,37 @@ App.Component.MapSidebar = class MapSidebar {
    * Handles the click onn an accordion section
    * @param {Event} e
    */
-  static toggleSection(e) {
-    $(e.target).closest('li').toggleClass('-open');
+  toggleSection(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const section = $(e.target).closest('li');
+    this.setCurrent(section.data('level'), section.data('nid'));
+    if (section.find('>ul').children().length) section.toggleClass('-open');
+  }
+
+  /**
+   * Updates the current selected section and closes the previously selected one
+   * @param {String} level
+   * @param {Number} nid
+   */
+  setCurrent(level, nid) {
+    if(this.current[level] && nid !== this.current[level]) {
+      const previous = $(`[data-nid="${this.current[level]}"]`);
+      previous.removeClass('-open');
+    }
+    this.current[level] = nid !== this.current[level] ? nid : null;
+  }
+
+  /**
+   * Handles the lead
+   * @param {Event} e
+   */
+  onSelectLeaf(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    alert($(e.target).closest('li').find('>span').text());
   }
 
   /**
@@ -110,6 +147,7 @@ App.Component.MapSidebar = class MapSidebar {
 </li>`;
     const section = $(template)
       .addClass(className)
+      .attr('data-level', className)
       .attr('data-nid', nid)
       .click(onClick);
 

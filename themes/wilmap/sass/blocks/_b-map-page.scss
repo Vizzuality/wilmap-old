@@ -46,18 +46,18 @@
 
         > ul {
           display: none;
+          margin-top: 16px;
+
+          span {
+            font-size: $font-size-small;
+            font-weight: $font-weight-light;
+          }
         }
 
         &.-open {
-          animation: open-section 1s;
 
           > ul {
             display: block;
-          }
-
-          @keyframes open-section {
-            from { transform: scaleY(0) }
-            to { transform: scaleY(100)}
           }
         }
 
@@ -66,22 +66,22 @@
         }
       }
 
-      .continent > ul {
-        margin-top: 16px;
-        display: block;
+      .region {
 
-        span {
-          font-size: $font-size-small;
-          font-weight: $font-weight-light;
+        > ul {
+          display: none;
+          margin-top: 20px;
+
+          span {
+            font-size: $font-size-small;
+            font-weight: $font-weight-light;
+          }
         }
-      }
 
-      .region > ul {
-        margin-top: 20px;
-
-        span {
-          font-size: $font-size-small;
-          font-weight: $font-weight-light;
+        &.-open {
+          > ul {
+            display: block;
+          }
         }
       }
     }
