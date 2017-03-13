@@ -5,6 +5,7 @@ App.Component.MapAccordion = class MapSidebar {
   constructor (el, settings) {
     this.options = Object.assign({}, settings);
     this.el = $(el);
+    this.el.addClass('c-map-accordion');
     this.current = {};
     this.fetch()
       .then(this.init.bind(this));
