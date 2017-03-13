@@ -27,7 +27,6 @@ App.Component.CardGallery = class CardGallery {
 
   /**
    * Initializes the gallery
-   * @returns {*|jQuery|HTMLElement}
    */
   init() {
     this.template = $(document.createDocumentFragment());

@@ -2,10 +2,13 @@
 
 App.Component.Loader = class Loader {
 
+  /**
+   * @param {Object} settings
+   */
   constructor (settings) {
     this.options = Object.assign({}, settings);
     this.el = $('<div></div>');
-    this.el.addClass('box-loader');
+    this.el.addClass('c-loader');
     if(this.options.hidden) this.$el.addClass('-hidden');
 
     this.template = `
@@ -24,6 +27,9 @@ App.Component.Loader = class Loader {
     this.render();
   }
 
+  /**
+   * Toggles visibility of the loader
+   */
   toggleVisibility() {
     this.el.toggleClass('-hidden');
   }
