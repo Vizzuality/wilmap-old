@@ -6,6 +6,7 @@
     "es6": true
   },
   "globals": {
+    "$": true
   },
   "parserOptions": {
     "ecmaVersion": 7,

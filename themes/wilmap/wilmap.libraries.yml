@@ -7,7 +7,10 @@ global-css:
 
 global-js:
   js:
-    js/main.js: {}
+    js/app.js: {}
+    dist/components.js: {}
+    dist/helpers.js: {}
+    dist/main.js: {}
     js/select2.full.min.js: {}
     js/mapbox-gl.js: {}
 
@@ -18,36 +21,21 @@ global-js:
 
 map-js:
   js:
-    js/map.js: {}
-
-  dependencies:
-    - core/jquery
+    dist/pages/map.js: {}
 
 explore-js:
   js:
-    js/explore.js: {}
-
-  dependencies:
-    - core/jquery
+    dist/pages/explore.js: {}
 
 topics-js:
   js:
-    js/topics.js: {}
-
-  dependencies:
-    - core/jquery
+    dist/pages/topics.js: {}
 
 news-js:
   js:
-    js/news.js: {}
-
-  dependencies:
-    - core/jquery
+    dist/pages/news.js: {}
 
 news-detail-js:
   js:
-    js/news-detail.js: {}
+    dist/pages/news-detail.js: {}
 
-  dependencies:
-    - core/jquery
-    - core/drupalsettings

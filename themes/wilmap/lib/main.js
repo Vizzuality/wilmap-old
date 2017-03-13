@@ -1,12 +1,4 @@
-
-function changeMenuOption(option) {
-  document.querySelector(`.${option}-option`).classList.add('-selected');
-}
-
 (function ($) {
-  Drupal.behaviors.myBehavior = {
-    attach: function drupal(context, settings) {
-
       // *******************************************************
       // FUNCTIONS FOR ALL PAGES
       // *******************************************************
@@ -43,10 +35,4 @@ function changeMenuOption(option) {
           }
         });
       });
-
-      if ($(context).find('.news-detail-page').length === 0) {
-        changeMenuOption(settings.path.currentPath);
-      }
-    }
-  };
 }(jQuery));
