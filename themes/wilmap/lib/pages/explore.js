@@ -32,4 +32,10 @@
     minimumResultsForSearch: Infinity,
     theme: 'wilmap-select-year'
   });
+
+  const entries = new App.Component.CardGallery('.gallery-entries', {
+    headingName: 'title',
+    contentName: 'field_body_entry',
+    endpoint: 'api/entriesJSON'
+  });
 })(App);
