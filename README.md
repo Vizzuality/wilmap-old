@@ -5,6 +5,11 @@ This repository contains the new WILMap web app of 2017.
 
 ![Cover picture](/code/themes/wilmap/screenshot.png?raw=true "Cover Home page")
 
+# Production
+To build the project for production you need to run the following command:
+```
+npm run build
+```
 # Developing
 
 The WILMap web app rides on [Drupal 8.2.5](https://www.drupal.org/project/drupal/releases/8.2.5).

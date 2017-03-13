@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docker-compose  up --build & gulp watch",
-    "watch": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "build": "npm install && ./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",

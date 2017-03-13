@@ -43,12 +43,6 @@ gulp.task('clean', () => {
   del.sync(CONFIG.dist);
 });
 
-gulp.task('pages', ['clean', 'components', 'helpers'], () => {
-  gulp.src(['./themes/wilmap/lib/**/*.js', '!./themes/wilmap/lib/components/*.js', '!./themes/wilmap/lib/helpers/*.js'])
-    .pipe(babel({ presets: ['latest', 'stage-3'] }))
-    .pipe(gulp.dest(CONFIG.dist));
-});
-
 gulp.task('components', () => {
   gulp.src('./themes/wilmap/lib/components/*.js')
     .pipe(babel({ presets: ['latest', 'stage-3'] }))
@@ -63,7 +57,13 @@ gulp.task('helpers', () => {
     .pipe(gulp.dest(CONFIG.dist));
 });
 
-gulp.task('watch', ['clean', 'components', 'helpers', 'pages'], () => {
+gulp.task('pages', ['clean', 'components', 'helpers'], () => {
+  gulp.src(['./themes/wilmap/lib/**/*.js', '!./themes/wilmap/lib/components/*.js', '!./themes/wilmap/lib/helpers/*.js'])
+    .pipe(babel({ presets: ['latest', 'stage-3'] }))
+    .pipe(gulp.dest(CONFIG.dist));
+});
+
+gulp.task('watch', ['pages', 'sass'], () => {
   livereload.listen();
   gulp.watch('./themes/wilmap/sass/**/*.scss', ['sass']);
   gulp.watch('./themes/wilmap/lib/**/*.js', ['pages']);
@@ -76,3 +76,5 @@ gulp.task('watch', ['clean', 'components', 'helpers', 'pages'], () => {
     livereload.changed(files);
   });
 });
+
+gulp.task('build', ['pages', 'sass', 'imagemin']);
