@@ -1,7 +1,5 @@
 'use strict';
 
-//  $('.list-country-search-map').append('<li>' + data[i].title + '</li>');
-
 App.Component.MapAccordion = class MapSidebar {
 
   constructor (el, settings) {
@@ -48,7 +46,7 @@ App.Component.MapAccordion = class MapSidebar {
   }
 
   /**
-   * Sets the first level of the accordion elements
+   * Inits the accordion sections
    */
   init() {
     // Create fragment where we'll render the sections
@@ -104,8 +102,13 @@ App.Component.MapAccordion = class MapSidebar {
     e.stopPropagation();
 
     const section = $(e.target).closest('li');
-    this.setCurrent(section.data('level'), section.data('nid'));
-    if (section.find('>ul').children().length) section.toggleClass('-open');
+    const level = section.data('level');
+    const nid = parseInt(section.data('nid'));
+    this.setCurrent(level, nid);
+    if (this.current[level] && section.find('>ul').children().length) section.toggleClass('-open');
+
+    if(this.hasOpenSection()) this.el.removeClass('-collapsed');
+    else this.el.addClass('-collapsed');
   }
 
   /**
@@ -114,11 +117,34 @@ App.Component.MapAccordion = class MapSidebar {
    * @param {Number} nid
    */
   setCurrent(level, nid) {
-    if(this.current[level] && nid !== this.current[level]) {
-      const previous = $(`[data-nid="${this.current[level]}"]`);
-      previous.removeClass('-open');
+    let distinct = true;
+    if(typeof this.current[level] !== 'undefined') {
+      distinct = this.current[level] !== nid;
+      this.resetCurrent(level);
     }
-    this.current[level] = nid !== this.current[level] ? nid : null;
+    this.current[level] = distinct ? nid : null;
+  }
+
+  /**
+   * Resets the current selected sections
+   * @param {String} level
+   */
+  resetCurrent(level) {
+    const previous = $(`[data-nid="${this.current[level]}"]`);
+    previous.removeClass('-open');
+
+    const openChild = previous.find('.-open');
+    openChild.removeClass('-open');
+    this.current[level] = null;
+    if(openChild.length) this.current[openChild.data('level')] = null;
+  }
+
+  /**
+   * Tests whether the accordion has an open section
+   */
+  hasOpenSection() {
+    return Object.keys(this.current)
+      .some(key => this.current[key] !== null);
   }
 
   /**
@@ -129,7 +155,8 @@ App.Component.MapAccordion = class MapSidebar {
     e.preventDefault();
     e.stopPropagation();
 
-    alert($(e.target).closest('li').find('>span').text());
+    const country = $(e.target).closest('li').find('>span').text();
+    console.info(country);
   }
 
   /**
