@@ -21,41 +21,5 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 55px;
-
-    .info-topics {
-      display: inline-block;
-      flex-basis: calc(50% - 70px);
-      margin-top: 20px;
-      padding: 30px;
-      transition: .2s linear;
-      background-color: rgba($third-color, .3);
-
-      &:hover {
-        background-color: $third-color;
-      }
-
-      div {
-        h3 {
-          color: $black;
-          font-size: $font-size-mediun;
-          font-weight: $font-weight-semi-light;
-          line-height: 1.36;
-        }
-
-        hr {
-          width: 140px;
-          height: 5px;
-          margin: 20px 0;
-          border: 0;
-          background-color: rgba($second-color, .2);
-        }
-      }
-
-      p {
-        // color: $blakc;
-        // font-size: $font-size-small;
-        // line-height: 1.88;
-      }
-    }
   }
 }
