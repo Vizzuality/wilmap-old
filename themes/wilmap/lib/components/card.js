@@ -2,7 +2,10 @@
 
 App.Component.Card = class Card {
 
-  constructor (settings) {
+  /**
+   * @param {Object} settings
+   */
+  constructor(settings) {
     this.options = Object.assign({}, settings);
     this.el = $('<div class="c-card"></div>');
 

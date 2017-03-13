@@ -2,6 +2,10 @@
 
 App.Component.MapAccordion = class MapSidebar {
 
+  /**
+   * @param {String|HTMLElement} el
+   * @param {Object} settings
+   */
   constructor (el, settings) {
     this.options = Object.assign({}, settings);
     this.el = $(el);
