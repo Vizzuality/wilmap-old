@@ -59,8 +59,9 @@
 
           li > span {
             font-size: $font-size-small;
-            font-weight: $font-weight-light;
+            font-weight: $font-weight-semi-light;
             color: $white;
+            text-transform: uppercase;
           }
         }
 
@@ -85,8 +86,9 @@
 
           li > span {
             font-size: $font-size-small;
-            font-weight: $font-weight-light;
+            font-weight: $font-weight-semi-light;
             color: $white;
+            text-transform: capitalize;
           }
         }
 
