@@ -105,11 +105,12 @@ App.Component.MapAccordion = class MapSidebar {
     const level = section.data('level');
     const nid = parseInt(section.data('nid'));
     this.setCurrent(level, nid);
-    if (this.current[level] && section.find('>ul').children().length) {
+
+    if (this.current[level] && section.find('>ul').children().length ) {
       section.toggleClass('-open');
       if(this.hasOpenSection()) return this.el.removeClass('-collapsed');
     }
-    this.el.addClass('-collapsed');
+    if(!section.closest('.-open').length) this.el.addClass('-collapsed');
   }
 
   /**
