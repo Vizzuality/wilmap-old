@@ -39,6 +39,9 @@
     > ul {
       display: none;
       margin-top: 16px;
+      max-height: 300px;
+      overflow: auto;
+      padding-bottom: 20px;
 
       li > span {
         font-size: $font-size-small;
@@ -52,8 +55,6 @@
       opacity: 1;
 
       > ul {
-        max-height: 300px;
-        overflow: auto;
         display: block;
       }
     }
@@ -68,6 +69,9 @@
     > ul {
       display: none;
       margin-top: 20px;
+      padding-bottom: 20px;
+      max-height: 300px;
+      overflow: auto;
 
       li > span {
         font-size: $font-size-small;
@@ -80,8 +84,6 @@
     &.-open {
 
       > ul {
-        max-height: 300px;
-        overflow: auto;
         display: block;
       }
     }
