@@ -11,11 +11,11 @@
     padding-left: 40px;
   }
 
-  &.-collapsed > .continent {
+  &.-collapsed > .accordion-section {
     opacity: 1;
   }
 
-  .continent {
+  .accordion-section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,12 +39,15 @@
     > ul {
       display: none;
       margin-top: 16px;
+      max-height: 300px;
+      overflow: auto;
+      padding-bottom: 20px;
 
       li > span {
         font-size: $font-size-small;
         font-weight: $font-weight-semi-light;
         color: $white;
-        text-transform: uppercase;
+        text-transform: capitalize;
       }
     }
 
@@ -61,11 +64,14 @@
     }
   }
 
-  .region {
+  .accordion-subsection {
 
     > ul {
       display: none;
       margin-top: 20px;
+      padding-bottom: 20px;
+      max-height: 300px;
+      overflow: auto;
 
       li > span {
         font-size: $font-size-small;

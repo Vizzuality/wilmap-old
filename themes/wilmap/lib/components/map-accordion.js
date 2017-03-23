@@ -1,12 +1,10 @@
 'use strict';
-
 App.Component.MapAccordion = class MapSidebar {
-
   /**
    * @param {String|HTMLElement} el
    * @param {Object} settings
    */
-  constructor (el, settings) {
+  constructor(el, settings) {
     this.options = Object.assign({}, settings);
     this.el = $(el);
     this.el.addClass('c-map-accordion');
@@ -21,32 +19,22 @@ App.Component.MapAccordion = class MapSidebar {
    */
   fetch() {
     this.data = {};
-    return $.getJSON('api/continentsJSON')
+    return $.getJSON('api/regionsJSON')
       .then((res) => {
-        for (let continent of res) {
-          if (!continent.nid) continue;
-          this.data[continent.nid] = { ...continent, regions: {} };
-        }
-        return $.getJSON('api/regionsJSON');
-      })
-      .then((res) => {
-        for (let region of res) {
-          if (!region.field_continent) continue;
-          this.data[region.field_continent].regions = {
-            ...this.data[region.field_continent].regions,
-            [region.nid]: region
-          };
-        }
+        res.forEach((region) => {
+          this.data = { ...this.data, [region.nid]: region };
+        });
         return $.getJSON('api/countriesJSON');
       })
       .then((res) => {
-        for (let country of res) {
-          if (!country.field_continent_country || !country.field_region) continue;
-          this.data[country.field_continent_country].regions[country.field_region].countries = {
-            ...this.data[country.field_continent_country].regions[country.field_region].countries,
-            [country.nid]: country
-          };
-        }
+        res.forEach((country) => {
+          if (country.field_region) {
+            this.data[country.field_region].countries = {
+              ...this.data[country.field_region].countries,
+              [country.nid]: country
+            };
+          }
+        });
       });
   }
 
@@ -56,44 +44,28 @@ App.Component.MapAccordion = class MapSidebar {
   init() {
     // Create fragment where we'll render the sections
     this.accordion = $(document.createDocumentFragment());
-    Object.keys(this.data).forEach((key) => {
-      const continent = this.data[key];
-      const continentConfig = {
-        className: 'continent',
-        childrenClass: 'js-regions',
-        title: continent.title,
-        nid: continent.nid
+    Object.keys(this.data).forEach((regionKey) => {
+      const region = this.data[regionKey];
+      const regionConfig = {
+        className: 'accordion-section',
+        childrenClass: 'js-countries',
+        title: region.field_title,
+        nid: region.nid
       };
-      // create a continent lvl section
-      const continentSection = MapSidebar.createSection(continentConfig, this.toggleSection.bind(this));
-
-      Object.keys(continent.regions).forEach((key) => {
-        const region = continent.regions[key];
-        const regionConfig = {
-          className: 'region',
-          childrenClass: 'js-countries',
-          title: region.field_title,
-          nid: region.nid
+      const regionSection = MapSidebar.createSection(regionConfig, this.toggleSection.bind(this));
+      Object.keys(region.countries).forEach((countryKey) => {
+        const country = region.countries[countryKey];
+        const countryConfig = {
+          className: 'accordion-subsection',
+          title: country.title,
+          nid: country.nid
         };
-        // create a region lvl section and append it to the continent section previously created
-        const regionSection = continentSection.find('.js-regions');
-        regionSection.append(MapSidebar.createSection(regionConfig, this.toggleSection.bind(this)));
-
-        Object.keys(region.countries).forEach((key) => {
-          const country = region.countries[key];
-          const countryConfig = {
-            className: 'country',
-            title: country.title,
-            nid: country.nid
-          };
-          // create a country section and append it to the region section previously created
-          // which has been previusly appended to its continent
-          const countriesSection = regionSection.find('.js-countries');
-          countriesSection.append(MapSidebar.createSection(countryConfig, this.onSelectLeaf.bind(this)))
-        });
+        // create a country section and append it to the region section previously created
+        const countriesSection = regionSection.find('.js-countries');
+        countriesSection.append(MapSidebar.createSection(countryConfig, this.onSelectLeaf.bind(this)))
       });
       // append the continent section already containing regions and countries to the accordion
-      this.accordion.append(continentSection);
+      this.accordion.append(regionSection);
     });
     this.render();
   }
@@ -105,17 +77,15 @@ App.Component.MapAccordion = class MapSidebar {
   toggleSection(e) {
     e.preventDefault();
     e.stopPropagation();
-
     const section = $(e.target).closest('li');
     const level = section.data('level');
-    const nid = parseInt(section.data('nid'));
+    const nid = parseInt(section.data('nid'), 10);
     this.setCurrent(level, nid);
-
-    if (this.current[level] && section.find('>ul').children().length ) {
+    if (this.current[level] && section.find('>ul').children().length) {
       section.toggleClass('-open');
-      if(this.hasOpenSection()) return this.el.removeClass('-collapsed');
+      if (this.hasOpenSection()) return this.el.removeClass('-collapsed');
     }
-    if(!section.closest('.-open').length) this.el.addClass('-collapsed');
+    if (!section.closest('.-open').length) this.el.addClass('-collapsed');
   }
 
   /**
@@ -125,7 +95,7 @@ App.Component.MapAccordion = class MapSidebar {
    */
   setCurrent(level, nid) {
     let distinct = true;
-    if(typeof this.current[level] !== 'undefined') {
+    if (typeof this.current[level] !== 'undefined') {
       distinct = this.current[level] !== nid;
       this.resetCurrent(level);
     }
@@ -139,11 +109,10 @@ App.Component.MapAccordion = class MapSidebar {
   resetCurrent(level) {
     const previous = $(`[data-nid="${this.current[level]}"]`);
     previous.removeClass('-open');
-
     const openChild = previous.find('.-open');
     openChild.removeClass('-open');
     this.current[level] = null;
-    if(openChild.length) this.current[openChild.data('level')] = null;
+    if (openChild.length) this.current[openChild.data('level')] = null;
   }
 
   /**
@@ -161,7 +130,6 @@ App.Component.MapAccordion = class MapSidebar {
   onSelectLeaf(e) {
     e.preventDefault();
     e.stopPropagation();
-
     const country = $(e.target).closest('li').find('>span').text();
     console.info(country);
   }
@@ -184,7 +152,6 @@ App.Component.MapAccordion = class MapSidebar {
       .attr('data-level', className)
       .attr('data-nid', nid)
       .click(onClick);
-
     if (childrenClass) section.append(`<ul class="${childrenClass}"></ul>`);
     return section;
   }
@@ -192,5 +159,4 @@ App.Component.MapAccordion = class MapSidebar {
   render() {
     this.el.html(this.accordion);
   }
-
 };
