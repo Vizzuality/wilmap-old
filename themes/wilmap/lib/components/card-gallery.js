@@ -31,9 +31,14 @@ App.Component.CardGallery = class CardGallery {
   init() {
     this.template = $(document.createDocumentFragment());
     this.data.forEach((topic) => {
+      const config = this.options.card;
       const card = new App.Component.Card({
-        heading: topic[this.options.headingName],
-        content: topic[this.options.contentName]
+        extended: config.extended,
+        heading: topic[config.headingName],
+        subheading: topic[config.subheadingName],
+        details: topic[config.detailsName],
+        location: topic[config.locationName],
+        content: topic[config.contentName]
       });
       this.template.append(card.el);
     });
