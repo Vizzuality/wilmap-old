@@ -67,13 +67,13 @@ This project includes a dump of each table under **`database/w_backup.sql`**.
 #### Importing from source to local database server
 
 ```
-mysql -u <user> -p <database_name> < database/w_backup.sql
+gunzip < database/w_backup.sql.gz | mysql -u <user> -p <database_name>
 ```
 
 #### Exporting from local database server to source
 
 ```
-mysqldump -u <user> -p <database_name> > .database/w_backup.sql
+mysqldump -u <user> -p <database_name> | gzip > .database/w_backup.sql.gz
 ```
 
 ### Using a docker database container
@@ -81,7 +81,7 @@ mysqldump -u <user> -p <database_name> > .database/w_backup.sql
 #### Importing from source to local database server
 
 ```
-docker exec -it mysql-wilmap script /dev/null -c "mysql -u wilmap -pwilmap_root  wilmap_db < database/w_backup.sql"
+docker exec -it mysql-wilmap script /dev/null -c "gunzip < database/w_backup.sql.gz | mysql -u wilmap -pwilmap_root  wilmap_db"
 ```
 
 #### Exporting from local database server to source
@@ -95,5 +95,5 @@ docker exec -it drupal_wilmap drush cache-rebuild
 Then, use this command to export the database:
 
 ```
-docker exec -it mysql-wilmap script /dev/null -c "mysqldump -u wilmap -pwilmap_root --default-character-set=utf8 --result-file=database/w_backup.sql  wilmap_db"
+docker exec -it mysql-wilmap script /dev/null -c "mysqldump -u wilmap -pwilmap_root --default-character-set=utf8 wilmap_db  | gzip > database/w_backup.sql.gz"
 ```
