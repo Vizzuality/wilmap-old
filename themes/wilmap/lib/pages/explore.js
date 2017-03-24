@@ -34,8 +34,14 @@
   });
 
   const entries = new App.Component.CardGallery('.gallery-entries', {
-    headingName: 'title',
-    contentName: 'field_body_entry',
+    card: {
+      extended: true,
+      headingName: 'type',
+      subheadingName: 'title',
+      contentName: 'field_body_entry',
+      locationName: 'field_location_entry',
+      detailsName: 'field_category_entry',
+    },
     endpoint: 'api/entriesJSON'
   });
 })(App);

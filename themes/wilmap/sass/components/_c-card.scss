@@ -33,5 +33,51 @@
     line-height: 1.88;
     font-family: $font-primary;
     font-weight: $font-size-small;
+    overflow: auto;
+    height: 230px;
+  }
+
+  .card-location,
+  .card-details,
+  .card-subheading {
+    display: none;
+  }
+
+  &.-extended {
+
+    .card-location {
+      display: block;
+      font-size: $font-size-small;
+      font-family: $font-primary;
+      color: $second-color;
+      margin-bottom: 5px;
+      text-transform: capitalize;
+    }
+
+    .card-heading {
+      color: $main-color;
+      text-transform: uppercase;
+      font-family: $font-primary;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-small;
+    }
+
+    .card-subheading {
+      display: block;
+      font-weight: $font-weight-bold;
+      font-family: $font-primary;
+      font-size: 16px;
+      color: $black;
+      text-transform: capitalize;
+    }
+
+    .card-details {
+      display: block;
+      color: $second-color;
+      font-family: $font-primary;
+      font-size: 16px;
+      line-height: 1.88;
+      text-transform: capitalize;
+    }
   }
 }
