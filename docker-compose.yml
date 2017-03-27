@@ -28,4 +28,4 @@ services:
     restart: always
     volumes:
       - ./data/mysql:/var/lib/mysql
-      - ./backup:/backup
+      - ./database:/database
