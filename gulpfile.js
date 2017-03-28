@@ -46,6 +46,10 @@ gulp.task('clean', () => {
 gulp.task('components', () => {
   gulp.src('./themes/wilmap/lib/components/*.js')
     .pipe(babel({ presets: ['latest', 'stage-3'] }))
+    .on('error', function (e) {
+      console.log('>>> ERROR', e);
+      this.emit('end');
+    })
     .pipe(concat('components.js'))
     .pipe(gulp.dest(CONFIG.dist));
 });
@@ -53,6 +57,10 @@ gulp.task('components', () => {
 gulp.task('helpers', () => {
   gulp.src('./themes/wilmap/lib/helpers/*.js')
     .pipe(babel({ presets: ['latest', 'stage-3'] }))
+    .on('error', function (e) {
+      console.log('>>> ERROR', e);
+      this.emit('end');
+    })
     .pipe(concat('helpers.js'))
     .pipe(gulp.dest(CONFIG.dist));
 });
@@ -60,6 +68,10 @@ gulp.task('helpers', () => {
 gulp.task('pages', ['clean', 'components', 'helpers'], () => {
   gulp.src(['./themes/wilmap/lib/**/*.js', '!./themes/wilmap/lib/components/*.js', '!./themes/wilmap/lib/helpers/*.js'])
     .pipe(babel({ presets: ['latest', 'stage-3'] }))
+    .on('error', function (e) {
+      console.log('>>> ERROR', e);
+      this.emit('end');
+    })
     .pipe(gulp.dest(CONFIG.dist));
 });
 
