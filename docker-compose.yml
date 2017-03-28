@@ -5,7 +5,10 @@ services:
     build: .
     container_name: drupal_wilmap
     volumes:
-      - ./:/var/www/html/
+      - ./modules:/var/www/html/modules
+      - ./profiles:/var/www/html/profiles
+      - ./themes:/var/www/html/themes
+      - ./sites/:/var/www/html/sites
       - ./data/private:/var/www/private
     links:
       - mysql
