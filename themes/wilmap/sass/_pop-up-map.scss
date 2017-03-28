@@ -1,0 +1,72 @@
+.pop-up-map {
+  display: flex;
+  flex-direction: row;
+  min-width: 320px;
+  max-width: 320px;
+  background-color: $white;
+
+  &::after {
+    content: '';
+    bottom: -16px;
+    left: -13px;
+    width: 0;
+    height: 0;
+    clear: both;
+    transform: rotate(135deg);
+    border-top: 20px solid $main-color;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    position: absolute;
+  }
+
+  .number-articles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+    background-color: $main-color;
+
+    h3 {
+      margin-top: 38px;
+      font-weight: $font-weight-light;
+    }
+
+    span {
+      display: inline-block;
+      margin-top: 15px;
+    }
+  }
+
+  .info-country {
+    width: 100%;
+    padding: 20px 0 0;
+
+    strong {
+      padding: 0 30px;
+      font-weight: $font-weight-semi-bold;
+    }
+
+    ul {
+      padding: 0 30px;
+
+      li {
+        color: $second-color;
+
+        b {
+          display: inline-block;
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    }
+
+    .button-country {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      margin-top: 25px;
+      background-color: $third-color;
+      color: $black;
+    }
+  }
+}
