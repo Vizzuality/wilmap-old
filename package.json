@@ -35,5 +35,9 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglifyjs": "^0.6.2",
     "imagemin-pngquant": "^4.2.0"
+  },
+  "dependencies": {
+    "mapbox-gl": "^0.34.0",
+    "select2": "^4.0.3"
   }
 }
