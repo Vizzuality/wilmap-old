@@ -7,10 +7,11 @@
     zoom: 2
   });
 
+  const popupTemplate = _.template($('#map-popup-template').html());
+
   map.on('load', () => {
     map.setFilter('countries', ['==', 'name', '']);
     map.setFilter('continents', ['==', 'CONTINENT', '']);
-    // map.setPaintProperty('bg_countries', 'fill-color', '#faafee');
   });
 
   let continentSelected;
@@ -35,7 +36,16 @@
     } else {
       // select country
       map.setFilter('countries', ['==', 'name', country.properties.name]);
+
+      const popup = new mapboxgl.Popup()
+        .setLngLat(map.unproject(e.point))
+        .setHTML(popupTemplate({
+          name: country.properties.name,
+          link: 'https://www.yobyot.com/wp-content/uploads/2011/04/hatedrupal.jpg'
+        }))
+        .addTo(map);
     }
   });
+
   // const sidebar = new App.Component.MapAccordion('.list-country-search-map');
 })();
