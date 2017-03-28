@@ -40,5 +40,4 @@ sites/simpletest
 core/phpcs.xml
 core/phpunit.xml
 
-themes/*/dist
 themes/wilmap/css/style.*
