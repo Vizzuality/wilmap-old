@@ -41,3 +41,5 @@ core/phpcs.xml
 core/phpunit.xml
 
 themes/wilmap/css/style.*
+
+themes/wilmap/dist
