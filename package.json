@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docker-compose up --build & gulp watch",
-    "watch": "./node_modules/.bin/gulp watch",
-    "build": "npm install && ./node_modules/.bin/gulp build"
+    "watch": "npm run copy-vendor-deps && ./node_modules/.bin/gulp watch",
+    "build": "npm install && ./node_modules/.bin/gulp build",
+    "copy-vendor-deps": "./bin/copy-vendor-deps.sh"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,6 @@
     "imagemin-pngquant": "^4.2.0"
   },
   "dependencies": {
-    "mapbox-gl": "^0.34.0",
     "select2": "^4.0.3"
   }
 }

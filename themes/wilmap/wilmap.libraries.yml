@@ -2,8 +2,8 @@ global-css:
   css:
     theme:
       css/style.css: {}
-      css/select2.css: {}
-      css/mapbox-gl.css: {}
+      vendor/css/select2.css: {}
+      vendor/css/mapbox-gl.css: {}
 
 global-js:
   js:
@@ -11,8 +11,8 @@ global-js:
     dist/components.js: {}
     dist/helpers.js: {}
     dist/main.js: {}
-    js/select2.full.min.js: {}
-    js/mapbox-gl.js: {}
+    vendor/js/select2.full.min.js: {}
+    vendor/js/mapbox-gl.js: {}
 
   dependencies:
     - core/jquery
@@ -38,4 +38,3 @@ news-js:
 news-detail-js:
   js:
     dist/pages/news-detail.js: {}
-
