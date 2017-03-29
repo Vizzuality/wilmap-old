@@ -3,7 +3,6 @@ global-css:
     theme:
       css/style.css: {}
       vendor/css/select2.css: {}
-      vendor/css/mapbox-gl.css: {}
 
 global-js:
   js:
@@ -12,12 +11,18 @@ global-js:
     dist/helpers.js: {}
     dist/main.js: {}
     vendor/js/select2.full.min.js: {}
-    vendor/js/mapbox-gl.js: {}
 
   dependencies:
     - core/jquery
     - core/drupal
     - core/drupalSettings
+
+mapbox:
+  js:
+    vendor/js/mapbox-gl.js: {}
+  css:
+    theme:
+      vendor/css/mapbox-gl.css: {}
 
 map-js:
   js:
