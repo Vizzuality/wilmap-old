@@ -42,5 +42,6 @@ core/phpunit.xml
 
 themes/wilmap/css/style.*
 
+themes/wilmap/css
 themes/wilmap/dist
 themes/wilmap/vendor
