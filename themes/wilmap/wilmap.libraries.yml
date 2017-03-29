@@ -11,6 +11,7 @@ global-js:
     dist/helpers.js: {}
     dist/main.js: {}
     vendor/js/select2.full.min.js: {}
+    vendor/js/lodash.min.js: {}
 
   dependencies:
     - core/jquery
