@@ -2,7 +2,7 @@ global-css:
   css:
     theme:
       css/style.css: {}
-      vendor/css/select2.css: {}
+      vendor/css/select2.min.css: {}
 
 global-js:
   js:
