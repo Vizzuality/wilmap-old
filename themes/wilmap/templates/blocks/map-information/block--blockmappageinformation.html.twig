@@ -24,9 +24,38 @@
   <div>
 </script>
 
+<script type="text/template" id='map-accordion-template'>
+  <% continents.forEach(function(continent) { %>
+    <li class="js-continent-container continent" data-id="<%= continent.title %>">
+      <span class="js-continent">
+        <%= continent.title %>
+      </span>
+      <ul>
+      <% (continent.regions || []).forEach(function(region) { %>
+        <li class="region">
+          <span><%= region.field_title %></span>
+        </li>
+      <% }) %>
+      </ul>
+      <ul>
+      <% (continent.countries || []).forEach(function(country) { %>
+        <li class="country">
+          <span class="js-country" data-id="<%= country.title %>">
+            <%= country.title %>
+          </span>
+        </li>
+      <% }) %>
+      </ul>
+    </li>
+
+  <% }) %>
+</script>
+
 <div class="map" id="map">
   <div class="search-map">
-    <ul class="list-country-search-map -collapsed">
+    <ul class="js-accordion list-country-search-map c-map-accordion -collapsed">
+    </ul>
+    <ul class="js-list-country-search-map list-country-search-map -collapsed">
     </ul>
   </div>
 </div>

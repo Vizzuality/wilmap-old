@@ -25,6 +25,10 @@ mapbox:
     theme:
       vendor/css/mapbox-gl.css: {}
 
+turf:
+  js:
+    https://npmcdn.com/@turf/turf@3.14.3/turf.min.js: { type: external, minified: true }
+
 map-js:
   js:
     dist/pages/map.js: {}
