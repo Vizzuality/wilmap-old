@@ -22,4 +22,4 @@ regions:
   contentAbout: 'contentAbout'
   footer: 'Footer'
 
-features: true
+features:
