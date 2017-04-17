@@ -52,7 +52,7 @@
     .setLngLat(center)
     .setHTML(popupTemplate({
       name: countryId,
-      link: 'https://www.yobyot.com/wp-content/uploads/2011/04/hatedrupal.jpg'
+      link: `/country/${countryId}`
     }))
     .addTo(map);
   };
