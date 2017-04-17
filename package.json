@@ -39,6 +39,7 @@
     "imagemin-pngquant": "^4.2.0"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "mapbox-gl": "^0.34.0",
     "select2": "^4.0.3"
   }
