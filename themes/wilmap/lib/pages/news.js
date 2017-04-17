@@ -1,6 +1,11 @@
 'use strict';
 
 (function () {
+  const tabs = new App.Component.Tabs('.c-tabs', {
+    fetch: true,
+    endpoint: 'api/categoriesJSON'
+  });
+
   const gallerynews = document.querySelector('.gallery-scroll');
   let totalPages = 0;
   const category = 'all';
