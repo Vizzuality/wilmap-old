@@ -1,6 +1,12 @@
 'use strict';
 
 (function () {
+  const tabs = new App.Component.Tabs('.list-categories', {
+    fetch: true,
+    endpoint: 'api/categoriesJSON',
+    callback: getPager
+  });
+
   const gallerynews = document.querySelector('.gallery-scroll');
   let totalPages = 0;
   const category = 'all';
@@ -110,28 +116,8 @@
     });
   }
 
-  function getCategories () {
-    $.getJSON('api/categoriesJSON', function (data) {
-      for (var i = 0; i < data.length; i += 1) {
-        var contentFilter = '<li data-value="' + data[i].nid + '" class="option-category">' + data[i].title + '</li>';
-        $('.list-categories').append(contentFilter);
-      }
-      $('.option-category').click(function clickCategory () {
-        $('.option-category').removeClass('-selected');
-        var dataValue = $(this).data('value');
-        var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-        $('.small-bar').css('top', offset - 10 + 'px');
-        $('.small-bar').css('height', $(this).height() + 20 + 'px');
-        $(this).addClass('-selected');
-        getPager(dataValue);
-      });
-    });
-  }
-
   function init () {
     initLoaders();
-    getCategories();
-    // Call pager function then call show data function
     getPager(category);
   }
 

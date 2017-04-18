@@ -40,6 +40,9 @@ sites/simpletest
 core/phpcs.xml
 core/phpunit.xml
 
+# Ignore DS_Store files
+.DS_Store
+
 themes/wilmap/css/style.*
 
 themes/wilmap/css
