@@ -48,3 +48,7 @@ news-js:
 news-detail-js:
   js:
     dist/pages/news-detail.js: {}
+
+country-detail-js:
+  js:
+    dist/pages/country-detail.js: {}

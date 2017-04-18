@@ -72,33 +72,21 @@
  * @ingroup themeable
  */
 #}
-{{ attach_library('wilmap/news-detail-js') }}
-<div class="wrap l-layout-page l-news-detail news-detail-page">
+{{ attach_library('wilmap/country-detail-js') }}
+{{ attach_library('wilmap/turf') }}
+{{ attach_library('wilmap/mapbox') }}
+<div class="wrap l-layout-page l-country-detail news-detail-page">
 
   <div class="title-page">
-    <div class="image">
+    <div class="map" id="mapCover">
     </div>
-    <a class="text-subtitle -big back-text" href="/news">
-      back to news
-    </a>
-    <h1 class="text-main-header -black title-news-detail"></h1>
+    <h1 class="text-main-header -black title-news-detail">{{ label }}</h1>
   </div>
   <div class="content-page">
-    <span class="date date-news-detail"></span>
-    <div class="content-news-detail">
+    <div class="content-country-detail">
+      <div class="country-description paragraph -black">
+        {{content.field_body_country|field_value}}
+      </div>
     </div>
   </div>
-
-  <hr>
-  <div class="related-news">
-    <h3 class="text-secondary-header -black">
-      Related news
-    </h3>
-    <div class="gallery-news-related">
-    </div>
-    <a class="butn -primary" href="#">
-      More news
-    </a>
-  </div>
-
 </div>
