@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  const tabs = new App.Component.Tabs('.c-tabs', {
+  const tabs = new App.Component.Tabs('.list-categories', {
     fetch: true,
     endpoint: 'api/categoriesJSON'
   });
@@ -140,6 +140,6 @@
     getPager(category);
   }
 
-  init();
+  // init();
 
 })();

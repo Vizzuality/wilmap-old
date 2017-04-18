@@ -29,6 +29,18 @@ App.Component.Tabs = class Tabs {
       });
   }
 
+  setListeners() {
+    this.el.children().click(function() {
+      $('.option-category').removeClass('-selected');
+      var dataValue = $(this).data('value');
+      var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+      $('.small-bar').css('top', offset - 10 + 'px');
+      $('.small-bar').css('height', $(this).height() + 20 + 'px');
+      $(this).addClass('-selected');
+      // getPager(dataValue);
+    });
+  }
+
   /**
    * Initializes the gallery
    */
@@ -40,6 +52,7 @@ App.Component.Tabs = class Tabs {
     });
 
     this.render();
+    // this.setListeners();
   }
 
   render() {
