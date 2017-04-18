@@ -11,10 +11,16 @@
       text-indent: 8px;
     }
 
+    .butn-go-map {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
     .image,
     .map {
       position: absolute;
-      top: -20px;
+      top: 0;
       right: 0;
       width: $width-image;
       height: $height-image;
@@ -29,7 +35,7 @@
 
   .content-page {
     max-width: 620px;
-    margin: 30px auto 60px;
+    margin: 60px auto;
     color: $black;
     font-size: $font-size-small;
     line-height: 1.88;
@@ -48,6 +54,12 @@
       color: $black;
       font-size: $font-size-small;
       line-height: 1.88;
+    }
+  }
+
+  .tab-content {
+    .hidden-tab {
+      display: none;
     }
   }
 }

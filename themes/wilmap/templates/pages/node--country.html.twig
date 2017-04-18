@@ -78,15 +78,17 @@
 <div class="wrap l-layout-page l-country-detail news-detail-page">
 
   <div class="title-page">
-    <div class="map" id="mapCover">
-    </div>
+    <div class="map" id="mapCover"></div>
+    <a class="butn -primary butn-go-map" href="/map">go to map</a>
+    <div class="back-text">{{content.field_continent_country|field_value}}</div>
     <h1 class="text-main-header -black title-news-detail">{{ label }}</h1>
   </div>
-  <div class="content-page">
+  <div class="content-page tab-content">
     <div class="content-country-detail">
       <div class="country-description paragraph -black">
         {{content.field_body_country|field_value}}
       </div>
     </div>
+    <div class="content-country-news hidden-tab"></div>
   </div>
 </div>

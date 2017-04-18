@@ -1,5 +1,6 @@
 (($, settings) => {
   let map;
+  const nodeid = settings.path.currentPath.split('/').pop();
   const initMap = () => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbWFwMiIsImEiOiJjajB0a2tvamowMmxmMndvN3IzdWc0a2RkIn0.CD_s7nTMkFLz5ZA4NpOz0A';
     map = new mapboxgl.Map({
@@ -16,7 +17,13 @@
   };
 
   const initTabs = () => {};
+  const showCountryEntries = () => {};
+  const showCountryNews = () => {
+    $('.content-country-news').html('hello');
+  };
 
   initMap();
+  showCountryEntries();
+  showCountryNews();
   initTabs()
 })(jQuery, drupalSettings);
