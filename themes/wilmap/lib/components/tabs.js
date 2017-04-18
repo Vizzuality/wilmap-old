@@ -9,6 +9,7 @@ App.Component.Tabs = class Tabs {
   constructor(el, settings) {
     this.options = Object.assign({}, settings);
     this.el = $(el);
+    this.callback = this.options.callback;
     if (this.options.fetch) {
       this.fetch()
       .then(this.init.bind(this));
@@ -29,15 +30,16 @@ App.Component.Tabs = class Tabs {
       });
   }
 
-  setListeners() {
-    this.el.children().click(function() {
-      $('.option-category').removeClass('-selected');
+  setListeners(callback) {
+    this.el.children('li').click(function() {
+      $('li').removeClass('-selected');
       var dataValue = $(this).data('value');
       var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
       $('.small-bar').css('top', offset - 10 + 'px');
       $('.small-bar').css('height', $(this).height() + 20 + 'px');
       $(this).addClass('-selected');
-      // getPager(dataValue);
+      // update tab content
+      callback(dataValue);
     });
   }
 
@@ -52,10 +54,10 @@ App.Component.Tabs = class Tabs {
     });
 
     this.render();
-    // this.setListeners();
+    this.setListeners(this.callback);
   }
 
   render() {
-    this.el.html(this.template);
+    this.el.append(this.template);
   }
 };
