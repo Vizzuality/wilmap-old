@@ -32,14 +32,16 @@ App.Component.Tabs = class Tabs {
 
   setListeners(callback) {
     this.el.children('li').click(function() {
-      $('li').removeClass('-selected');
-      var dataValue = $(this).data('value');
-      var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-      $('.small-bar').css('top', offset - 10 + 'px');
-      $('.small-bar').css('height', $(this).height() + 20 + 'px');
-      $(this).addClass('-selected');
-      // update tab content
-      callback(dataValue);
+      if (!$(this).hasClass('-selected')) {
+        $('li').removeClass('-selected');
+        var dataValue = $(this).data('value');
+        var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
+        $('.small-bar').css('top', offset - 10 + 'px');
+        $('.small-bar').css('height', $(this).height() + 20 + 'px');
+        $(this).addClass('-selected');
+        // update tab content
+        callback(dataValue);
+      }
     });
   }
 
