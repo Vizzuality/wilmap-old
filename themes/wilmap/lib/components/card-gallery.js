@@ -38,7 +38,8 @@ App.Component.CardGallery = class CardGallery {
         subheading: topic[config.subheadingName],
         details: topic[config.detailsName],
         location: topic[config.locationName],
-        content: topic[config.contentName]
+        content: topic[config.contentName],
+        alias: topic.path
       });
       this.template.append(card.el);
     });
