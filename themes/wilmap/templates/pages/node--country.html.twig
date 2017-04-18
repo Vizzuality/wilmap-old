@@ -75,20 +75,41 @@
 {{ attach_library('wilmap/country-detail-js') }}
 {{ attach_library('wilmap/turf') }}
 {{ attach_library('wilmap/mapbox') }}
-<div class="wrap l-layout-page l-country-detail news-detail-page">
-
-  <div class="title-page">
-    <div class="map" id="mapCover"></div>
-    <a class="butn -primary butn-go-map" href="/map">go to map</a>
-    <div class="back-text">{{content.field_continent_country|field_value}}</div>
-    <h1 class="text-main-header -black title-news-detail">{{ label }}</h1>
+<div class="l-layout-page l-country-detail news-detail-page">
+  <div class="wrap ">
+    <div class="title-page">
+      <div class="map" id="mapCover"></div>
+      <a class="butn -primary butn-go-map" href="/map">go to map</a>
+      <div class="back-text">{{content.field_continent_country|field_value}}</div>
+      <h1 class="text-main-header -black title-news-detail">{{ label }}</h1>
+    </div>
+    <div class="content-page tab-content">
+      <aside class="nav-categories">
+        <ul class="list-categories">
+          <li data-value="all" class="option-category -selected">description</li>
+        </ul>
+      </aside>
+      <div class="bar-nav">
+        <div class="small-bar"></div>
+      </div>
+      <div class="content-country-detail">
+        <div class="country-description paragraph -black">
+          {{content.field_body_country|field_value}}
+        </div>
+      </div>
+      <div class="content-country-news hidden-tab"></div>
+    </div>
   </div>
-  <div class="content-page tab-content">
-    <div class="content-country-detail">
-      <div class="country-description paragraph -black">
-        {{content.field_body_country|field_value}}
+  <div class="banner-take-part">
+    <div class="contain-text">
+      <h3 class="text-secondary-header -white">Take part</h3>
+      <p class="paragraph -white description-text">
+        Please contact us if you would like to join this project, provide feedback or suggest updates to a specific country page.
+      </p>
+      <div class="contain-buttons">
+        <a class="butn -tertiary-white contact-button" href="#">contact us</a>
+        <a class="butn -tertiary-dark" href="#">log in</a>
       </div>
     </div>
-    <div class="content-country-news hidden-tab"></div>
   </div>
 </div>

@@ -1,6 +1,13 @@
 (($, settings) => {
   let map;
   const nodeid = settings.path.currentPath.split('/').pop();
+
+  const tabs = new App.Component.Tabs('.list-categories', {
+    fetch: true,
+    endpoint: '/api/categoriesJSON',
+    // callback: getPager
+  });
+
   const initMap = () => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbWFwMiIsImEiOiJjajB0a2tvamowMmxmMndvN3IzdWc0a2RkIn0.CD_s7nTMkFLz5ZA4NpOz0A';
     map = new mapboxgl.Map({
