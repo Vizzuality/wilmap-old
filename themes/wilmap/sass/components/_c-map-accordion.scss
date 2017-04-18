@@ -44,6 +44,9 @@
         font-size: $font-size-small;
         font-weight: $font-weight-semi-light;
         color: $white;
+      }
+
+      .region > span {
         text-transform: uppercase;
       }
     }
@@ -58,28 +61,6 @@
 
     &:first-of-type > span {
       margin-top: 0;
-    }
-  }
-
-  .region {
-
-    > ul {
-      display: none;
-      margin-top: 20px;
-
-      li > span {
-        font-size: $font-size-small;
-        font-weight: $font-weight-semi-light;
-        color: $white;
-        text-transform: capitalize;
-      }
-    }
-
-    &.-open {
-
-      > ul {
-        display: block;
-      }
     }
   }
 }

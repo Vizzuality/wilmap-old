@@ -11,6 +11,7 @@ global-js:
     dist/helpers.js: {}
     dist/main.js: {}
     vendor/js/select2.full.min.js: {}
+    vendor/js/lodash.min.js: {}
 
   dependencies:
     - core/jquery
@@ -23,6 +24,10 @@ mapbox:
   css:
     theme:
       vendor/css/mapbox-gl.css: {}
+
+turf:
+  js:
+    https://npmcdn.com/@turf/turf@3.14.3/turf.min.js: { type: external, minified: true }
 
 map-js:
   js:

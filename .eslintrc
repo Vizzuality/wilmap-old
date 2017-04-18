@@ -7,7 +7,10 @@
   },
   "globals": {
     "$": true,
-    "App": true
+    "App": true,
+    "mapboxgl": true,
+    "_": true,
+    "turf": true
   },
   "parserOptions": {
     "ecmaVersion": 7,
@@ -18,6 +21,10 @@
   },
   "extends": "airbnb",
   "rules": {
+    "max-len": [
+      "error",
+      140
+    ],
     "no-console": ["error", {
       "allow": ["warn", "error", "info"]
     }],
