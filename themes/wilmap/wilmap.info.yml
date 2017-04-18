@@ -21,5 +21,6 @@ regions:
   contentMap: 'contentMap'
   contentAbout: 'contentAbout'
   footer: 'Footer'
+  jsTemplates: 'jsTemplates'
 
 features: true
