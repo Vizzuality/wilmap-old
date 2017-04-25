@@ -18,7 +18,7 @@
       $('.content-news-detail').html(data[0].field_summary);
 
       $.ajax({
-        url: '/api/newsJSON?field_category_target_id=' + categoryId,
+        url: '/api/newsJSON?tid=' + categoryId,
         method: 'GET',
         headers: {
           Accept: 'application/json',

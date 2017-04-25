@@ -25,7 +25,7 @@
     var numbersPager = '';
     var urlJSON = '';
     if (categoryFilter !== 'all') {
-      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryFilter + '&items_per_page=3&page=' + page;
+      urlJSON = 'api/newsJSON?tid=' + categoryFilter + '&items_per_page=3&page=' + page;
     } else {
       urlJSON = 'api/newsJSON?items_per_page=3&page=' + page;
     }
@@ -98,7 +98,7 @@
   function getPager(categoryPager) {
     var urlJSON = '';
     if (categoryPager !== 'all') {
-      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryPager +'&items_per_page=3';
+      urlJSON = 'api/newsJSON?tid=' + categoryPager +'&items_per_page=3';
     } else {
       urlJSON = 'api/newsJSON';
     }
