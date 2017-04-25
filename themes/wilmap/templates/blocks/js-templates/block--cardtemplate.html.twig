@@ -1,9 +1,9 @@
 <script type="text/template" id="card-template">
   <a href="<%= alias %>">
-    <p class="card-location"><%= location || 'location' %></p>
-    <h3 class="card-heading"><%= heading || 'heading' %></h3>
-    <h4 class="card-subheading"><%= subheading || 'subheading' %></h4>
-    <p class="card-details"><%= details || 'details' %></p>
-    <div class="card-content"><%= content %></div>
+    <% if (location) %> <p class="card-location"><%= location %></p>
+    <% if (heading) %> <h3 class="card-heading"><%= heading %></h3>
+    <% if (subheading) %> <h4 class="card-subheading"><%= subheading %></h4>
+    <% if (details) %> <p class="card-details"><%= details %></p>
+    <% if (content) %> <div class="card-content"><%= content %></div>
   </a>
 </script>

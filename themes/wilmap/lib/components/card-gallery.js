@@ -32,13 +32,14 @@ App.Component.CardGallery = class CardGallery {
     this.template = $(document.createDocumentFragment());
     this.data.forEach((topic) => {
       const config = this.options.card;
+      // TODO: remove default values, when data is ready. For now, leave them as an example
       const card = new App.Component.Card({
         extended: config.extended,
-        heading: topic[config.headingName],
-        subheading: topic[config.subheadingName],
-        details: topic[config.detailsName],
-        location: topic[config.locationName],
-        content: topic[config.contentName],
+        heading: config.headingName ? topic[config.headingName] || 'Heading' : null,
+        subheading: config.subheadingName ? topic[config.subheadingName] || 'Sub-heading' : null,
+        details: config.detailsName ? topic[config.detailsName] || 'details' : null,
+        location: config.locationName ? topic[config.locationName] || 'location' : null,
+        content: config.contentName ? topic[config.contentName] || 'content' : null,
         alias: topic.path
       });
       this.template.append(card.el);
