@@ -2,6 +2,10 @@
 
 (function () {
   const tabs = new App.Component.Tabs('.list-categories', {
+    tab: {
+      id: 'tid',
+      label: 'name'
+    },
     fetch: true,
     endpoint: 'api/categoriesJSON',
     callback: getPager

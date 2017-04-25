@@ -1,6 +1,6 @@
 (() => {
   let map;
-  // const nodeid = drupalSettings.path.currentPath.split('/').pop();
+  const nodeid = drupalSettings.path.currentPath.split('/').pop();
 
   const getContentCountry = () => { // Show entries and news on country detail page
     let urlJSON = '';
@@ -8,7 +8,11 @@
 
   const tabs = new App.Component.Tabs('.list-categories', { // Tabs
     fetch: true,
-    endpoint: '/api/categoriesJSON',
+    tab: {
+      id: 'field_category_entry_1',
+      label: 'field_category_entry'
+    },
+    endpoint: `/api/categoriesForCountryJSON?country=${nodeid}`,
     callback: getContentCountry
   });
 

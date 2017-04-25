@@ -50,8 +50,9 @@ App.Component.Tabs = class Tabs {
    */
   init() {
     this.template = $(document.createDocumentFragment());
+    const { id, label } = this.options.tab;
     this.data.forEach((tab) => {
-      const tabHtml = `<li data-value="${tab.tid}" class="option-category"> ${tab.name} </li>`;
+      const tabHtml = `<li data-value="${tab[id]}" class="option-category"> ${tab[label]} </li>`;
       this.template.append(tabHtml);
     });
 
