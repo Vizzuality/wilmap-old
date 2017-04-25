@@ -1,6 +1,6 @@
-(($, settings) => {
+(() => {
   let map;
-  const nodeid = settings.path.currentPath.split('/').pop();
+  // const nodeid = drupalSettings.path.currentPath.split('/').pop();
 
   const getContentCountry = () => { // Show entries and news on country detail page
     let urlJSON = '';
@@ -28,4 +28,4 @@
   };
 
   initMap();
-})(jQuery, drupalSettings);
+})();

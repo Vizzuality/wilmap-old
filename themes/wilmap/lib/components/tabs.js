@@ -1,5 +1,3 @@
-'use strict';
-
 App.Component.Tabs = class Tabs {
 
   /**
@@ -31,13 +29,15 @@ App.Component.Tabs = class Tabs {
   }
 
   setListeners(callback) {
-    this.el.children('li').click(function() {
+    this.el.children('li').click((e) => {
+      const el = e.target;
       if (!$(this).hasClass('-selected')) {
         $('li').removeClass('-selected');
-        var dataValue = $(this).data('value');
-        var offset = $(this).offset().top - $('.nav-categories').parent().offset().top;
-        $('.small-bar').css('top', offset - 10 + 'px');
-        $('.small-bar').css('height', $(this).height() + 20 + 'px');
+        const dataValue = $(el).data('value');
+        const offset = $(el).offset().top - $('.nav-categories').parent().offset().top;
+        const smallBar = $('.small-bar');
+        smallBar.css('top', `${offset - 10}px`);
+        smallBar.css('height', `${$(el).height() + 20}px`);
         $(this).addClass('-selected');
         // update tab content
         callback(dataValue);
@@ -51,7 +51,7 @@ App.Component.Tabs = class Tabs {
   init() {
     this.template = $(document.createDocumentFragment());
     this.data.forEach((tab) => {
-      let tabHtml = '<li data-value="' + tab.nid + '" class="option-category">' + tab.title + '</li>';
+      const tabHtml = `<li data-value="${tab.nid}" class="option-category"> ${tab.title} </li>`;
       this.template.append(tabHtml);
     });
 
