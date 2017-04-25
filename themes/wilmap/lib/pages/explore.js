@@ -35,7 +35,7 @@
 
   const entries = new App.Component.CardGallery('.gallery-entries', {
     card: {
-      extended: true,
+      style: '-extended',
       headingName: 'type',
       subheadingName: 'title',
       contentName: 'field_body_entry',

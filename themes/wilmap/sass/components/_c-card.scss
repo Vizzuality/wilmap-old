@@ -11,6 +11,14 @@
     background-color: $third-color;
   }
 
+  .card-location {
+    font-size: $font-size-small;
+    font-family: $font-primary;
+    color: $second-color;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+  }
+
   .card-heading {
     position: relative;
     color: $black;
@@ -29,6 +37,22 @@
     }
   }
 
+  .card-subheading {
+    font-weight: $font-weight-bold;
+    font-family: $font-primary;
+    font-size: 16px;
+    color: $black;
+    text-transform: capitalize;
+  }
+
+  .card-details {
+    color: $second-color;
+    font-family: $font-primary;
+    font-size: 16px;
+    line-height: 1.88;
+    text-transform: capitalize;
+  }
+
   .card-content {
     line-height: 1.88;
     font-family: $font-primary;
@@ -45,13 +69,10 @@
 
   &.-extended {
 
-    .card-location {
+    .card-location,
+    .card-subheading,
+    .card-details {
       display: block;
-      font-size: $font-size-small;
-      font-family: $font-primary;
-      color: $second-color;
-      margin-bottom: 5px;
-      text-transform: capitalize;
     }
 
     .card-heading {
@@ -61,23 +82,15 @@
       font-weight: $font-weight-bold;
       font-size: $font-size-small;
     }
+  }
 
-    .card-subheading {
-      display: block;
-      font-weight: $font-weight-bold;
-      font-family: $font-primary;
-      font-size: 16px;
-      color: $black;
-      text-transform: capitalize;
+  &.-no-head {
+    .card-heading {
+      display: none;
     }
-
+    .card-subheading,
     .card-details {
       display: block;
-      color: $second-color;
-      font-family: $font-primary;
-      font-size: 16px;
-      line-height: 1.88;
-      text-transform: capitalize;
     }
   }
 }
