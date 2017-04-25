@@ -7,6 +7,10 @@
   background-color: rgba($third-color, .3);
   cursor: pointer;
 
+  > a::after {
+    content: none;
+  }
+
   &:hover {
     background-color: $third-color;
   }
@@ -93,4 +97,10 @@
       display: block;
     }
   }
+
+  &.-large {
+    flex-basis: auto;
+  }
+
+
 }

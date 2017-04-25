@@ -5,6 +5,18 @@
   const getTabContent = (content) => { // Show entries and news on country detail page
     const heading = document.querySelector('.js-content-heading');
     heading.textContent = content.label;
+
+    if (content.data) {
+      const entries = new App.Component.CardGallery('.js-content', {
+        card: {
+          style: '-no-head -large',
+          subheadingName: 'title',
+          contentName: 'field_body_entry',
+          detailsName: 'field_category_entry'
+        },
+        endpoint: `/api/entriesJSON?country=${nodeid}&tid=${content.data}`
+      });
+    }
   };
 
   const tabs = new App.Component.Tabs('.list-categories', { // Tabs
