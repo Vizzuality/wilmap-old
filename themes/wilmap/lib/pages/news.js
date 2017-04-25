@@ -2,6 +2,10 @@
 
 (function () {
   const tabs = new App.Component.Tabs('.list-categories', {
+    tab: {
+      id: 'tid',
+      label: 'name'
+    },
     fetch: true,
     endpoint: 'api/categoriesJSON',
     callback: getPager
@@ -25,7 +29,7 @@
     var numbersPager = '';
     var urlJSON = '';
     if (categoryFilter !== 'all') {
-      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryFilter + '&items_per_page=3&page=' + page;
+      urlJSON = 'api/newsJSON?tid=' + categoryFilter + '&items_per_page=3&page=' + page;
     } else {
       urlJSON = 'api/newsJSON?items_per_page=3&page=' + page;
     }
@@ -97,8 +101,8 @@
 
   function getPager(categoryPager) {
     var urlJSON = '';
-    if (categoryPager !== 'all') {
-      urlJSON = 'api/newsJSON?field_category_target_id=' + categoryPager +'&items_per_page=3';
+    if (categoryPager.data !== 'all') {
+      urlJSON = `api/newsJSON?tid= ${categoryPager.data}&items_per_page=3`;
     } else {
       urlJSON = 'api/newsJSON';
     }
@@ -111,14 +115,14 @@
       },
       success: function success(dataNewsCount) {
         totalPages = parseInt(dataNewsCount.length / 3);
-        showNewsGallery(0, categoryPager);
+        showNewsGallery(0, categoryPager.data);
       }
     });
   }
 
   function init () {
     initLoaders();
-    getPager(category);
+    getPager({ data: category });
   }
 
   init();

@@ -10,7 +10,8 @@
     "App": true,
     "mapboxgl": true,
     "_": true,
-    "turf": true
+    "turf": true,
+    "drupalSettings": true
   },
   "parserOptions": {
     "ecmaVersion": 7,

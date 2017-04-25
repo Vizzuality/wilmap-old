@@ -7,7 +7,7 @@ App.Component.Card = class Card {
    */
   constructor(settings) {
     this.options = Object.assign({}, settings);
-    this.el = $(`<div class="c-card ${this.options.extended ? '-extended' : ''}"></div>`);
+    this.el = $(`<div class="c-card ${this.options.style ? this.options.style : ''}"></div>`);
     this.template = _.template($('#card-template').html());
 
     this.render();

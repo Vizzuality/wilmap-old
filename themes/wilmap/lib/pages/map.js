@@ -63,7 +63,7 @@
       container: 'map',
       style: 'mapbox://styles/wilmap2/cj0v5s204010w2rt8oz3r89vj',
       center: [0, 0],
-      zoom: 2
+      zoom: 3
     });
 
     map.on('load', () => {
