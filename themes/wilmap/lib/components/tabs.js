@@ -40,7 +40,7 @@ App.Component.Tabs = class Tabs {
         smallBar.css('height', `${$(el).height() + 20}px`);
         $(this).addClass('-selected');
         // update tab content
-        callback(dataValue);
+        callback({ data: dataValue, label: el.textContent });
       }
     });
   }

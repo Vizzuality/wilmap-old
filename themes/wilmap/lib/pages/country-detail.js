@@ -2,8 +2,9 @@
   let map;
   const nodeid = drupalSettings.path.currentPath.split('/').pop();
 
-  const getContentCountry = () => { // Show entries and news on country detail page
-    let urlJSON = '';
+  const getTabContent = (content) => { // Show entries and news on country detail page
+    const heading = document.querySelector('.js-content-heading');
+    heading.textContent = content.label;
   };
 
   const tabs = new App.Component.Tabs('.list-categories', { // Tabs
@@ -13,7 +14,7 @@
       label: 'field_category_entry'
     },
     endpoint: `/api/categoriesForCountryJSON?country=${nodeid}`,
-    callback: getContentCountry
+    callback: getTabContent
   });
 
   const initMap = () => { // Init map on header

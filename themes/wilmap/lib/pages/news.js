@@ -101,8 +101,8 @@
 
   function getPager(categoryPager) {
     var urlJSON = '';
-    if (categoryPager !== 'all') {
-      urlJSON = 'api/newsJSON?tid=' + categoryPager +'&items_per_page=3';
+    if (categoryPager.data !== 'all') {
+      urlJSON = `api/newsJSON?tid= ${categoryPager.data}&items_per_page=3`;
     } else {
       urlJSON = 'api/newsJSON';
     }
@@ -115,14 +115,14 @@
       },
       success: function success(dataNewsCount) {
         totalPages = parseInt(dataNewsCount.length / 3);
-        showNewsGallery(0, categoryPager);
+        showNewsGallery(0, categoryPager.data);
       }
     });
   }
 
   function init () {
     initLoaders();
-    getPager(category);
+    getPager({ data: category });
   }
 
   init();
